@@ -29,6 +29,14 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] float progressDecreaseSpeed = 1.0f;
     [SerializeField] GameObject fishingMiniGame;
 
+    [Header("Fishing Elements")]
+    [SerializeField] GameObject castingLine;
+    [SerializeField] float maxCastDistance = 10f;
+    [SerializeField] float castSpeed = 2f;
+    [SerializeField] float waterPosition = -3f;
+    [SerializeField] List<Item> availableItems;
+
+
 
     int numFishCaught = 0;
     int numJunkCaught = 0;
@@ -40,14 +48,9 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     float castStrength;
     Vector2 targetPosition;
     Vector2 castStartingPosition;
-    Vector2 playerBarStart; 
-
-    [Header("Fishing Elements")]
-    [SerializeField] GameObject castingLine;
-    [SerializeField]float maxCastDistance = 10f;
-    [SerializeField] float castSpeed = 2f;
-    [SerializeField] float waterPosition = -3f;
-    [SerializeField] List<Item> availableItems;
+    Vector2 playerBarStart;
+    Vector2 itemStart;
+    Fish_AI fishAi;
 
     private void Awake()
     {
@@ -55,8 +58,11 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         junkCaught.text = numJunkCaught.ToString(); 
         castStartingPosition = castingLine.transform.position;
         playerBarStart = playerBar.anchoredPosition;
+        itemStart = item.anchoredPosition;
+        fishAi = item.GetComponent<Fish_AI>();
     }
 
+    //Starts the cast distance slider moving up and down
     public void StartFishing ()
     {
         castDistanceSlider.gameObject.SetActive(true);
@@ -65,6 +71,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         isFishing = true;
     }
 
+    //Casts the line into the water and starts the mini-game
     public void Cast ()
     {
         castStrength = castDistanceSlider.value;
@@ -83,13 +90,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         isCasting = true;
         isFishing = false;
         castDistanceSlider.gameObject.SetActive(false);
-    }
-
-    //Updates num items caught mostly for testing can remove later when we have an actual UI
-    void UpdateItemsCaught()
-    {
-        fishCaught.text = numFishCaught.ToString();
-        junkCaught.text = numJunkCaught.ToString();
     }
 
     // Update is called once per frame
@@ -120,9 +120,10 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             {
                 isCasting = false;
                 progressBar.gameObject.SetActive(true);
-                progressBar.value = 0.5f;
+                progressBar.value = progressBar.maxValue/2;
                 fishingMiniGame.SetActive(true);
                 isFishingGameActive = true;
+                castButton.gameObject.SetActive(false);
             }
         }
 
@@ -152,6 +153,8 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     {
         bool overlapping = isOverlapping(item, playerBar);
 
+        UpdateItemMovement();
+
         if (overlapping)
         {
             progressBar.value += progressIncreaseSpeed * Time.deltaTime;
@@ -170,6 +173,12 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         }
     }
 
+    //calls the random move method in Fish_Ai to randomly move the item
+    void UpdateItemMovement()
+    {
+        fishAi.RandomMove();
+    }
+
     void CheckCatchItem(bool itemCaught)
     {
 
@@ -180,6 +189,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             progressBar.gameObject.SetActive(false);
             isFishingGameActive = false;
             playerBar.anchoredPosition = playerBarStart;
+            item.anchoredPosition = itemStart;
             fishingMiniGame.SetActive(false);
             isReturning = true;
             DisplayCaughtNothing();
@@ -209,6 +219,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         progressBar.gameObject.SetActive(false);
         isFishingGameActive = false;
         playerBar.anchoredPosition = playerBarStart;
+        item.anchoredPosition = itemStart;
         fishingMiniGame.SetActive(false);
         isReturning = true;
     }
@@ -226,6 +237,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         }
     }
 
+    // displays message for when player failed to catch fish 
     void DisplayCaughtNothing()
     {
         caughtItemPanel.SetActive(true);
@@ -235,7 +247,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     }
 
     //checks if player bar is overlapping with moving fish/item in mini-game
-    //not really working right now
     bool isOverlapping (RectTransform a, RectTransform b)
     {
         Vector3[] cornersA = new Vector3[4];
@@ -249,5 +260,12 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
 
 
         return rect1.Overlaps(rect2);
+    }
+
+    //Updates num items caught mostly for testing can remove later when we have an actual UI
+    void UpdateItemsCaught()
+    {
+        fishCaught.text = numFishCaught.ToString();
+        junkCaught.text = numJunkCaught.ToString();
     }
 }

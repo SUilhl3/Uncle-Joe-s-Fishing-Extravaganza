@@ -852,7 +852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &385500521
 RectTransform:
   m_ObjectHideFlags: 0
@@ -909,7 +909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -34.6}
+  m_AnchoredPosition: {x: 0, y: -38.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &480042077
@@ -962,6 +962,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83cd6be60a64cc04e885ac6949836c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fish_AI
+  minY: -40
+  maxY: 39
+  moveSpeed: 75
+  directionChangeInterval: 0.8
+  rectTransform: {fileID: 0}
+  currentDirection: 1
+  directionTimer: 0
+  pos: {x: 0, y: 0}
 --- !u!1 &482078711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1255,7 @@ RectTransform:
   m_Father: {fileID: 1583647400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1601,7 +1609,7 @@ MonoBehaviour:
   playerBar: {fileID: 1879742996}
   progressBar: {fileID: 118333270}
   progressIncreaseSpeed: 18
-  progressDecreaseSpeed: 5
+  progressDecreaseSpeed: 10
   fishingMiniGame: {fileID: 385500520}
   castingLine: {fileID: 230705145}
   maxCastDistance: 5
@@ -2676,7 +2684,7 @@ RectTransform:
   m_Father: {fileID: 482078712}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
