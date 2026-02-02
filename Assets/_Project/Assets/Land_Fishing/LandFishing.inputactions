@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "name": "LandFishing",
+    "maps": [
+        {
+            "name": "Movement",
+            "id": "e8f36efe-c102-4034-abfe-0965fdad67a0",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Button",
+                    "id": "9e0b04c8-bee9-4268-a54f-14a0c1b530d4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0f102845-77c9-44c0-8b55-dc29e841cd25",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c4946a0-71e0-4b10-a555-2c5a22492b40",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
