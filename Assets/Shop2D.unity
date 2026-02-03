@@ -119,6 +119,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!1 &145461221
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +257,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145461221}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes
 --- !u!1 &171477838
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +289,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2073060876}
+<<<<<<< Updated upstream
   - {fileID: 190125355}
   m_Father: {fileID: 1986993676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -293,6 +297,14 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 70, y: -60}
   m_SizeDelta: {x: 100, y: 50}
+=======
+  m_Father: {fileID: 1986993676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 0}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &171477840
 MonoBehaviour:
@@ -320,6 +332,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+<<<<<<< Updated upstream
 --- !u!1 &190125354
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,6 +635,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330409659}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes
 --- !u!1 &402562376
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,6 +865,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1755446246}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
 --- !u!1 &577939335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,6 +1902,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302330282}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1662521882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2042,7 +2060,11 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+<<<<<<< Updated upstream
   m_AdditionalShaderChannelsFlag: 25
+=======
+  m_AdditionalShaderChannelsFlag: 0
+>>>>>>> Stashed changes
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -2061,8 +2083,11 @@ RectTransform:
   m_Children:
   - {fileID: 483691941}
   - {fileID: 1986993676}
+<<<<<<< Updated upstream
   - {fileID: 796037439}
   - {fileID: 1302330283}
+=======
+>>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2070,6 +2095,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+<<<<<<< Updated upstream
 --- !u!1 &1776766161
 GameObject:
   m_ObjectHideFlags: 0
@@ -2349,6 +2375,8 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1986993675
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,12 +2403,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986993675}
+<<<<<<< Updated upstream
   m_LocalRotation: {x: -0, y: -0, z: -0.0018946389, w: 0.9999982}
+=======
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+>>>>>>> Stashed changes
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 171477839}
+<<<<<<< Updated upstream
   - {fileID: 749889010}
   - {fileID: 2000691409}
   m_Father: {fileID: 1755446246}
@@ -2388,6 +2421,13 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.22753906, y: -0.0026245117}
+=======
+  m_Father: {fileID: 1755446246}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+>>>>>>> Stashed changes
   m_SizeDelta: {x: 0, y: 120}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1986993677
@@ -2403,10 +2443,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
   m_Padding:
+<<<<<<< Updated upstream
     m_Left: 20
     m_Right: 20
     m_Top: 10
     m_Bottom: 10
+=======
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+>>>>>>> Stashed changes
   m_ChildAlignment: 3
   m_Spacing: 15
   m_ChildForceExpandWidth: 1
@@ -2454,6 +2501,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986993675}
   m_CullTransparentMesh: 1
+<<<<<<< Updated upstream
 --- !u!1 &2000691408
 GameObject:
   m_ObjectHideFlags: 0
@@ -2738,6 +2786,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071133458}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> Stashed changes
 --- !u!1 &2073060875
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,7 +2800,11 @@ GameObject:
   - component: {fileID: 2073060878}
   - component: {fileID: 2073060877}
   m_Layer: 5
+<<<<<<< Updated upstream
   m_Name: CoinIcon
+=======
+  m_Name: Image
+>>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2770,10 +2824,17 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 171477839}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< Updated upstream
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 24, y: -25}
   m_SizeDelta: {x: 48, y: 48}
+=======
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2073060877
 MonoBehaviour:
