@@ -8,6 +8,7 @@ public class CursorManager : MonoBehaviour
     public Texture2D cursor1;
     public Texture2D cursor2;
     public Texture2D cursor3;
+    public Texture2D cursor4;
 
     private Vector2 hotspot = Vector2.zero;
 
@@ -48,6 +49,12 @@ public class CursorManager : MonoBehaviour
         PlayerPrefs.SetInt("CursorChoice", 3);
     }
 
+    public void SetCursor4()
+    {
+        Cursor.SetCursor(cursor4, hotspot, CursorMode.Auto);
+        PlayerPrefs.SetInt("CursorChoice", 4);
+    }
+
     void LoadSavedCursor()
     {
         int saved = PlayerPrefs.GetInt("CursorChoice", 1);
@@ -55,5 +62,6 @@ public class CursorManager : MonoBehaviour
         if (saved == 1) SetCursor1();
         else if (saved == 2) SetCursor2();
         else if (saved == 3) SetCursor3();
+        else if (saved == 4) SetCursor4();
     }
 }
