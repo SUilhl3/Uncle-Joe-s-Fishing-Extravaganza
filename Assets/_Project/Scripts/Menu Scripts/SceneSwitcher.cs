@@ -3,19 +3,24 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
-    public void LoadMenu(string sceneName)
+    public void LoadMenu()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene("Load Menu");
     }
 
-    public void OptionsMenu(string sceneName)
+    public void OptionsMenu()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene("Options Menu");
     }
 
-    public void Game(string sceneName)
+    public void Game()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene("Boat Fishing");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void Exit()
