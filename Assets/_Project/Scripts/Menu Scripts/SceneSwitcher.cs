@@ -3,14 +3,28 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
+
+    public GameObject OptionsPanel;
+    public GameObject PausePanel;
+
+    void Start()
+    {
+        optionsPanel.SetActive(false);
+    }
+
     public void LoadMenu()
     {
         SceneManager.LoadScene("Load Menu");
     }
 
-    public void OptionsMenu()
+    public void OptionsMenuOpen()
     {
-        SceneManager.LoadScene("Options Menu");
+        OptionsPanel.SetActive(true);
+    }
+
+    public void OptionsMenuClose()
+    {
+       OptionsPanel.SetActive(false);
     }
 
     public void Game()
@@ -27,4 +41,28 @@ public class SceneSwitcher : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void OpenPanel()
+    {
+        PausePanel.SetActive(true);
+        set timeScale to 0f;
+    }
+
+    public void ClosePanel()
+    {
+        PausePanel.SetActive(false);
+        set timeScale to 1f;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PausePanel.SetActive(!panel.activeSelf);
+        }
+    }
+
+    
+
+
 }
