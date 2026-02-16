@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
+
 public class hookMovement : MonoBehaviour
 {
     public float horzSpeed = 5f;
@@ -15,7 +16,6 @@ public class hookMovement : MonoBehaviour
     public float dropAmount = 0f;
     public float maxDropAmount = 50f; //maximum distance the hook can drop
 
-    public bool isReeling = false;
     public bool isAtMaxDrop = false;
     public Rigidbody2D rb;
     [SerializeField] private Transform leftBoundaryObj;
@@ -23,6 +23,7 @@ public class hookMovement : MonoBehaviour
 
     [SerializeField] private float leftBoundaryX;
     [SerializeField] private float rightBoundaryX;
+    [SerializeField] private float upperBoundaryY;
 
     [SerializeField] private GameObject castPanel;
     [SerializeField] private bool fishOnHook = false;
@@ -43,6 +44,23 @@ public class hookMovement : MonoBehaviour
     {
         if (currentState != HookState.casting)
         {
+            if (currentState == HookState.reeling)
+            {
+                // Move directly toward starting point
+                transform.position = Vector3.MoveTowards(
+                    transform.position,
+                    startingPoint.position,
+                    reelSpeed * Time.deltaTime
+                );
+
+                // Stop reeling once we reach the start
+                if (Vector3.Distance(transform.position, startingPoint.position) < 0.01f)
+                {
+                    InitializeCast();
+                }
+
+                return; // prevent normal movement logic from running
+            }
             // Calculate movement
             Vector3 movement = new Vector3(moveInput.x * horzSpeed, moveInput.y, 0f);
 
@@ -80,30 +98,33 @@ public class hookMovement : MonoBehaviour
     public void InitializeCast()
     {
         currentState = HookState.casting;
-        transform.position = startingPoint.position; 
+        transform.position = startingPoint.position;
+        dropAmount = 0f; //reset max line length
+        isAtMaxDrop = false;
 
         castPanel.SetActive(true);
         moveInput = Vector2.zero; // Reset movement input
     }
-    
+
     public void OnCast(InputAction.CallbackContext value)
     {
         currentState = HookState.dropping;
-            castPanel.SetActive(false);
-            moveInput.y = ambientDropSpeed; //start ambient drop
+        castPanel.SetActive(false);
+        moveInput.y = ambientDropSpeed; //start ambient drop
     }
 
     public void OnReel(InputAction.CallbackContext value)
     {
-        if(currentState == HookState.casting)
+        if (currentState == HookState.casting)
         {
             return;
         }
 
         if (value.performed) //if reel button is pressed then reel the hook up
         {
-                currentState = HookState.reeling;
-                moveInput.y = reelSpeed;
+            Debug.Log("pressing");
+            currentState = HookState.reeling;
+            moveInput.y = reelSpeed;
         }
         else if (value.canceled) //if reel button is released then stop reeling
         {
@@ -119,6 +140,6 @@ public class hookMovement : MonoBehaviour
     }
 
     public bool getFishOnHook() => fishOnHook;
-    
+
     public void setFishOnHook(bool value) => fishOnHook = value ? true : false;
 }
