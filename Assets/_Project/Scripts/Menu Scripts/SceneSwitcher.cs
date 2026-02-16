@@ -3,13 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
-
     public GameObject OptionsPanel;
     public GameObject PausePanel;
 
     void Start()
     {
-        optionsPanel.SetActive(false);
+        if (OptionsPanel != null) OptionsPanel.SetActive(false);
+        if (PausePanel != null) PausePanel.SetActive(false);
+
+        Time.timeScale = 1f;
     }
 
     public void LoadMenu()
@@ -19,12 +21,12 @@ public class SceneSwitcher : MonoBehaviour
 
     public void OptionsMenuOpen()
     {
-        OptionsPanel.SetActive(true);
+        if (OptionsPanel != null) OptionsPanel.SetActive(true);
     }
 
     public void OptionsMenuClose()
     {
-       OptionsPanel.SetActive(false);
+        if (OptionsPanel != null) OptionsPanel.SetActive(false);
     }
 
     public void Game()
@@ -44,25 +46,22 @@ public class SceneSwitcher : MonoBehaviour
 
     public void OpenPanel()
     {
-        PausePanel.SetActive(true);
-        set timeScale to 0f;
+        if (PausePanel != null) PausePanel.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void ClosePanel()
     {
-        PausePanel.SetActive(false);
-        set timeScale to 1f;
+        if (PausePanel != null) PausePanel.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PausePanel.SetActive(!panel.activeSelf);
+            if (PausePanel != null && PausePanel.activeSelf) ClosePanel();
+            else OpenPanel();
         }
     }
-
-    
-
-
 }
