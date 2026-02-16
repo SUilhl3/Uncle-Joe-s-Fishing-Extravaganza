@@ -25,6 +25,7 @@ public class hookMovement : MonoBehaviour
     [SerializeField] private float rightBoundaryX;
 
     [SerializeField] private GameObject castPanel;
+    [SerializeField] private bool fishOnHook = false;
 
     private enum HookState { dropping, reeling, casting }
     [SerializeField] private HookState currentState = HookState.casting;
@@ -116,4 +117,8 @@ public class hookMovement : MonoBehaviour
         }
 
     }
+
+    public bool getFishOnHook() => fishOnHook;
+    
+    public void setFishOnHook(bool value) => fishOnHook = value ? true : false;
 }

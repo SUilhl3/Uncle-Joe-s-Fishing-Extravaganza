@@ -43,6 +43,8 @@ public class Boat_Fish : MonoBehaviour
         home_area = homeAreaObject.AddComponent<CircleCollider2D>();
         home_area.radius = 5f; // Set the radius of the home area
         home_area.isTrigger = true;
+
+        hookScript = FindFirstObjectByType<hookMovement>();
     }
 
     private void Update()
@@ -79,6 +81,10 @@ public class Boat_Fish : MonoBehaviour
             {
                 moveDirection = (hookPosition - transform.position).normalized;
                 movement = moveDirection * swimSpeed * Time.deltaTime;
+                if(hookScript.getFishOnHook())
+                {
+                    currentState = FishState.returningHome;
+                }
             }
             transform.Translate(movement, Space.World);
 
@@ -110,14 +116,22 @@ public class Boat_Fish : MonoBehaviour
             swimSpeed = 0f;
             handleRotate();
             hookScript.InitializeCast(); //reset the hook for the next cast
+            hookScript.setFishOnHook(false);
         }
         else if (collision.gameObject.CompareTag("Hook"))
         {
-            transform.SetParent(collision.transform); //make the fish a child of the hook so it moves with it
+            if(hookScript.getFishOnHook())
+            {
+                return;
+            }
+            else
+            {
+                transform.SetParent(collision.transform); //make the fish a child of the hook so it moves with it
             transform.localScale = originalScale;
-            hookScript = FindFirstObjectByType<hookMovement>(); //get the hook script to reset the hook after catching the fish
             swimSpeed = 0f;
             currentState = FishState.OnHook;
+            hookScript.setFishOnHook(true);   
+            }
         }
     }
 

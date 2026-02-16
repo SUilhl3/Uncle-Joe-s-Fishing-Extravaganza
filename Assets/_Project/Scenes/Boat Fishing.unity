@@ -844,6 +844,7 @@ MonoBehaviour:
   leftBoundaryX: 0
   rightBoundaryX: 0
   castPanel: {fileID: 1569399018}
+  fishOnHook: 1
   currentState: 2
 --- !u!50 &678972848
 Rigidbody2D:
@@ -1462,6 +1463,7 @@ MonoBehaviour:
   alertRange: 3
   alertCollider: {fileID: 0}
   fish: {fileID: 0}
+  hookScript: {fileID: 678972847}
 --- !u!58 &1474420416
 CircleCollider2D:
   m_ObjectHideFlags: 0
