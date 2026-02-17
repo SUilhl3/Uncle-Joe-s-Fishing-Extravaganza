@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 514636419}
   - component: {fileID: 514636421}
   - component: {fileID: 514636420}
+  - component: {fileID: 514636422}
   m_Layer: 5
   m_Name: Hotspot_Item
   m_TagString: Untagged
@@ -316,6 +317,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514636418}
   m_CullTransparentMesh: 1
+--- !u!114 &514636422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514636418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a4de5f02e376146a8f431feed3f619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShopItemHotspot
+  itemData: {fileID: 11400000, guid: 5f42f3d4f8f65e74da4388191a32a598, type: 2}
+  highlight: {fileID: 1021367378}
+  tooltip: {fileID: 1751297325}
 --- !u!1 &679960657
 GameObject:
   m_ObjectHideFlags: 0

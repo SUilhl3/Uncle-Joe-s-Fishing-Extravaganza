@@ -2,12 +2,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ShopItemHotspot : MonoBehaviour,
-    IPointerEnterHandler, IPointerExitHandler, IPointerMoveHandler
+    IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private ShopItemData itemData;
     [SerializeField] private GameObject highlight;
     [SerializeField] private ShopTooltipUI tooltip;
-    [SerializeField] private bool followMouse = true;
 
     private bool purchased;
 
@@ -19,23 +18,21 @@ public class ShopItemHotspot : MonoBehaviour,
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (purchased) return;
-
         if (highlight != null) highlight.SetActive(true);
-        tooltip.Show(itemData, this);
-
-        if (followMouse) tooltip.SetScreenPosition(eventData.position);
-    }
-
-    public void OnPointerMove(PointerEventData eventData)
-    {
-        if (!followMouse || purchased) return;
-        tooltip.SetScreenPosition(eventData.position);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (highlight != null) highlight.SetActive(false);
-        tooltip.Hide();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (purchased) return;
+
+        if (eventData.button != PointerEventData.InputButton.Left) return;
+
+        tooltip.Show(itemData, this);
     }
 
     public void OnPurchased()
@@ -44,6 +41,5 @@ public class ShopItemHotspot : MonoBehaviour,
         if (highlight != null) highlight.SetActive(false);
 
         gameObject.SetActive(false);
-
     }
 }

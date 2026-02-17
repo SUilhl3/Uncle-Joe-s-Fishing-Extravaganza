@@ -41,11 +41,6 @@ public class ShopTooltipUI : MonoBehaviour
         currentHotspot = null;
     }
 
-    public void SetScreenPosition(Vector2 screenPos)
-    {
-        (root.transform as RectTransform).position = screenPos;
-    }
-
     private void BuyCurrent()
     {
         if (currentItem == null || currentHotspot == null) return;
