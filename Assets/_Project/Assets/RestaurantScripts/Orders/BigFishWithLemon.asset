@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f335479a485e3184ab1e29e0f7fccde3, type: 3}
   m_Name: BigFishWithLemon
   m_EditorClassIdentifier: Assembly-CSharp::OrderData
-  requiredIngredients: 
-  orderDialogue: 
+  requiredIngredients: 0100000008000000
+  orderDialogue: '"Give me a big fish with lemon!"'
