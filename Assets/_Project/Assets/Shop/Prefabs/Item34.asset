@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 673769cf36639364d97ce99abe811d94, type: 3}
-  m_Name: New Shop Item Data
+  m_Name: Item34
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Teapot
   description: 
