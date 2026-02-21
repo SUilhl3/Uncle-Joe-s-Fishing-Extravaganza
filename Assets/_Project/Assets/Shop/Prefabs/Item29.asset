@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673769cf36639364d97ce99abe811d94, type: 3}
   m_Name: Item29
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
-  itemName: Teapot
+  itemName: Super Sea Cucumber
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 3719068211130651045, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   price: 25

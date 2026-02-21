@@ -314,8 +314,6 @@ RectTransform:
   - {fileID: 567407002}
   - {fileID: 1042305893}
   - {fileID: 2002060023}
-  - {fileID: 701475557}
-  - {fileID: 2144436165}
   - {fileID: 684561204}
   - {fileID: 299542426}
   - {fileID: 761972824}
@@ -340,6 +338,8 @@ RectTransform:
   - {fileID: 430321594}
   - {fileID: 650105797}
   - {fileID: 2011398608}
+  - {fileID: 2144436165}
+  - {fileID: 701475557}
   m_Father: {fileID: 679960661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3050,7 +3050,7 @@ GameObject:
   - component: {fileID: 701475559}
   - component: {fileID: 701475558}
   m_Layer: 5
-  m_Name: Hotspot_Item18
+  m_Name: Hotspot_Item43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8755,7 +8755,7 @@ GameObject:
   - component: {fileID: 2144436167}
   - component: {fileID: 2144436166}
   m_Layer: 5
-  m_Name: Hotspot_Item19
+  m_Name: Hotspot_Item42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
