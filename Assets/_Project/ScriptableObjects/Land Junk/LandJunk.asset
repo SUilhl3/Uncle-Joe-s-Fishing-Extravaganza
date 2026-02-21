@@ -16,3 +16,5 @@ MonoBehaviour:
   itemDescription: This is some junk
   itemImage: {fileID: 0}
   itemValue: 5
+  moveSpeed: 55
+  directionChangeInterval: 1.1

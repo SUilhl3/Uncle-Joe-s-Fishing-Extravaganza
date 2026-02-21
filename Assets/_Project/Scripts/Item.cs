@@ -7,4 +7,8 @@ public abstract class Item : ScriptableObject
     public string itemDescription;
     public Sprite itemImage;
     public float itemValue;
+
+    //fishing game elements
+    public float moveSpeed;
+    public float directionChangeInterval;
 }

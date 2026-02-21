@@ -51,6 +51,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     Vector2 playerBarStart;
     Vector2 itemStart;
     Fish_AI fishAi;
+    Item caughtItem;
 
     private void Awake()
     {
@@ -98,33 +99,13 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         //Moves cast strength slider up and down
         if (isFishing)
         {
-            castDistanceSlider.value += sliderMovementSpeed * Time.deltaTime;
-
-            if (castDistanceSlider.value >= 1)
-            {
-                sliderMovementSpeed = -1.0f;
-            }
-            else if (castDistanceSlider.value <= 0)
-            {
-                sliderMovementSpeed = 1.0f;
-            }
+            Fishing();
         }
 
         //moves casting line into the water 
         if (isCasting)
         {
-            Vector2 currentPos = castingLine.transform.position;
-            castingLine.transform.position = Vector2.MoveTowards(currentPos, targetPosition, castSpeed * Time.deltaTime);
-
-            if (Vector2.Distance(currentPos, targetPosition) < 0.01f)
-            {
-                isCasting = false;
-                progressBar.gameObject.SetActive(true);
-                progressBar.value = progressBar.maxValue/2;
-                fishingMiniGame.SetActive(true);
-                isFishingGameActive = true;
-                castButton.gameObject.SetActive(false);
-            }
+            Casting();
         }
 
         if (isFishingGameActive)
@@ -135,17 +116,60 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         //returns the casting line back to the starting position after catching or not catching a fish
         if (isReturning)
         {
-            castingLine.transform.position = Vector2.MoveTowards(
-                castingLine.transform.position,
-                castStartingPosition,
-                castSpeed * Time.deltaTime
-            );
+            Returning();
+        }
+    }
 
-            if (Vector2.Distance(castingLine.transform.position, castStartingPosition) < 0.01f)
-            {
-                caughtItemPanel.SetActive(false);
-                isReturning = false;
-            }
+    void Fishing()
+    {
+        castDistanceSlider.value += sliderMovementSpeed * Time.deltaTime;
+
+        if (castDistanceSlider.value >= 1)
+        {
+            sliderMovementSpeed = -1.0f;
+        }
+        else if (castDistanceSlider.value <= 0)
+        {
+            sliderMovementSpeed = 1.0f;
+        }
+    }
+
+    //casting the line out to the water 
+    void Casting()
+    {
+        Vector2 currentPos = castingLine.transform.position;
+        castingLine.transform.position = Vector2.MoveTowards(currentPos, targetPosition, castSpeed * Time.deltaTime);
+
+        if (Vector2.Distance(currentPos, targetPosition) < 0.01f)
+        {
+            isCasting = false;
+
+            //change
+            caughtItem = availableItems[UnityEngine.Random.Range(0, availableItems.Count)];
+            fishAi.moveSpeed = caughtItem.moveSpeed;
+            fishAi.directionChangeInterval = caughtItem.directionChangeInterval;
+
+            progressBar.gameObject.SetActive(true);
+            progressBar.value = progressBar.maxValue / 3;
+            fishingMiniGame.SetActive(true);
+            isFishingGameActive = true;
+            castButton.gameObject.SetActive(false);
+        }
+    }
+
+    //returning the fishing line back to the player
+    void Returning()
+    {
+        castingLine.transform.position = Vector2.MoveTowards(
+            castingLine.transform.position,
+            castStartingPosition,
+            castSpeed * Time.deltaTime
+        );
+
+        if (Vector2.Distance(castingLine.transform.position, castStartingPosition) < 0.01f)
+        {
+            caughtItemPanel.SetActive(false);
+            isReturning = false;
         }
     }
 
@@ -184,21 +208,12 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
 
         if (!itemCaught)
         {
-            startFishingButton.gameObject.SetActive(true);
-            castButton.gameObject.SetActive(false);
-            progressBar.gameObject.SetActive(false);
-            isFishingGameActive = false;
-            playerBar.anchoredPosition = playerBarStart;
-            item.anchoredPosition = itemStart;
-            fishingMiniGame.SetActive(false);
-            isReturning = true;
+            ResetFishingGame();
             DisplayCaughtNothing();
             return;
         }
 
-        int n = UnityEngine.Random.Range(0, 100);
-
-        Item caughtItem = availableItems[UnityEngine.Random.Range(0, availableItems.Count)];
+        
         if (caughtItem is LandFish)
         {
             castDistanceSlider.value = 0;
@@ -214,6 +229,12 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             UpdateItemsCaught();
         }
 
+        ResetFishingGame();
+    }
+
+    //resets everything back to the starting place
+    void ResetFishingGame()
+    {
         startFishingButton.gameObject.SetActive(true);
         castButton.gameObject.SetActive(false);
         progressBar.gameObject.SetActive(false);

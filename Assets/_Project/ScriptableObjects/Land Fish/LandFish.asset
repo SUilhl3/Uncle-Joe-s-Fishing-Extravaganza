@@ -16,3 +16,5 @@ MonoBehaviour:
   itemDescription: This is a fish
   itemImage: {fileID: 0}
   itemValue: 10
+  moveSpeed: 50
+  directionChangeInterval: 1.2
