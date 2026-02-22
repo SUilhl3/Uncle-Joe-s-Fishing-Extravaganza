@@ -16,4 +16,6 @@ MonoBehaviour:
   itemDescription: This is also some junk
   itemImage: {fileID: 0}
   itemValue: 20
-  difficulty: 3
+  itemWeight: 0
+  probabilityOfCatch: 2
+  itemRarity: 3

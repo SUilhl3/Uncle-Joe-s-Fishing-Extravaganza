@@ -1,8 +1,7 @@
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +27,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] float progressIncreaseSpeed = 10f;
     [SerializeField] float progressDecreaseSpeed = 1.0f;
     [SerializeField] GameObject fishingMiniGame;
+    [SerializeField] float chanceToCatchNothing = 0.9f;
 
     [Header("Fishing Elements")]
     [SerializeField] GameObject castingLine;
@@ -144,9 +144,34 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         {
             isCasting = false;
 
+            //checks for chance that nothing is on hook 
+            float fishOnHook = UnityEngine.Random.value;
+            if (fishOnHook <chanceToCatchNothing)
+            {
+                DisplayCaughtNothing(true);
+                ResetFishingGame();
+                return;
+            }
+
+            //changes type of fish/items can catch based on castStrength
+            //does nothing for now 
+            if (castStrength >= 0.01 && castStrength <= 0.4)
+            {
+                Debug.Log("Low Cast Strength");
+            }
+            else if (castStrength > 0.4 && castStrength <= 0.7)
+            {
+                Debug.Log("Med Cast Strength");
+            }
+            else
+            {
+                Debug.Log("High Cast Strength");
+            }
+
             //sets difficulty for fishing mini game based on enum value of fish/junk
-            caughtItem = availableItems[UnityEngine.Random.Range(0, availableItems.Count)];
-            fishAi.difficulty = caughtItem.difficulty;
+            //caughtItem = availableItems[UnityEngine.Random.Range(0, availableItems.Count)];
+            caughtItem = GetRandomItem();
+            fishAi.rarity = caughtItem.itemRarity;
 
             progressBar.gameObject.SetActive(true);
             progressBar.value = progressBar.maxValue / 3;
@@ -155,6 +180,32 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             castButton.gameObject.SetActive(false);
         }
     }
+
+    //function to select the random item from the list using weighted probabilities
+    Item GetRandomItem()
+    {
+        float totalWeight = 0f;
+        foreach(Item item in availableItems)
+        {
+            totalWeight += item.probabilityOfCatch;
+        }
+
+        float randomNum = UnityEngine.Random.Range(0f, totalWeight);
+        float currentWright = 0f;
+
+        foreach (Item item in availableItems)
+        {
+            currentWright += item.probabilityOfCatch;
+            if (randomNum <= currentWright)
+            {
+                return item;
+            }
+        }
+
+        //default item returned if above somehow errors
+        return availableItems[0];
+    }
+
 
     //returning the fishing line back to the player
     void Returning()
@@ -208,7 +259,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         if (!itemCaught)
         {
             ResetFishingGame();
-            DisplayCaughtNothing();
+            DisplayCaughtNothing(false);
             return;
         }
 
@@ -250,7 +301,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     {
         caughtItemPanel.SetActive(true);
         caughtItemName.text = item.itemName;
-        caughtItemDescription.text = item.itemDescription;
+        caughtItemDescription.text = item.itemDescription + "\nWeight:" + item.itemWeight.ToString();
         if (item.itemImage)
         {
             caughtItemImage.sprite = item.itemImage;
@@ -258,8 +309,15 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     }
 
     // displays message for when player failed to catch fish 
-    void DisplayCaughtNothing()
+    void DisplayCaughtNothing(bool noHook)
     {
+        if (noHook)
+        {
+            caughtItemPanel.SetActive(true);
+            caughtItemName.text = "Nothing On The Hook";
+            caughtItemDescription.text = "";
+            return;
+        }
         caughtItemPanel.SetActive(true);
         caughtItemName.text = "It Got Away!";
         caughtItemDescription.text = "";
@@ -282,10 +340,12 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         return rect1.Overlaps(rect2);
     }
 
-    //Updates num items caught mostly for testing can remove later when we have an actual UI
     void UpdateItemsCaught()
     {
+        //Updates num items caught mostly for testing can remove later when we have an actual UI
         fishCaught.text = numFishCaught.ToString();
         junkCaught.text = numJunkCaught.ToString();
+
+        //stores fish in inventory (TO DO)
     }
 }

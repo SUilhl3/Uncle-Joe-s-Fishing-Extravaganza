@@ -16,4 +16,6 @@ MonoBehaviour:
   itemDescription: This is also a fish
   itemImage: {fileID: 0}
   itemValue: 12
-  difficulty: 1
+  itemWeight: 0
+  probabilityOfCatch: 15
+  itemRarity: 1

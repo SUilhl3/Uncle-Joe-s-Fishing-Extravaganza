@@ -7,5 +7,7 @@ public abstract class Item : ScriptableObject
     public string itemDescription;
     public Sprite itemImage;
     public float itemValue;
-    public FishDifficulty difficulty;
+    public float itemWeight;
+    public float probabilityOfCatch;
+    public ItemRarity itemRarity;
 }

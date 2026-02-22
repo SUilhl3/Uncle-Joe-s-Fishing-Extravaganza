@@ -7,7 +7,7 @@ public class Fish_AI : MonoBehaviour
     [SerializeField] public float moveSpeed = 1.0f;
     [SerializeField] RectTransform rectTransform;
     [SerializeField] Vector2 pos;
-    public FishDifficulty difficulty;
+    public ItemRarity rarity;
     [SerializeField] float smoothSpeed = 8f;
     [SerializeField] float noiseFrequency = 0.5f;
     private void Awake()
@@ -19,18 +19,18 @@ public class Fish_AI : MonoBehaviour
     public void RandomMove()
     {
         //sets move speed based on difficulty 
-       switch(difficulty)
+       switch(rarity)
         {
-            case FishDifficulty.EASY:
+            case ItemRarity.COMMON:
                 moveSpeed = 1.0f;
                 break;
-            case FishDifficulty.MEDIUM:
+            case ItemRarity.UNCOMMON:
                 moveSpeed = 1.5f;
                 break;
-            case FishDifficulty.HARD:
+            case ItemRarity.RARE:
                 moveSpeed = 2.0f;
                 break;
-            case FishDifficulty.LEGENDARY:
+            case ItemRarity.LEGENDARY:
                 moveSpeed = 2.5f;
                 break;
         }
