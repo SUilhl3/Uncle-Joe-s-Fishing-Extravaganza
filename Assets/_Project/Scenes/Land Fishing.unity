@@ -1102,11 +1102,11 @@ MonoBehaviour:
   minY: -40
   maxY: 39
   moveSpeed: 75
-  directionChangeInterval: 1.5
   rectTransform: {fileID: 0}
-  currentDirection: 1
-  directionTimer: 0
   pos: {x: 0, y: 0}
+  difficulty: 0
+  smoothSpeed: 5
+  noiseFrequency: 0.5
 --- !u!1 &482078711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,6 +1756,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c129d86a7c5def438c67db85482693c, type: 2}
   - {fileID: 11400000, guid: 810c5d56c412ecd41bf603d4ad9e779b, type: 2}
   - {fileID: 11400000, guid: 1c129d86a7c5def438c67db85482693c, type: 2}
+  - {fileID: 11400000, guid: 810c5d56c412ecd41bf603d4ad9e779b, type: 2}
+  - {fileID: 11400000, guid: 827f29999fda3824ba911748795b04b8, type: 2}
+  - {fileID: 11400000, guid: 02453bb9d5bb82a4b9324e1d225bc721, type: 2}
+  - {fileID: 11400000, guid: fb7ea906fc371c7449a56bdb53e37149, type: 2}
+  - {fileID: 11400000, guid: 1c129d86a7c5def438c67db85482693c, type: 2}
+  - {fileID: 11400000, guid: 1c129d86a7c5def438c67db85482693c, type: 2}
+  - {fileID: 11400000, guid: 5d4413b4031cda2448641f3b71022e18, type: 2}
+  - {fileID: 11400000, guid: cf539b5386f09464b90a3298964ae9d1, type: 2}
+  - {fileID: 11400000, guid: 5d4413b4031cda2448641f3b71022e18, type: 2}
   - {fileID: 11400000, guid: 810c5d56c412ecd41bf603d4ad9e779b, type: 2}
 --- !u!4 &1012857796
 Transform:

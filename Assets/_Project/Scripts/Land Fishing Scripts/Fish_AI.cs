@@ -4,57 +4,49 @@ public class Fish_AI : MonoBehaviour
 {
     [SerializeField] float minY;
     [SerializeField] float maxY;
-    [SerializeField] public float moveSpeed = 10f;
-    [SerializeField] public float directionChangeInterval = 1.5f;
+    [SerializeField] public float moveSpeed = 1.0f;
     [SerializeField] RectTransform rectTransform;
-    [SerializeField] float currentDirection = 1f;
-    [SerializeField] float directionTimer;
     [SerializeField] Vector2 pos;
-
+    public FishDifficulty difficulty;
+    [SerializeField] float smoothSpeed = 8f;
+    [SerializeField] float noiseFrequency = 0.5f;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        PickNewDirection();
-    }
-
-    void PickNewDirection()
-    {
-        float currentY = rectTransform.anchoredPosition.y;
-
-        if (currentY > maxY - 10f)
-        {
-            currentDirection = -1f;
-        }else if (currentY < minY + 10f)
-        {
-            currentDirection = 1f;
-        }
-        else
-        {
-            int rand = Random.Range(0, 3);
-            currentDirection = rand - 1;
-        }
-
-        directionTimer = Random.Range(0.5f, directionChangeInterval);
     }
 
     //moves the item randomly up or down for the fishing mini-game
     public void RandomMove()
     {
-        float centreY = (minY + maxY) * 0.5f;
-        float distanceFromCentre = rectTransform.anchoredPosition.y - centreY;
-        
-        directionTimer -= Time.deltaTime;
-
-        if (directionTimer <= 0f)
+        //sets move speed based on difficulty 
+       switch(difficulty)
         {
-            PickNewDirection();
+            case FishDifficulty.EASY:
+                moveSpeed = 1.0f;
+                break;
+            case FishDifficulty.MEDIUM:
+                moveSpeed = 1.5f;
+                break;
+            case FishDifficulty.HARD:
+                moveSpeed = 2.0f;
+                break;
+            case FishDifficulty.LEGENDARY:
+                moveSpeed = 2.5f;
+                break;
         }
 
+        
+        float noise = Mathf.PerlinNoise1D(Time.time * noiseFrequency * moveSpeed);
+
+        float targetY = Mathf.Lerp(minY, maxY, noise);
+
         pos = rectTransform.anchoredPosition;
-        pos.y += currentDirection * moveSpeed * Time.deltaTime;
-        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
+        
+        pos.y = Mathf.Lerp(pos.y, targetY, Time.deltaTime * smoothSpeed);
 
         rectTransform.anchoredPosition = pos;
 
     }
+
 }

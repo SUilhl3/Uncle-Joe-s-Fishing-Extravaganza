@@ -144,10 +144,9 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         {
             isCasting = false;
 
-            //change
+            //sets difficulty for fishing mini game based on enum value of fish/junk
             caughtItem = availableItems[UnityEngine.Random.Range(0, availableItems.Count)];
-            fishAi.moveSpeed = caughtItem.moveSpeed;
-            fishAi.directionChangeInterval = caughtItem.directionChangeInterval;
+            fishAi.difficulty = caughtItem.difficulty;
 
             progressBar.gameObject.SetActive(true);
             progressBar.value = progressBar.maxValue / 3;
