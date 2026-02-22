@@ -1,0 +1,551 @@
+fileFormatVersion: 2
+guid: 7b54abd1cdac04043849475f4f53da61
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1848160452164040416
+    second: Port Town Free_0
+  - first:
+      213: 3977076092038271504
+    second: Port Town Free_1
+  - first:
+      213: -9186569788217610602
+    second: Port Town Free_2
+  - first:
+      213: 7449373548893105318
+    second: Port Town Free_3
+  - first:
+      213: 3091945658738939769
+    second: Port Town Free_4
+  - first:
+      213: -5891535048478945827
+    second: Port Town Free_5
+  - first:
+      213: 3394022757741489492
+    second: Port Town Free_6
+  - first:
+      213: 3373878284396125253
+    second: Port Town Free_7
+  - first:
+      213: 1858017129802406299
+    second: Port Town Free_8
+  - first:
+      213: -2376931020374245541
+    second: Port Town Free_9
+  - first:
+      213: 1326782388116381384
+    second: Port Town Free_10
+  - first:
+      213: 249462744380936863
+    second: Port Town Free_11
+  - first:
+      213: -6638008609817994454
+    second: Port Town Free_12
+  - first:
+      213: -8059478194068476204
+    second: Port Town Free_13
+  - first:
+      213: 8789811056138102894
+    second: Port Town Free_14
+  - first:
+      213: -1218134060251229664
+    second: Port Town Free_15
+  - first:
+      213: 5317397177083337825
+    second: Port Town Free_16
+  - first:
+      213: 87580823637950717
+    second: Port Town Free_17
+  - first:
+      213: 3642753343695158916
+    second: Port Town Free_18
+  - first:
+      213: 6936238088618758913
+    second: Port Town Free_19
+  - first:
+      213: 5025623609604232157
+    second: Port Town Free_20
+  - first:
+      213: -2025496899480567163
+    second: Port Town Free_21
+  - first:
+      213: 4681050379053981013
+    second: Port Town Free_22
+  - first:
+      213: -4980491920632625098
+    second: Port Town Free_23
+  - first:
+      213: 8481026828746840937
+    second: Port Town Free_24
+  - first:
+      213: -6601395152899950581
+    second: Port Town Free_25
+  - first:
+      213: 4821868251439346731
+    second: Port Town Free_26
+  - first:
+      213: -1252750134819704425
+    second: Port Town Free_27
+  - first:
+      213: 7222900195322219207
+    second: Port Town Free_28
+  - first:
+      213: -7649344986698121402
+    second: Port Town Free_29
+  - first:
+      213: -7368430551977294283
+    second: Port Town Free_30
+  - first:
+      213: 1336575906207601287
+    second: Port Town Free_31
+  - first:
+      213: -2951308391646728301
+    second: Port Town Free_32
+  - first:
+      213: -2920194850754743100
+    second: Port Town Free_33
+  - first:
+      213: -2766711159935082840
+    second: Port Town Free_34
+  - first:
+      213: 996529762245366253
+    second: Port Town Free_35
+  - first:
+      213: 7149624222112205946
+    second: Port Town Free_36
+  - first:
+      213: 1952485293235551455
+    second: Port Town Free_37
+  - first:
+      213: -3031742082960315847
+    second: Port Town Free_38
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Port Town Free_0
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 229
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e6b927a32cf5a910800000000000000
+      internalID: 1848160452164040416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Port Town Free_1
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 229
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 012d3ae52a9613730800000000000000
+      internalID: 3977076092038271504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Port Town Free_2
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 114
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69e24fc337fb28080800000000000000
+      internalID: -9186569788217610602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Port Town Free_3
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 99
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ace6f436cd716760800000000000000
+      internalID: 7449373548893105318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Port Town Free_8
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 102
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9996704cb009c910800000000000000
+      internalID: 1858017129802406299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Port Town Free_9
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 106
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5f7cfa94d1730fd0800000000000000
+      internalID: -2376931020374245541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Port Town Free_10
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 96
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cedbe96d8da96210800000000000000
+      internalID: 1326782388116381384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Port Town Free_12
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 112
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2b50dbc65e01e3a0800000000000000
+      internalID: -6638008609817994454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Port Town Free_15
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 96
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 022dbe1b681581fe0800000000000000
+      internalID: -1218134060251229664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Port Town Free_20
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 70
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd3d649cb0a9eb540800000000000000
+      internalID: 5025623609604232157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Port Town Free_21
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 70
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5824ecc2d4df3e3e0800000000000000
+      internalID: -2025496899480567163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Port Town Free_22
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 68
+        width: 30
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55d583bb48e66f040800000000000000
+      internalID: 4681050379053981013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f2a2dbd2d71707d47aad06a6c6bd028c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Port Town Free_0: 1848160452164040416
+      Port Town Free_1: 3977076092038271504
+      Port Town Free_10: 1326782388116381384
+      Port Town Free_11: 249462744380936863
+      Port Town Free_12: -6638008609817994454
+      Port Town Free_13: -8059478194068476204
+      Port Town Free_14: 8789811056138102894
+      Port Town Free_15: -1218134060251229664
+      Port Town Free_16: 5317397177083337825
+      Port Town Free_17: 87580823637950717
+      Port Town Free_18: 3642753343695158916
+      Port Town Free_19: 6936238088618758913
+      Port Town Free_2: -9186569788217610602
+      Port Town Free_20: 5025623609604232157
+      Port Town Free_21: -2025496899480567163
+      Port Town Free_22: 4681050379053981013
+      Port Town Free_23: -4980491920632625098
+      Port Town Free_24: 8481026828746840937
+      Port Town Free_25: -6601395152899950581
+      Port Town Free_26: 4821868251439346731
+      Port Town Free_27: -1252750134819704425
+      Port Town Free_28: 7222900195322219207
+      Port Town Free_29: -7649344986698121402
+      Port Town Free_3: 7449373548893105318
+      Port Town Free_30: -7368430551977294283
+      Port Town Free_31: 1336575906207601287
+      Port Town Free_32: -2951308391646728301
+      Port Town Free_33: -2920194850754743100
+      Port Town Free_34: -2766711159935082840
+      Port Town Free_35: 996529762245366253
+      Port Town Free_36: 7149624222112205946
+      Port Town Free_37: 1952485293235551455
+      Port Town Free_38: -3031742082960315847
+      Port Town Free_39: -1241118930
+      Port Town Free_4: 3091945658738939769
+      Port Town Free_5: -5891535048478945827
+      Port Town Free_6: 3394022757741489492
+      Port Town Free_7: 3373878284396125253
+      Port Town Free_8: 1858017129802406299
+      Port Town Free_9: -2376931020374245541
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

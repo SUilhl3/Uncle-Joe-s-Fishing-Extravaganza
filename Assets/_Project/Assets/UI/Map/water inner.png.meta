@@ -150,36 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f80dfe59eb275c04fa0985679c1cf71b
-      internalID: 1144187703
+      spriteID: 89272a735be312347801693c1cec58b6
+      internalID: -581146089
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: water inner_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2680482c129b92b4397b7069b5dbe777
-      internalID: 830000583
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: water inner_3
       rect:
         serializedVersion: 2
         x: 16
@@ -194,8 +172,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2dc15126162f92439de52bc6d9c2b08
-      internalID: -310760547
+      spriteID: 5c03a8ff584f93248bc68ecc845a33d2
+      internalID: 215383380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water inner_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde8f7afb6daae247b9b3ccfeddbfc1a
+      internalID: 1284486525
       vertices: []
       indices: 
       edges: []
@@ -204,7 +204,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f6317b4243609d14fa8bdd823cca3f22
+    spriteID: 10f0dd73e15bad34cb651b98796a9be8
     internalID: 0
     vertices: []
     indices: 
@@ -215,9 +215,9 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       water inner_0: -5891029777305931085
-      water inner_1: 1144187703
-      water inner_2: 830000583
-      water inner_3: -310760547
+      water inner_1: -581146089
+      water inner_2: 215383380
+      water inner_3: 1284486525
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
