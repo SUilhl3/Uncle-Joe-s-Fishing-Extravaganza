@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public Image timerFill;
 
+    [Header("Panels that pause timer")]
+    public GameObject tutorialPanel;
+    public GameObject pausePanel;
+
     float timer;
     Coroutine timerCoroutine;
 
@@ -92,6 +96,13 @@ public class GameManager : MonoBehaviour
 
         while (timer > 0f)
         {
+            if ((tutorialPanel != null && tutorialPanel.activeSelf) ||
+                (pausePanel != null && pausePanel.activeSelf))
+            {
+                yield return null;
+                continue;
+            }
+
             timer -= Time.deltaTime;
             UpdateTimerUI(timer, true);
             yield return null;

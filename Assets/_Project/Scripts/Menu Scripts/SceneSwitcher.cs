@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 
 public class SceneSwitcher : MonoBehaviour
 {
@@ -13,21 +12,6 @@ public class SceneSwitcher : MonoBehaviour
         if (PausePanel != null) PausePanel.SetActive(false);
 
         Time.timeScale = 1f;
-    }
-
-    void Update()
-    {
-        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            if (PausePanel != null && PausePanel.activeSelf)
-            {
-                PauseMenuClose();
-            }
-            else
-            {
-                PauseMenuOpen();
-            }
-        }
     }
 
     public void LoadMenu()
@@ -49,8 +33,6 @@ public class SceneSwitcher : MonoBehaviour
 
     public void PauseMenuOpen()
     {
-        Debug.Log("Pause pressed");
-
         if (PausePanel != null) PausePanel.SetActive(true);
         Time.timeScale = 0f;
     }

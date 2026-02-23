@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Project/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
     path: Assets/_Project/Scenes/Main Menu.unity
     guid: 9bf5fa98bb84d2a458885ea793310188
   - enabled: 1
@@ -27,8 +24,8 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Restaurant.unity
     guid: 82e4dd82f25348e49ae3dfce08c84e06
   - enabled: 1
-    path: Assets/_Project/Scenes/Antique Shop.unity
-    guid: 2b9b2716e2b68d0458a0ff87bc3b3a85
+    path: Assets/_Project/Scenes/Shop2D.unity
+    guid: ae1f4b959bb76464196c24b7a153f227
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8e425f4c86441a34b9b95dac904c48cf, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
