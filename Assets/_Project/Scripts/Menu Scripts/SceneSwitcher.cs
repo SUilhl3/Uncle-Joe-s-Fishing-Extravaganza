@@ -73,7 +73,7 @@ public class SceneSwitcher : MonoBehaviour
 
     public void Shop()
     {
-        SceneManager.LoadScene("Antique Shop");
+        SceneManager.LoadScene("Shop2D");
     }
 
     public void LandFishing()
