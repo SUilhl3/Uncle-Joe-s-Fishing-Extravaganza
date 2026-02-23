@@ -220,6 +220,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         {
             caughtItemPanel.SetActive(false);
             isReturning = false;
+            startFishingButton.gameObject.SetActive(true);
         }
     }
 
@@ -285,13 +286,12 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     //resets everything back to the starting place
     void ResetFishingGame()
     {
-        startFishingButton.gameObject.SetActive(true);
+        fishingMiniGame.SetActive(false);
         castButton.gameObject.SetActive(false);
         progressBar.gameObject.SetActive(false);
         isFishingGameActive = false;
         playerBar.anchoredPosition = playerBarStart;
         item.anchoredPosition = itemStart;
-        fishingMiniGame.SetActive(false);
         isReturning = true;
     }
 
@@ -301,7 +301,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     {
         caughtItemPanel.SetActive(true);
         caughtItemName.text = item.itemName;
-        caughtItemDescription.text = item.itemDescription + "\nWeight:" + item.itemWeight.ToString();
+        caughtItemDescription.text = item.itemDescription + "\nWeight:" + item.itemWeight.ToString() + "";
         if (item.itemImage)
         {
             caughtItemImage.sprite = item.itemImage;

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb085ed36782da45bac0efb2e3ba022, type: 3}
   m_Name: LandJunk 2
   m_EditorClassIdentifier: Assembly-CSharp::LandJunk
-  itemName: LandJunk3
-  itemDescription: This is also some junk
-  itemImage: {fileID: 0}
-  itemValue: 15
-  itemWeight: 0
-  probabilityOfCatch: 4
+  itemName: Egg
+  itemDescription: An egg
+  itemImage: {fileID: -7652154954077232485, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
+  itemValue: 25
+  itemWeight: 10
+  probabilityOfCatch: 7
   itemRarity: 2

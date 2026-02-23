@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538c938a8dfa6ac43b27c7852924fd9b, type: 3}
   m_Name: LandFish
   m_EditorClassIdentifier: Assembly-CSharp::LandFish
-  itemName: LandFish1
-  itemDescription: This is a fish
-  itemImage: {fileID: 0}
+  itemName: YellowPerch
+  itemDescription: This is a YellowPerch
+  itemImage: {fileID: 21300000, guid: b0628d0d02095f7478dd2e88dc6a12cd, type: 3}
   itemValue: 10
-  itemWeight: 0
-  probabilityOfCatch: 25
+  itemWeight: 50
+  probabilityOfCatch: 40
   itemRarity: 0
