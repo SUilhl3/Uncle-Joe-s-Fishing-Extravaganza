@@ -11,8 +11,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] Slider castDistanceSlider;
     [SerializeField] Button startFishingButton;
     [SerializeField] Button castButton;
-    [SerializeField] TextMeshProUGUI fishCaught;
-    [SerializeField] TextMeshProUGUI junkCaught;
 
     [Header("Caught Item Panel UI")]
     [SerializeField] GameObject caughtItemPanel;
@@ -38,8 +36,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
 
 
 
-    int numFishCaught = 0;
-    int numJunkCaught = 0;
     bool isFishing = false;
     bool isCasting = false;
     bool isReturning = false;
@@ -52,15 +48,15 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     Vector2 itemStart;
     Fish_AI fishAi;
     Item caughtItem;
+    List<Item> storedItems;
 
     private void Awake()
     {
-        fishCaught.text = numFishCaught.ToString();
-        junkCaught.text = numJunkCaught.ToString(); 
         castStartingPosition = castingLine.transform.position;
         playerBarStart = playerBar.anchoredPosition;
         itemStart = item.anchoredPosition;
         fishAi = item.GetComponent<Fish_AI>();
+        storedItems = new List<Item>();
     }
 
     //Starts the cast distance slider moving up and down
@@ -268,16 +264,14 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         if (caughtItem is LandFish)
         {
             castDistanceSlider.value = 0;
-            numFishCaught++;
             DisplayCaughtItem(caughtItem);
-            UpdateItemsCaught();
+            UpdateInventory();
         }
         else
         {
             castDistanceSlider.value = 0;
-            numJunkCaught++;
             DisplayCaughtItem(caughtItem);
-            UpdateItemsCaught();
+            UpdateInventory();
         }
 
         ResetFishingGame();
@@ -340,12 +334,9 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         return rect1.Overlaps(rect2);
     }
 
-    void UpdateItemsCaught()
+    void UpdateInventory()
     {
-        //Updates num items caught mostly for testing can remove later when we have an actual UI
-        fishCaught.text = numFishCaught.ToString();
-        junkCaught.text = numJunkCaught.ToString();
-
         //stores fish in inventory (TO DO)
+        storedItems.Add(caughtItem);
     }
 }
