@@ -18,6 +18,15 @@ public class Boat_Fish : MonoBehaviour
     [SerializeField] private Vector2 moveDirection = new Vector2(2f, 2f);
     [SerializeField] private Transform boat;
     private Vector3 originalScale;
+
+    [Header("Fish Combat stats")]
+    [SerializeField] private float stamina;
+    [SerializeField] private float maxStamina = 50f; //really high to have a longer fish battle with periods of free reeling
+    [SerializeField] private float strength = 5f;
+    [SerializeField] private float recoverRate = 15f; //pretty high because the fish is only supposed to give a few second window of free reeling
+    [SerializeField] private bool pulling = false;
+
+
     [SerializeField] private hookMovement hookScript;
 
     private enum FishState { Wandering, ChasingHook, OnHook, returningHome, caught }
@@ -35,7 +44,7 @@ public class Boat_Fish : MonoBehaviour
 
         //start the fish's random movement
         moveDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-        StartCoroutine(randomizeDirection());
+        StartCoroutine(randomizeDirection()); //might try to find a new way to do this since multiple coroutines might be a bit taxxing
 
         //creating the home area collider
         GameObject homeAreaObject = new GameObject("HomeArea_" + name + "_" + GetInstanceID());
@@ -45,18 +54,16 @@ public class Boat_Fish : MonoBehaviour
         home_area.isTrigger = true;
 
         hookScript = FindFirstObjectByType<hookMovement>();
+
+        //fish combat init
+        stamina = maxStamina;
     }
 
     private void Update()
     {
-        if(currentState == FishState.caught)
-        {
-            return;
-        }
-        else if (currentState == FishState.OnHook)
-        {
-            Debug.Log("Fish is on the hook!");
-        }
+        if(currentState == FishState.caught) { return; }
+        else if (currentState == FishState.OnHook) { }
+
         else
         {
             if (currentState != FishState.ChasingHook)
@@ -96,7 +103,7 @@ public class Boat_Fish : MonoBehaviour
 
     IEnumerator randomizeDirection()
     {
-        while (currentState != FishState.ChasingHook && currentState != FishState.OnHook)
+        while (/*currentState != FishState.ChasingHook && currentState != FishState.OnHook*/true)
         {
             // Randomly change direction every 2-5 seconds
             wanderDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
@@ -110,13 +117,9 @@ public class Boat_Fish : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("catchArea"))
         {
-            currentState = FishState.caught;
-            transform.SetParent(null); 
+            fishOffHook(4);
             transform.position = boat.position; 
-            swimSpeed = 0f;
-            handleRotate();
             hookScript.InitializeCast(); //reset the hook for the next cast
-            hookScript.setFishOnHook(false);
         }
         else if (collision.gameObject.CompareTag("Hook"))
         {
@@ -128,11 +131,21 @@ public class Boat_Fish : MonoBehaviour
             {
                 transform.SetParent(collision.transform); //make the fish a child of the hook so it moves with it
             transform.localScale = originalScale;
-            swimSpeed = 0f;
             currentState = FishState.OnHook;
+            pulling = true;
             hookScript.setFishOnHook(true);   
+            hookScript.setFish(this);
+            hookScript.startFishBattle();
             }
         }
+    }
+
+    public void fishOffHook(int n)
+    {
+        currentState = (FishState)n;
+        transform.SetParent(null);
+        handleRotate();
+        hookScript.setFishOnHook(false);
     }
 
     public void handleRotate()
@@ -152,6 +165,12 @@ public class Boat_Fish : MonoBehaviour
     }
 
     public bool getChasingHook() => currentState == FishState.ChasingHook;
+    public float getStamina() => stamina;
+    public bool getPulling() => pulling;
+    public float getMaxStam() => maxStamina;
+    public float getStrength() => strength;
+    public float getRecoveryRate() => recoverRate;
+    public float getSwimSpeed() => swimSpeed;
 
 
 
@@ -161,5 +180,9 @@ public class Boat_Fish : MonoBehaviour
         else { currentState = value ? FishState.ChasingHook : FishState.returningHome; }
     }
     public void setHookPosition(Vector3 position) => hookPosition = position;
+
+    public void changeStamina(float amount) => stamina += amount;
+    public void setStam(float value) => stamina = value;
+    public void setPulling(bool value) => pulling = value;
 
 }

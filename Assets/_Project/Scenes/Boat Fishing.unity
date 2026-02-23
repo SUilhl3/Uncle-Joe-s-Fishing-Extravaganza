@@ -593,6 +593,11 @@ MonoBehaviour:
   movement: {x: 0, y: 0, z: 0}
   moveDirection: {x: 0, y: 0}
   boat: {fileID: 1916131654}
+  stamina: 0
+  maxStamina: 50
+  strength: 5
+  recoverRate: 15
+  pulling: 0
   hookScript: {fileID: 0}
   currentState: 0
   xRotation: 0
@@ -1150,6 +1155,8 @@ MonoBehaviour:
   horzSpeed: 5
   reelSpeed: 5
   ambientDropSpeed: -3
+  fishPullForce: 0
+  fishLeftRightForce: 0
   moveInput: {x: 0, y: 0}
   startingPoint: {fileID: 2141262660}
   dropAmount: 0
@@ -1163,6 +1170,12 @@ MonoBehaviour:
   upperBoundaryY: 0
   castPanel: {fileID: 1569399018}
   fishOnHook: 0
+  fish: {fileID: 0}
+  lineHealth: 0
+  maxLineHealth: 10
+  lineRecoveryRate: 1
+  stamDam: -10
+  brokenLine: 0
   currentState: 2
 --- !u!50 &678972848
 Rigidbody2D:
@@ -1538,6 +1551,11 @@ MonoBehaviour:
   movement: {x: 0, y: 0, z: 0}
   moveDirection: {x: 0, y: 0}
   boat: {fileID: 1916131654}
+  stamina: 0
+  maxStamina: 50
+  strength: 5
+  recoverRate: 15
+  pulling: 0
   hookScript: {fileID: 0}
   currentState: 0
   xRotation: 0
@@ -2480,7 +2498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TutorialTextManager
   targetText: {fileID: 238806685}
   texts:
-  - Press LMB to cast.
+  - Press E to cast.
   - Use A and D to move left and right.
   - Press LMB to reel in the hook.
   - The map can be accessed from the pause menu.

@@ -19,7 +19,7 @@ public class Fish_Alert_Range : MonoBehaviour
         if (collision.gameObject.CompareTag("Hook"))
         {
             // Debug.Log("Fish is alerted to the hook!");
-            if(hookScript.getFishOnHook())
+            if(hookScript.getFishOnHook() || hookScript.brokenLine)
             {
                 return;
             }
