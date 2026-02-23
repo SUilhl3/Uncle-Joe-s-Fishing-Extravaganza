@@ -295,7 +295,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     {
         caughtItemPanel.SetActive(true);
         caughtItemName.text = item.itemName;
-        caughtItemDescription.text = item.itemDescription + "\nWeight:" + item.itemWeight.ToString() + "";
+        caughtItemDescription.text = item.itemDescription + "\nWeight: " + item.itemWeight.ToString() + "g";
         if (item.itemImage)
         {
             caughtItemImage.sprite = item.itemImage;
