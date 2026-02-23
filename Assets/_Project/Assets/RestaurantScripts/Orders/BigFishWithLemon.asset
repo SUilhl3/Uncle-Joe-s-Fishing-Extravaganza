@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: BigFishWithLemon
   m_EditorClassIdentifier: Assembly-CSharp::OrderData
   requiredIngredients: 0100000008000000
+  requiredCookingMethods: 
   orderDialogue: '"Give me a big fish with lemon!"'
+  basePrice: 12
+  rarityPercentage: 10
