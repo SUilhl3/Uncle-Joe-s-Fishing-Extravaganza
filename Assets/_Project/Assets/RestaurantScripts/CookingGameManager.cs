@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-#if ENABLE_INPUT_SYSTEM
-using UnityEngine.InputSystem;
-#endif
+
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -18,17 +16,19 @@ public class GameManager : MonoBehaviour
     public List<OrderData> orders = new();
 
     public float orderTime = 15f;
-
     public float delayBetweenOrders = 3f;
 
     [Header("Timer UI (optional)")]
     public TextMeshProUGUI timerText;
     public Image timerFill;
+
     [Header("Earnings UI (optional)")]
     public TextMeshProUGUI dailyTotalText;
+
     [Header("Result UI (optional)")]
     public GameObject uiContainer;
-    [Header("Earnings UI (optional)")]
+
+    [Header("Session Total UI (optional)")]
     public TextMeshProUGUI currentTotalText;
     public TextMeshProUGUI resultText;
 
@@ -59,21 +59,21 @@ public class GameManager : MonoBehaviour
     const int ordersPerDay = 10;
     bool dayComplete = false;
 
+    bool isPaused = false;
+
     void Start()
     {
-      
         if (startDayButton != null)
-        {
             startDayButton.onClick.AddListener(StartDay);
-        }
+
+        if (pauseButton != null)
+            pauseButton.onClick.AddListener(TogglePause);
+
         if (startDayButton == null)
         {
             Time.timeScale = 1f;
             StartCoroutine(StartFirstOrder());
         }
-
-        if (pauseButton != null)
-            pauseButton.onClick.AddListener(TogglePause);
     }
 
     IEnumerator StartFirstOrder()
@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
             // Prevent serving more than allowed per day
             return;
         }
+
         if (timerCoroutine != null)
         {
             StopCoroutine(timerCoroutine);
@@ -96,16 +97,27 @@ public class GameManager : MonoBehaviour
         }
 
         bool success = CheckOrder();
+
         if (success)
         {
             float basePrice = customer.currentOrder != null ? customer.currentOrder.basePrice : 0f;
+
             int secondsLeft = Mathf.CeilToInt(timer);
             secondsLeft = Mathf.Clamp(secondsLeft, 1, Mathf.CeilToInt(orderTime));
-            float modifier = 1f + (secondsLeft / 100f); 
+
+            float modifier = 1f + (secondsLeft / 100f);
             float tip = basePrice * (modifier - 1f);
+
             float totalEarned = basePrice + tip;
 
             SaveManager.AddToDailyTotal(totalEarned);
+
+            int centsEarned = Mathf.RoundToInt(totalEarned * 100f);
+
+            if (CurrencyManager.Instance != null)
+                CurrencyManager.Instance.AddCents(centsEarned);
+            else
+                Debug.LogWarning("CurrencyManager.Instance is null. Make sure CurrencyManager exists in this scene.");
 
             if (dailyTotalText != null)
             {
@@ -114,10 +126,13 @@ public class GameManager : MonoBehaviour
             }
 
             sessionTotal += totalEarned;
+
+            string payoutText = "$" + basePrice.ToString("F2") + " + $" + tip.ToString("F2") + " tip!";
+
             if (resultText != null)
-                resultText.text = "$" + basePrice.ToString("F2") + " + $" + tip.ToString("F2") + " tip!";
+                resultText.text = payoutText;
             else if (customer != null && customer.dialogueText != null)
-                customer.dialogueText.text = "$" + basePrice.ToString("F2") + " + $" + tip.ToString("F2") + " tip!";
+                customer.dialogueText.text = payoutText;
 
             customer.ReactToOrder(true);
 
@@ -127,6 +142,7 @@ public class GameManager : MonoBehaviour
         else
         {
             customer.ReactToOrder(false);
+
             if (dailyTotalText != null)
             {
                 float today = SaveManager.GetTodayTotal();
@@ -137,7 +153,9 @@ public class GameManager : MonoBehaviour
         cooking.ClearPlate();
         if (hand != null)
             hand.Trash();
+
         UpdateTimerUI(0f, false);
+
         ordersServed++;
         if (ordersServed >= ordersPerDay)
         {
@@ -168,6 +186,7 @@ public class GameManager : MonoBehaviour
         {
             var reqType = required[i];
             var reqMethod = CookingMethod.Raw;
+
             if (requiredMethods != null && i < requiredMethods.Count)
                 reqMethod = requiredMethods[i];
 
@@ -175,8 +194,10 @@ public class GameManager : MonoBehaviour
             for (int j = 0; j < player.Count; j++)
             {
                 if (used[j]) continue;
+
                 var p = player[j];
                 if (p == null) continue;
+
                 if (p.type == reqType)
                 {
                     if (reqMethod == CookingMethod.Raw || p.method == reqMethod)
@@ -187,6 +208,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+
             if (!matched) return false;
         }
 
@@ -196,9 +218,8 @@ public class GameManager : MonoBehaviour
     void StartNewOrder()
     {
         if (ordersServed >= ordersPerDay)
-        {
             return;
-        }
+
         if (orders != null && orders.Count > 0)
         {
             int totalWeight = 0;
@@ -209,10 +230,12 @@ public class GameManager : MonoBehaviour
             {
                 int r = Random.Range(0, totalWeight);
                 int acc = 0;
+
                 foreach (var o in orders)
                 {
                     int w = Mathf.Max(0, o != null ? o.rarityPercentage : 0);
                     acc += w;
+
                     if (r < acc)
                     {
                         customer.currentOrder = o;
@@ -261,9 +284,11 @@ public class GameManager : MonoBehaviour
         timerCoroutine = null;
 
         customer.ReactToOrder(false);
+
         cooking.ClearPlate();
         if (hand != null)
             hand.Trash();
+
         UpdateTimerUI(0f, false);
         StartCoroutine(NextOrderDelay());
     }
@@ -283,28 +308,36 @@ public class GameManager : MonoBehaviour
     {
         SaveManager.AdvanceGameDate(1);
         SaveManager.AdvanceDayNumber(1);
+
         if (startDayPanel != null)
             startDayPanel.SetActive(false);
+
         if (uiContainer != null)
             uiContainer.SetActive(true);
+
         Time.timeScale = 1f;
+
         ordersServed = 0;
         dayComplete = false;
+
         StartCoroutine(StartFirstOrder());
 
         sessionTotal = 0f;
+
         if (dailyTotalText != null)
             dailyTotalText.text = "$" + SaveManager.GetTodayTotal().ToString("F2");
+
         if (currentTotalText != null)
             currentTotalText.text = "$" + sessionTotal.ToString("F2");
+
         if (dayText != null)
             dayText.text = "Day" + SaveManager.GetDayNumber();
     }
 
-    bool isPaused = false;
     public void TogglePause()
     {
         isPaused = !isPaused;
+
         if (isPaused)
         {
             Time.timeScale = 0f;
@@ -328,8 +361,10 @@ public class GameManager : MonoBehaviour
     IEnumerator DayCompleteDelay()
     {
         yield return new WaitForSeconds(delayBetweenOrders);
+
         if (customer != null && customer.dialogueText != null)
             customer.dialogueText.text = "Day complete! Good work!";
+
         if (customer != null && customer.orderText != null)
             customer.orderText.text = "Time to go home!";
     }
@@ -346,9 +381,10 @@ public class GameManager : MonoBehaviour
         if (timerFill != null)
         {
             timerFill.gameObject.SetActive(visible);
+
             if (visible && orderTime > 0f)
                 timerFill.fillAmount = Mathf.Clamp01(t / orderTime);
-            else if (timerFill != null)
+            else
                 timerFill.fillAmount = 0f;
         }
     }

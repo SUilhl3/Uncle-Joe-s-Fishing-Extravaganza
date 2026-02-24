@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Lamp
   description: 
   icon: {fileID: -2360418572804486258, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  price: 25
+  priceInCents: 8557

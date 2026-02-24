@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Plate
   description: 
   icon: {fileID: 4337684191699249041, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  price: 25
+  priceInCents: 4846

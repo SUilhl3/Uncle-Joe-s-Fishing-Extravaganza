@@ -17,42 +17,75 @@ public class ShopTooltipUI : MonoBehaviour
     private void Awake()
     {
         Hide();
-        buyButton.onClick.AddListener(BuyCurrent);
+
+        if (buyButton != null)
+            buyButton.onClick.AddListener(BuyCurrent);
     }
 
     public void Show(ShopItemData item, ShopItemHotspot hotspot)
     {
+        if (item == null || hotspot == null)
+            return;
+
+        if (root != null && root.activeSelf && currentHotspot == hotspot)
+        {
+            Hide();
+            return;
+        }
+
         currentItem = item;
         currentHotspot = hotspot;
 
-        iconImage.sprite = item.icon;
-        nameText.text = item.itemName;
-        descText.text = item.description;
-        priceText.text = $"Price: {item.price}";
+        if (iconImage != null) iconImage.sprite = item.icon;
+        if (nameText != null) nameText.text = item.itemName;
+        if (descText != null) descText.text = item.description;
 
-        buyButton.interactable = CurrencyManager.Instance.CanAfford(item.price);
-        root.SetActive(true);
+        if (priceText != null)
+            priceText.text = $"Price: ${(item.priceInCents / 100f):F2}";
+
+        if (CurrencyManager.Instance != null)
+        {
+            if (buyButton != null)
+                buyButton.interactable = CurrencyManager.Instance.CanAfford(item.priceInCents);
+        }
+        else
+        {
+            Debug.LogWarning("CurrencyManager.Instance is null. Make sure CurrencyManager exists in this scene.");
+            if (buyButton != null)
+                buyButton.interactable = false;
+        }
+
+        if (root != null)
+            root.SetActive(true);
     }
 
     public void Hide()
     {
-        root.SetActive(false);
+        if (root != null) root.SetActive(false);
         currentItem = null;
         currentHotspot = null;
     }
 
     private void BuyCurrent()
     {
-        if (currentItem == null || currentHotspot == null) return;
+        if (currentItem == null || currentHotspot == null)
+            return;
 
-        if (CurrencyManager.Instance.Spend(currentItem.price))
+        if (CurrencyManager.Instance == null)
+        {
+            Debug.LogWarning("CurrencyManager.Instance is null. Make sure CurrencyManager exists in this scene.");
+            if (buyButton != null) buyButton.interactable = false;
+            return;
+        }
+
+        if (CurrencyManager.Instance.Spend(currentItem.priceInCents))
         {
             currentHotspot.OnPurchased();
             Hide();
         }
         else
         {
-            buyButton.interactable = false;
+            if (buyButton != null) buyButton.interactable = false;
         }
     }
 }

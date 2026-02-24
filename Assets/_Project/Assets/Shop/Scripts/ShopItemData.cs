@@ -4,8 +4,12 @@ using UnityEngine;
 public class ShopItemData : ScriptableObject
 {
     public string itemName;
-    [TextArea] 
+
+    [TextArea]
     public string description;
+
     public Sprite icon;
-    public int price;
+
+    [Tooltip("Price in cents (100 = $1.00)")]
+    public int priceInCents;
 }

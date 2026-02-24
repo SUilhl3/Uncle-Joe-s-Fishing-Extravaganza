@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Void
   description: 
   icon: {fileID: 4639506938558671751, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  price: 25
+  priceInCents: 2523

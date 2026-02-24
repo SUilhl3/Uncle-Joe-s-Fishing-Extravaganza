@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Dish 4
   description: This is a test of this item
   icon: {fileID: -6297800631036545471, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  price: 75
+  priceInCents: 4567

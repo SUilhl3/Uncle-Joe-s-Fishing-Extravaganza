@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Eye
   description: 
   icon: {fileID: -3074023447068413781, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  price: 25
+  priceInCents: 5375

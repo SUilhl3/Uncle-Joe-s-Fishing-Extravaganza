@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Painting
   description: 
   icon: {fileID: -3004918560657441691, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  price: 25
+  priceInCents: 3567

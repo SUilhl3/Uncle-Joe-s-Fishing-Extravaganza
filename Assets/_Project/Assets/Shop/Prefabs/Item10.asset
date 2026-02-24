@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Can can
   description: 
   icon: {fileID: -851715481033328299, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  price: 25
+  priceInCents: 3346

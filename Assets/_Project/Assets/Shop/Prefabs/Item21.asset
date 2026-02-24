@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Egg
   description: 
   icon: {fileID: 612596470744354101, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  price: 25
+  priceInCents: 2479
