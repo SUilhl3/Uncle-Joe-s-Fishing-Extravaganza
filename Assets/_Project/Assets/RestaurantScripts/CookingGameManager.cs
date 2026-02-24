@@ -55,20 +55,18 @@ public class GameManager : MonoBehaviour
     float timer;
     Coroutine timerCoroutine;
 
+    int ordersServed = 0;
+    const int ordersPerDay = 10;
+    bool dayComplete = false;
+
     void Start()
     {
-        if (startDayPanel != null)
+      
+        if (startDayButton != null)
         {
-            startDayPanel.SetActive(true);
-            if (uiContainer != null)
-                uiContainer.SetActive(false);
-            if (pauseOverlay != null)
-                pauseOverlay.SetActive(false);
-            Time.timeScale = 0f;
-            if (startDayButton != null)
-                startDayButton.onClick.AddListener(StartDay);
+            startDayButton.onClick.AddListener(StartDay);
         }
-        else
+        if (startDayButton == null)
         {
             Time.timeScale = 1f;
             StartCoroutine(StartFirstOrder());
@@ -86,6 +84,11 @@ public class GameManager : MonoBehaviour
 
     public void ServeOrder()
     {
+        if (dayComplete)
+        {
+            // Prevent serving more than allowed per day
+            return;
+        }
         if (timerCoroutine != null)
         {
             StopCoroutine(timerCoroutine);
@@ -110,7 +113,7 @@ public class GameManager : MonoBehaviour
                 dailyTotalText.text = "$" + today.ToString("F2");
             }
 
-                sessionTotal += totalEarned;
+            sessionTotal += totalEarned;
             if (resultText != null)
                 resultText.text = "$" + basePrice.ToString("F2") + " + $" + tip.ToString("F2") + " tip!";
             else if (customer != null && customer.dialogueText != null)
@@ -118,8 +121,8 @@ public class GameManager : MonoBehaviour
 
             customer.ReactToOrder(true);
 
-                if (currentTotalText != null)
-                    currentTotalText.text = "$" + sessionTotal.ToString("F2");
+            if (currentTotalText != null)
+                currentTotalText.text = "$" + sessionTotal.ToString("F2");
         }
         else
         {
@@ -135,7 +138,16 @@ public class GameManager : MonoBehaviour
         if (hand != null)
             hand.Trash();
         UpdateTimerUI(0f, false);
-        StartCoroutine(NextOrderDelay());
+        ordersServed++;
+        if (ordersServed >= ordersPerDay)
+        {
+            dayComplete = true;
+            StartCoroutine(DayCompleteDelay());
+        }
+        else
+        {
+            StartCoroutine(NextOrderDelay());
+        }
     }
 
     bool CheckOrder()
@@ -183,6 +195,10 @@ public class GameManager : MonoBehaviour
 
     void StartNewOrder()
     {
+        if (ordersServed >= ordersPerDay)
+        {
+            return;
+        }
         if (orders != null && orders.Count > 0)
         {
             int totalWeight = 0;
@@ -272,6 +288,8 @@ public class GameManager : MonoBehaviour
         if (uiContainer != null)
             uiContainer.SetActive(true);
         Time.timeScale = 1f;
+        ordersServed = 0;
+        dayComplete = false;
         StartCoroutine(StartFirstOrder());
 
         sessionTotal = 0f;
@@ -305,6 +323,15 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBetweenOrders);
         StartNewOrder();
+    }
+
+    IEnumerator DayCompleteDelay()
+    {
+        yield return new WaitForSeconds(delayBetweenOrders);
+        if (customer != null && customer.dialogueText != null)
+            customer.dialogueText.text = "Day complete! Good work!";
+        if (customer != null && customer.orderText != null)
+            customer.orderText.text = "Time to go home!";
     }
 
     void UpdateTimerUI(float t, bool visible)

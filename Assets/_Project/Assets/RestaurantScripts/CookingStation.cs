@@ -1,8 +1,21 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public enum StationType { Fryer, Oven, Cutting }
+
+public enum StationState { Cooking, Ready, Burnt }
+
+public static class CookingStationEvents
+{
+    public static event Action<StationType, StationState> OnStationStateChanged;
+
+    public static void Emit(StationType t, StationState s)
+    {
+        OnStationStateChanged?.Invoke(t, s);
+    }
+}
 
 public class CookingStation : MonoBehaviour, IDropHandler
 {
@@ -23,6 +36,7 @@ public class CookingStation : MonoBehaviour, IDropHandler
         item.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
         item.LockToStation(this);
         currentItem = item;
+        CookingStationEvents.Emit(stationType, StationState.Cooking);
         if (cookRoutine != null) StopCoroutine(cookRoutine);
         cookRoutine = StartCoroutine(CookingRoutine(item));
     }
@@ -49,6 +63,7 @@ public class CookingStation : MonoBehaviour, IDropHandler
                 break;
         }
 
+        CookingStationEvents.Emit(stationType, StationState.Ready);
         item.UnlockFromStation();
 
         while (t < 6f)
@@ -62,6 +77,7 @@ public class CookingStation : MonoBehaviour, IDropHandler
         if (item != null && item.transform.parent == (snapTransform ? snapTransform : this.transform))
         {
             item.Burn();
+            CookingStationEvents.Emit(stationType, StationState.Burnt);
             item.UnlockFromStation();
         }
     }

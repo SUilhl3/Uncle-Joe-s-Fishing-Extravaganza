@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f335479a485e3184ab1e29e0f7fccde3, type: 3}
-  m_Name: BigFishWithLemon
+  m_Name: BigFishFried
   m_EditorClassIdentifier: Assembly-CSharp::OrderData
-  requiredIngredients: 0100000008000000
+  requiredIngredients: 01000000
   requiredCookingMethods: 01000000
-  orderDialogue: Give me a big fried fish with lemon!
-  basePrice: 9
-  rarityPercentage: 24
+  orderDialogue: A big fried fish sounds perfect!
+  basePrice: 8
+  rarityPercentage: 10
