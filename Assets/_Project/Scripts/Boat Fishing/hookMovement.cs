@@ -247,6 +247,13 @@ public class hookMovement : MonoBehaviour
 
     public void OnCast(InputAction.CallbackContext value)
     {
+        if(currentState != HookState.casting) { return; }
+        if (!Boat_Manager.instance.hasBait())
+        {
+            Debug.Log("No bait left! Can't cast.");
+            return;
+        }
+        Boat_Manager.instance.useBait();
         currentState = HookState.dropping;
         castPanel.SetActive(false);
         moveInput.y = ambientDropSpeed; //start ambient drop

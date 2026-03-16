@@ -6,6 +6,8 @@ public class Boat_Fish : MonoBehaviour
     //temporary starting script, going to be overhauled later on
     //this is just going to do the basic fish movement and behavior for now
 
+    [SerializeField] private Boat_Fish_SO fishSO;
+
     [SerializeField] private float swimSpeed = 2f;
     [SerializeField] private Vector2 wanderDirection;
     [SerializeField] private Vector2 prevWanderDirection;
@@ -119,6 +121,7 @@ public class Boat_Fish : MonoBehaviour
         {
             fishOffHook(4);
             transform.position = boat.position; 
+            Boat_Manager.instance.addFishToBoat(fishSO);
             hookScript.InitializeCast(); //reset the hook for the next cast
         }
         else if (collision.gameObject.CompareTag("Hook"))
