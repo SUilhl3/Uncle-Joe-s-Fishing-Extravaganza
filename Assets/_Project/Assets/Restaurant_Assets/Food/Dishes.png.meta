@@ -1,0 +1,714 @@
+fileFormatVersion: 2
+guid: 9f3b5c69ee94b9941a3e29bf13015667
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6260821470875995909
+    second: Dishes_0
+  - first:
+      213: 7786026372609473558
+    second: Dishes_1
+  - first:
+      213: -1954939336015282910
+    second: Dishes_2
+  - first:
+      213: 4032332941569709035
+    second: Dishes_3
+  - first:
+      213: -3247548842252022512
+    second: Dishes_4
+  - first:
+      213: -6316902675351288631
+    second: Dishes_5
+  - first:
+      213: -2611726685127069640
+    second: Dishes_6
+  - first:
+      213: -4110121334492759117
+    second: Dishes_7
+  - first:
+      213: 7258566802790865044
+    second: Dishes_8
+  - first:
+      213: 8894557549243023298
+    second: Dishes_9
+  - first:
+      213: -5420146743829279714
+    second: Dishes_10
+  - first:
+      213: 915677766705737672
+    second: Dishes_11
+  - first:
+      213: 6979179808364580344
+    second: Dishes_12
+  - first:
+      213: 3597387269932181632
+    second: Dishes_13
+  - first:
+      213: 6278609403572618898
+    second: Dishes_14
+  - first:
+      213: -1579764926763420389
+    second: Dishes_15
+  - first:
+      213: 7180883804888083632
+    second: Dishes_16
+  - first:
+      213: -9042223023833726416
+    second: Dishes_17
+  - first:
+      213: 3315359927092263136
+    second: Dishes_18
+  - first:
+      213: 8871001481465951710
+    second: Dishes_19
+  - first:
+      213: 9073569797691631107
+    second: Dishes_20
+  - first:
+      213: -7551692012384415199
+    second: Dishes_21
+  - first:
+      213: 8162981695455336839
+    second: Dishes_22
+  - first:
+      213: -8114646247878603006
+    second: Dishes_23
+  - first:
+      213: -1256819351138351544
+    second: Dishes_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cut Small Fish2
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 124
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf03c422b081d19a0800000000000000
+      internalID: -6260821470875995909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Soup
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 117
+        width: 27
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61cf537dbb58d0c60800000000000000
+      internalID: 7786026372609473558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baked Onion
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 125
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22dfe571809aed4e0800000000000000
+      internalID: -1954939336015282910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cut Big Fish2
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 108
+        width: 24
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01d46d2c8836ee2d0800000000000000
+      internalID: -3247548842252022512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cooked Lemon
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 107
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c4c8f23c7ad558a0800000000000000
+      internalID: -6316902675351288631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baked Lemon
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 113
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 830b79ada6841cbd0800000000000000
+      internalID: -2611726685127069640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cut Small Fish
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 96
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bbfdc13c6ae5f6c0800000000000000
+      internalID: -4110121334492759117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fried Fish small
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 97
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 498dac2bc0c9bb460800000000000000
+      internalID: 7258566802790865044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Baked Fish
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 94
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2cf36e437f0df6b70800000000000000
+      internalID: 8894557549243023298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Big Fish
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 62
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1cc09fe045c7c4b0800000000000000
+      internalID: -5420146743829279714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Onion
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 71
+        width: 12
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cfe73dc31425bc00800000000000000
+      internalID: 915677766705737672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cut Big Fish
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 80
+        width: 24
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fd4625fe070bd060800000000000000
+      internalID: 6979179808364580344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fried Fish big
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 83
+        width: 24
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 088e1d789ac7ce130800000000000000
+      internalID: 3597387269932181632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: O
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 74
+        width: 21
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2968f5facf9122750800000000000000
+      internalID: 6278609403572618898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Small Fish
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 57
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1535a74b2c831ae0800000000000000
+      internalID: -1579764926763420389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lemon
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 71
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bca5bb46cf97a360800000000000000
+      internalID: 7180883804888083632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dish
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 58
+        width: 25
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 032488c4112938280800000000000000
+      internalID: -9042223023833726416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dish with rice
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 61
+        width: 25
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e836e4c946820e20800000000000000
+      internalID: 3315359927092263136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cut onion
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 66
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed5fdb8c8d02c1b70800000000000000
+      internalID: 8871001481465951710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cooked onion
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 69
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1221ca41020033790800000000000000
+      internalID: -7551692012384415199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dishes_23
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 60
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20f4d351b3cf26f80800000000000000
+      internalID: -8114646247878603006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cut Lemon
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 57
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 846cf848571ee8ee0800000000000000
+      internalID: -1256819351138351544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 42f75316553dc2f4d89bf07c6e062e9d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Baked Fish: 8894557549243023298
+      Baked Lemon: -2611726685127069640
+      Baked Onion: -1954939336015282910
+      Big Fish: -5420146743829279714
+      Cooked Lemon: -6316902675351288631
+      Cooked onion: -7551692012384415199
+      Cut Big Fish: 6979179808364580344
+      Cut Big Fish2: -3247548842252022512
+      Cut Lemon: -1256819351138351544
+      Cut Small Fish: -4110121334492759117
+      Cut Small Fish2: -6260821470875995909
+      Cut onion: 8871001481465951710
+      Dish: -9042223023833726416
+      Dish with rice: 3315359927092263136
+      Dishes_20: 9073569797691631107
+      Dishes_22: 8162981695455336839
+      Dishes_23: -8114646247878603006
+      Dishes_3: 4032332941569709035
+      Fried Fish big: 3597387269932181632
+      Fried Fish small: 7258566802790865044
+      Lemon: 7180883804888083632
+      O: 6278609403572618898
+      Onion: 915677766705737672
+      Small Fish: -1579764926763420389
+      Soup: 7786026372609473558
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
