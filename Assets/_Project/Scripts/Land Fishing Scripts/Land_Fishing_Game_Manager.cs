@@ -11,6 +11,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] Slider castDistanceSlider;
     [SerializeField] Button startFishingButton;
     [SerializeField] Button castButton;
+    [SerializeField] TextMeshProUGUI baitText;
 
     [Header("Caught Item Panel UI")]
     [SerializeField] GameObject caughtItemPanel;
@@ -26,6 +27,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] float progressDecreaseSpeed = 1.0f;
     [SerializeField] GameObject fishingMiniGame;
     [SerializeField] float chanceToCatchNothing = 0.9f;
+    [SerializeField] int numBait =5;
 
     [Header("Fishing Elements")]
     [SerializeField] GameObject castingLine;
@@ -57,6 +59,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         itemStart = item.anchoredPosition;
         fishAi = item.GetComponent<Fish_AI>();
         storedItems = new List<Item>();
+        baitText.text = "Bait: " + numBait;
     }
 
     //Starts the cast distance slider moving up and down
@@ -216,7 +219,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         {
             caughtItemPanel.SetActive(false);
             isReturning = false;
-            startFishingButton.gameObject.SetActive(true);
+            if(numBait != 0) { startFishingButton.gameObject.SetActive(true); }
         }
     }
 
@@ -252,6 +255,8 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
 
     void CheckCatchItem(bool itemCaught)
     {
+        numBait--;
+        baitText.text = "Bait: " + numBait;
 
         if (!itemCaught)
         {
@@ -260,19 +265,9 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             return;
         }
 
-        
-        if (caughtItem is LandFish)
-        {
-            castDistanceSlider.value = 0;
-            DisplayCaughtItem(caughtItem);
-            UpdateInventory();
-        }
-        else
-        {
-            castDistanceSlider.value = 0;
-            DisplayCaughtItem(caughtItem);
-            UpdateInventory();
-        }
+        castDistanceSlider.value = 0;
+        DisplayCaughtItem(caughtItem);
+        UpdateInventory();
 
         ResetFishingGame();
     }
@@ -287,6 +282,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         playerBar.anchoredPosition = playerBarStart;
         item.anchoredPosition = itemStart;
         isReturning = true;
+        
     }
 
     //displays a panel with all the info of the caught item
