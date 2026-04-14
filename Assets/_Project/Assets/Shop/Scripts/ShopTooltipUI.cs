@@ -84,6 +84,14 @@ public class ShopTooltipUI : MonoBehaviour
             {
                 FishingDailyLimitManager.PurchaseChest();
             }
+            else if (currentItem.itemName == "Bait")
+            {
+                FishingDailyLimitManager.PurchaseBait();
+            }
+            else if (currentItem.itemName == "Bait 2")
+            {
+                FishingDailyLimitManager.PurchaseBait2();
+            }
 
             currentHotspot.OnPurchased();
             Hide();
