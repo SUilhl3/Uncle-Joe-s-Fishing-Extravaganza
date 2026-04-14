@@ -63,8 +63,16 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     }
 
     //Starts the cast distance slider moving up and down
-    public void StartFishing ()
+    public void StartFishing()
     {
+        if (FishingDailyLimitManager.HasReachedLimit())
+        {
+            caughtItemPanel.SetActive(true);
+            caughtItemName.text = "Daily Catch Limit Reached";
+            caughtItemDescription.text = "Come back tomorrow or buy a Chest for +10 daily fish.";
+            return;
+        }
+
         castDistanceSlider.gameObject.SetActive(true);
         startFishingButton.gameObject.SetActive(false);
         castButton.gameObject.SetActive(true);
@@ -262,6 +270,15 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         {
             ResetFishingGame();
             DisplayCaughtNothing(false);
+            return;
+        }
+
+        if (!FishingDailyLimitManager.TryRegisterCatch())
+        {
+            caughtItemPanel.SetActive(true);
+            caughtItemName.text = "Daily Catch Limit Reached";
+            caughtItemDescription.text = "You can't catch any more fish today.";
+            ResetFishingGame();
             return;
         }
 

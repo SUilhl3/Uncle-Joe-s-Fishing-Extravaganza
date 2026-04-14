@@ -5,45 +5,78 @@ using System.Collections.Generic;
 public class Boat_Manager : MonoBehaviour
 {
     public static Boat_Manager instance;
+
     public int baitAmount = 5;
     public int fishAmount = 0;
-    public int maxFish = 5;
     public float boatValue = 0f;
-    public List<Boat_Fish_SO> caughtFish;
 
-    void Start()
+    public List<Boat_Fish_SO> caughtFish = new List<Boat_Fish_SO>();
+
+    void Awake()
     {
-        instance = this;
-    }
-
-    public void addBait(int amount) => baitAmount += amount;
-    public void setBait(int amount) => baitAmount = amount;
-
-    public void addFishToBoat(Boat_Fish_SO fish)
-    {
-        if (fishAmount < maxFish)
+        if (instance == null)
         {
-            caughtFish.Add(fish);
-            fishAmount++;
-            boatValue += fish.value;
+            instance = this;
         }
         else
         {
-            Debug.Log("Boat is full! Can't add more fish.");
+            Destroy(gameObject);
+            return;
         }
+    }
+
+    public void addBait(int amount)
+    {
+        baitAmount += amount;
+    }
+
+    public void setBait(int amount)
+    {
+        baitAmount = amount;
+    }
+
+    public void addFishToBoat(Boat_Fish_SO fish)
+    {
+        if (FishingDailyLimitManager.HasReachedLimit())
+        {
+            Debug.Log($"Daily limit reached! ({FishingDailyLimitManager.GetFishCaughtToday()}/{FishingDailyLimitManager.GetDailyCatchLimit()})");
+            return;
+        }
+
+        if (!FishingDailyLimitManager.TryRegisterCatch())
+        {
+            Debug.Log($"Daily limit reached! ({FishingDailyLimitManager.GetFishCaughtToday()}/{FishingDailyLimitManager.GetDailyCatchLimit()})");
+            return;
+        }
+
+        caughtFish.Add(fish);
+        fishAmount++;
+        boatValue += fish.value;
+
+        Debug.Log($"Caught {fish.fishName}. Total today: {FishingDailyLimitManager.GetFishCaughtToday()}/{FishingDailyLimitManager.GetDailyCatchLimit()}");
     }
 
     public void clearBoat()
     {
         caughtFish.Clear();
         fishAmount = 0;
+        boatValue = 0f;
     }
 
     public void useBait()
     {
-        if(baitAmount > 0) { baitAmount--; } 
-        else{ Debug.Log("No more bait! Can't fish."); }
+        if (baitAmount > 0)
+        {
+            baitAmount--;
+        }
+        else
+        {
+            Debug.Log("No more bait! Can't fish.");
+        }
     }
 
-    public bool hasBait() => baitAmount > 0;
+    public bool hasBait()
+    {
+        return baitAmount > 0;
+    }
 }

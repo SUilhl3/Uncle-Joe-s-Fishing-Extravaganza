@@ -80,6 +80,11 @@ public class ShopTooltipUI : MonoBehaviour
 
         if (CurrencyManager.Instance.Spend(currentItem.priceInCents))
         {
+            if (currentItem.itemName == "Chest")
+            {
+                FishingDailyLimitManager.PurchaseChest();
+            }
+
             currentHotspot.OnPurchased();
             Hide();
         }
