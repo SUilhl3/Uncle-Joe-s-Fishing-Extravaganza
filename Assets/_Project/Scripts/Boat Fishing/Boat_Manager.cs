@@ -53,6 +53,14 @@ public class Boat_Manager : MonoBehaviour
         fishAmount++;
         boatValue += fish.value;
 
+        CatchInventoryManager.RegisterCatch(
+            fish.fishName,
+            fish.fishName,
+            true,
+            fish.fishSize,
+            fish.value
+        );
+
         Debug.Log($"Caught {fish.fishName}. Total today: {FishingDailyLimitManager.GetFishCaughtToday()}/{FishingDailyLimitManager.GetDailyCatchLimit()}");
     }
 

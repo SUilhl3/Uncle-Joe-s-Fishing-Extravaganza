@@ -27,7 +27,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] float progressDecreaseSpeed = 1.0f;
     [SerializeField] GameObject fishingMiniGame;
     [SerializeField] float chanceToCatchNothing = 0.9f;
-    [SerializeField] int numBait =5;
+    [SerializeField] int numBait = 5;
 
     [Header("Fishing Elements")]
     [SerializeField] GameObject castingLine;
@@ -35,8 +35,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] float castSpeed = 2f;
     [SerializeField] float waterPosition = -3f;
     [SerializeField] List<Item> availableItems;
-
-
 
     bool isFishing = false;
     bool isCasting = false;
@@ -80,10 +78,9 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     }
 
     //Casts the line into the water and starts the mini-game
-    public void Cast ()
+    public void Cast()
     {
         castStrength = castDistanceSlider.value;
-
 
         //sets where to cast the line based on slider value 
         //setup to be fishing towards the right side for now
@@ -93,7 +90,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
 
         float targetX = castStartingPosition.x + castDistance;
         targetPosition = new Vector2(targetX, waterPosition);
-
 
         isCasting = true;
         isFishing = false;
@@ -153,7 +149,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
 
             //checks for chance that nothing is on hook 
             float fishOnHook = UnityEngine.Random.value;
-            if (fishOnHook <chanceToCatchNothing)
+            if (fishOnHook < chanceToCatchNothing)
             {
                 DisplayCaughtNothing(true);
                 ResetFishingGame();
@@ -176,7 +172,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             }
 
             //sets difficulty for fishing mini game based on enum value of fish/junk
-            //caughtItem = availableItems[UnityEngine.Random.Range(0, availableItems.Count)];
             caughtItem = GetRandomItem();
             fishAi.rarity = caughtItem.itemRarity;
 
@@ -192,7 +187,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     Item GetRandomItem()
     {
         float totalWeight = 0f;
-        foreach(Item item in availableItems)
+        foreach (Item item in availableItems)
         {
             totalWeight += item.probabilityOfCatch;
         }
@@ -213,7 +208,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         return availableItems[0];
     }
 
-
     //returning the fishing line back to the player
     void Returning()
     {
@@ -227,11 +221,11 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         {
             caughtItemPanel.SetActive(false);
             isReturning = false;
-            if(numBait != 0) { startFishingButton.gameObject.SetActive(true); }
+            if (numBait != 0) { startFishingButton.gameObject.SetActive(true); }
         }
     }
 
-    void FishingMiniGame ()
+    void FishingMiniGame()
     {
         bool overlapping = isOverlapping(item, playerBar);
 
@@ -240,7 +234,8 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         if (overlapping)
         {
             progressBar.value += progressIncreaseSpeed * Time.deltaTime;
-        } else
+        }
+        else
         {
             progressBar.value -= progressDecreaseSpeed * Time.deltaTime;
         }
@@ -248,10 +243,10 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         if (progressBar.value >= 100f)
         {
             CheckCatchItem(true);
-        } else if (progressBar.value <= 0.0f)
+        }
+        else if (progressBar.value <= 0.0f)
         {
             CheckCatchItem(false);
-
         }
     }
 
@@ -299,7 +294,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         playerBar.anchoredPosition = playerBarStart;
         item.anchoredPosition = itemStart;
         isReturning = true;
-        
     }
 
     //displays a panel with all the info of the caught item
@@ -328,11 +322,10 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         caughtItemPanel.SetActive(true);
         caughtItemName.text = "It Got Away!";
         caughtItemDescription.text = "";
-
     }
 
     //checks if player bar is overlapping with moving fish/item in mini-game
-    bool isOverlapping (RectTransform a, RectTransform b)
+    bool isOverlapping(RectTransform a, RectTransform b)
     {
         Vector3[] cornersA = new Vector3[4];
         Vector3[] cornersB = new Vector3[4];
@@ -343,13 +336,21 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         Rect rect1 = new Rect(cornersA[0], cornersA[2] - cornersA[0]);
         Rect rect2 = new Rect(cornersB[0], cornersB[2] - cornersB[0]);
 
-
         return rect1.Overlaps(rect2);
     }
 
     void UpdateInventory()
     {
-        //stores fish in inventory (TO DO)
+        //stores fish in local inventory
         storedItems.Add(caughtItem);
+
+        //stores fish/item in shared persistent inventory
+        CatchInventoryManager.RegisterCatch(
+            caughtItem.itemName,
+            caughtItem.itemName,
+            caughtItem.isFish,
+            caughtItem.fishSize,
+            Mathf.RoundToInt(caughtItem.itemValue)
+        );
     }
 }

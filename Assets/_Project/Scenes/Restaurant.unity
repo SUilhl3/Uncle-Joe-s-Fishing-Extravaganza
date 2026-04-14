@@ -5255,6 +5255,7 @@ GameObject:
   - component: {fileID: 1823140407}
   - component: {fileID: 1823140406}
   - component: {fileID: 1823140405}
+  - component: {fileID: 1823140409}
   m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
@@ -5374,6 +5375,21 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1823140409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823140403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38356e0f7fe6a464d834137f59dc72be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RestaurantFishButtonUI
+  smallFishButton: {fileID: 1140121472}
+  mediumFishButton: {fileID: 0}
+  largeFishButton: {fileID: 2030552536}
 --- !u!1 &1852679640
 GameObject:
   m_ObjectHideFlags: 0

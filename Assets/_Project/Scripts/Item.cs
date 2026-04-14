@@ -10,4 +10,8 @@ public abstract class Item : ScriptableObject
     public float itemWeight;
     public float probabilityOfCatch;
     public ItemRarity itemRarity;
+
+    [Header("Inventory / Restaurant Data")]
+    public bool isFish = false;
+    public FishSize fishSize = FishSize.None;
 }

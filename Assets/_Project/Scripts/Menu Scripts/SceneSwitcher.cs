@@ -73,6 +73,16 @@ public class SceneSwitcher : MonoBehaviour
         SceneManager.LoadScene("Restaurant");
     }
 
+    public void Inventory()
+    {
+        SceneManager.LoadScene("InventoryScene");
+    }
+
+    public void TreasureBuyer()
+    {
+        SceneManager.LoadScene("TreasureBuyerScene");
+    }
+
     public void Exit()
     {
         Application.Quit();

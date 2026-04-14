@@ -4,22 +4,22 @@ using UnityEngine;
 public class Cooking : MonoBehaviour
 {
     public List<IngredientInstance> currentIngredients = new();
-    
+
     public Hand hand;
 
     public void AddSmallFish()
     {
-        AddIngredientToHand(IngredientType.SmallFish);
+        AddFishToHand(FishSize.Small, IngredientType.SmallFish);
     }
 
     public void AddMediumFish()
     {
-        AddIngredientToHand(IngredientType.MediumFish);
+        AddFishToHand(FishSize.Medium, IngredientType.MediumFish);
     }
 
     public void AddLargeFish()
     {
-        AddIngredientToHand(IngredientType.LargeFish);
+        AddFishToHand(FishSize.Large, IngredientType.LargeFish);
     }
 
     public void AddCheese()
@@ -42,9 +42,33 @@ public class Cooking : MonoBehaviour
         AddIngredientToHand(IngredientType.Lemon);
     }
 
+    void AddFishToHand(FishSize fishSize, IngredientType ingredientType)
+    {
+        if (hand == null) return;
+        if (hand.IsHolding()) return;
+
+        if (CatchInventoryManager.GetFishCountBySize(fishSize) <= 0)
+        {
+            Debug.Log("No " + fishSize + " fish in inventory.");
+            return;
+        }
+
+        bool removed = CatchInventoryManager.ConsumeFish(fishSize, 1);
+        if (!removed)
+        {
+            Debug.Log("Failed to remove " + fishSize + " fish from inventory.");
+            return;
+        }
+
+        hand.PickUp(ingredientType);
+        Debug.Log("Picked up: " + ingredientType);
+    }
+
     void AddIngredientToHand(IngredientType ingredient)
     {
         if (hand == null) return;
+        if (hand.IsHolding()) return;
+
         hand.PickUp(ingredient);
         Debug.Log("Picked up: " + ingredient);
     }
