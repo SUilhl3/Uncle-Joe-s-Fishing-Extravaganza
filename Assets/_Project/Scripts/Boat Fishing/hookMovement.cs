@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
-
 public class hookMovement : MonoBehaviour
 {
     public float horzSpeed = 5f;
@@ -31,7 +30,6 @@ public class hookMovement : MonoBehaviour
     [SerializeField] private bool fishOnHook = false;
     [SerializeField] private Boat_Fish fish = null;
 
-
     public float lineHealth;
     public float maxLineHealth = 100f;
     public float lineRecoveryRate = 1f;
@@ -43,9 +41,19 @@ public class hookMovement : MonoBehaviour
     private enum HookState { dropping, reeling, casting }
     [SerializeField] private HookState currentState = HookState.casting;
 
+    // Tackle upgrade
+    private const string TacklePurchasedKey = "TacklePurchased";
+    private const float BaseMaxLineHealth = 100f;
+    private const float BaseLineRecoveryRate = 1f;
+    private const float TackleMaxHealthBonus = 50f;
+    private const float TackleRecoveryBonus = 0.5f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        // Apply upgrade before initializing line health
+        ApplyTackleUpgrade();
 
         // Set horizontal boundaries based on the positions of the boundary objects
         leftBoundaryX = leftBoundaryObj.position.x;
@@ -58,6 +66,7 @@ public class hookMovement : MonoBehaviour
         lineRenderer.startWidth = 0.05f;
         lineRenderer.endWidth = 0.05f;
     }
+
     void Update()
     {
         if (lineRenderer != null && startingPoint != null)
@@ -69,9 +78,9 @@ public class hookMovement : MonoBehaviour
 
             // White (full health) → Red (0 health)
             Color currentColor = new Color(1f, ratio, ratio);
-
             lineRenderer.material.color = currentColor;
         }
+
         if (currentState != HookState.casting)
         {
             if (currentState == HookState.reeling)
@@ -91,6 +100,7 @@ public class hookMovement : MonoBehaviour
 
                 return; // prevent normal movement logic from running
             }
+
             if (brokenLine)
             {
                 // Move directly toward starting point
@@ -108,6 +118,7 @@ public class hookMovement : MonoBehaviour
 
                 return; // prevent normal movement logic from running
             }
+
             // Calculate movement
             Vector3 movement = new Vector3((moveInput.x + fishLeftRightForce) * horzSpeed, moveInput.y, 0f);
 
@@ -129,13 +140,24 @@ public class hookMovement : MonoBehaviour
             {
                 dropAmount += -moveInput.y * Time.deltaTime;
             }
+
             if (fishOnHook)
             {
                 moveInput.y = fishPullForce;
             }
         }
+    }
 
+    void ApplyTackleUpgrade()
+    {
+        maxLineHealth = BaseMaxLineHealth;
+        lineRecoveryRate = BaseLineRecoveryRate;
 
+        if (PlayerPrefs.GetInt(TacklePurchasedKey, 0) == 1)
+        {
+            maxLineHealth += TackleMaxHealthBonus;
+            lineRecoveryRate += TackleRecoveryBonus;
+        }
     }
 
     //coroutines
@@ -161,7 +183,6 @@ public class hookMovement : MonoBehaviour
             {
                 fish.setStam(0f); //set to 0 for safety
                 fish.setPulling(false);  //take a break from pulling
-                // Debug.Log("Stop pulling, fish should rest");
             }
 
             //if the fish finishes resting
@@ -169,15 +190,13 @@ public class hookMovement : MonoBehaviour
             {
                 fish.setStam(fishMaxStam); //cap the stamina to max stamina
                 fish.setPulling(true); //resume pulling
-                // Debug.Log("Start pulling, fish is rested");
             }
-
 
             //------------handles logic if the fish is pulling or resting
             if (fishStam > 0 && fishPulling)
             {
-                // Debug.Log("Pulling...");
                 fishPullForce = -fish.getSwimSpeed();
+
                 if (lineHealth <= 0)
                 {
                     lineHealth = 0;
@@ -187,8 +206,9 @@ public class hookMovement : MonoBehaviour
                     fishOnHook = false;
                     Debug.Log("Line Snapped!");
                 }
-                //while reeling, if not at 0 linehalth, decrease line health 
-                if (currentState == HookState.reeling && lineHealth > 0) //this is under the if of if the fish is pulling so this should only happen when the fish is pulling
+
+                //while reeling, if not at 0 linehealth, decrease line health
+                if (currentState == HookState.reeling && lineHealth > 0)
                 {
                     lineHealth -= fishStr * Time.deltaTime;
                     fish.changeStamina(stamDam * Time.deltaTime);
@@ -199,18 +219,22 @@ public class hookMovement : MonoBehaviour
                     lineHealth += lineRecoveryRate * Time.deltaTime;
                 }
             }
-
             else if (!fishPulling)
             {
-                // Debug.Log("Resting...");
                 fishPullForce = 0f;
+
                 //if the fish is resting, should recover line health even if pushing
-                if (lineHealth < maxLineHealth && lineHealth > 0) { lineHealth += lineRecoveryRate * Time.deltaTime; }
+                if (lineHealth < maxLineHealth && lineHealth > 0)
+                {
+                    lineHealth += lineRecoveryRate * Time.deltaTime;
+                }
+
                 fish.changeStamina(fishRecoverRate * Time.deltaTime); //recover the fish's stamina while resting
             }
+
+            lineHealth = Mathf.Clamp(lineHealth, 0f, maxLineHealth);
             yield return null;
         }
-        StopCoroutine(fishBattle());
     }
 
     IEnumerator leftRight()
@@ -225,6 +249,8 @@ public class hookMovement : MonoBehaviour
     //functions
     public void InitializeCast()
     {
+        ApplyTackleUpgrade();
+
         currentState = HookState.casting;
         transform.position = startingPoint.position;
         dropAmount = 0f; //reset max line length
@@ -237,7 +263,6 @@ public class hookMovement : MonoBehaviour
         moveInput = Vector2.zero; // Reset movement input
     }
 
-
     //input functions
     public void OnMove(InputAction.CallbackContext value) //handles horizontal movement
     {
@@ -247,12 +272,20 @@ public class hookMovement : MonoBehaviour
 
     public void OnCast(InputAction.CallbackContext value)
     {
-        if(currentState != HookState.casting) { return; }
+        if (currentState != HookState.casting) { return; }
+
         if (!Boat_Manager.instance.hasBait())
         {
             Debug.Log("No bait left! Can't cast.");
             return;
         }
+
+        if (FishingDailyLimitManager.HasReachedLimit())
+        {
+            Debug.Log($"Daily limit reached! ({FishingDailyLimitManager.GetFishCaughtToday()}/{FishingDailyLimitManager.GetDailyCatchLimit()})");
+            return;
+        }
+
         Boat_Manager.instance.useBait();
         currentState = HookState.dropping;
         castPanel.SetActive(false);
@@ -268,7 +301,6 @@ public class hookMovement : MonoBehaviour
 
         if (value.performed) //if reel button is pressed then reel the hook up
         {
-            // Debug.Log("pressing");
             currentState = HookState.reeling;
             moveInput.y = reelSpeed - fishPullForce;
         }
@@ -282,11 +314,9 @@ public class hookMovement : MonoBehaviour
             }
             moveInput.y = ambientDropSpeed + fishPullForce; //else resume ambient drop
         }
-
     }
 
     public bool getFishOnHook() => fishOnHook;
-
 
     public void setFishOnHook(bool value) => fishOnHook = value ? true : false;
     public void setFish(Boat_Fish newFish) => fish = newFish;
