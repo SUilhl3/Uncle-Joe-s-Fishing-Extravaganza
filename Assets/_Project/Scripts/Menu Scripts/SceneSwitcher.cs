@@ -80,7 +80,7 @@ public class SceneSwitcher : MonoBehaviour
 
     public void TreasureBuyer()
     {
-        SceneManager.LoadScene("TreasureBuyerScene");
+        SceneManager.LoadScene("TresureBuyerScene");
     }
 
     public void Exit()
