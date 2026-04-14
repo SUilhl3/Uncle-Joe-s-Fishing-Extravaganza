@@ -417,6 +417,16 @@ MonoBehaviour:
   fishAmount: 0
   boatValue: 0
   caughtFish: []
+  startingFish:
+  - {fileID: 11400000, guid: 7eb86b3b7b4948940bd2813b442db38c, type: 2}
+  - {fileID: 11400000, guid: cf0aa286bc187984a92b6ff9d60d5b83, type: 2}
+  unlockableFish:
+  - {fileID: 11400000, guid: 3ccbc4c6e943d2e4a869b12b95803bc5, type: 2}
+  - {fileID: 11400000, guid: ac7faf4e3aebd57449a2a83df91cac4c, type: 2}
+  - {fileID: 11400000, guid: 7e00f255b69bb6b49b624d1b0dce7efb, type: 2}
+  - {fileID: 11400000, guid: 7fa71a6e98bf19b47832ae869171fc66, type: 2}
+  - {fileID: 11400000, guid: ef876c87f1223bd4b981c2cd5e5dbc47, type: 2}
+  - {fileID: 11400000, guid: 6da16886eebb1ab4e86b2bc15a0ced8d, type: 2}
 --- !u!4 &203354076
 Transform:
   m_ObjectHideFlags: 0

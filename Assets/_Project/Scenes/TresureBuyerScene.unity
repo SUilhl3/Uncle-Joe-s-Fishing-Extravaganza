@@ -1628,6 +1628,54 @@ MonoBehaviour:
     displayName: Lamp
     baseValue: 20
     unlockKey: 
+  - id: Crab
+    displayName: Crab
+    baseValue: 50
+    unlockKey: CrabPurchased
+  - id: Elephant Fish
+    displayName: Elephant Fish
+    baseValue: 100
+    unlockKey: ElephantFishPurchased
+  - id: Unknown Fish
+    displayName: Unknown Fish
+    baseValue: 100
+    unlockKey: UnknownFishPurchased
+  - id: Super Sea Cucumber
+    displayName: Super Sea Cucumber
+    baseValue: 150
+    unlockKey: SuperSeaCucumberPurchased
+  - id: Plate Fish
+    displayName: Plate Fish
+    baseValue: 150
+    unlockKey: PlateFishPurchased
+  - id: Sea Bun
+    displayName: Sea Bun
+    baseValue: 150
+    unlockKey: Sea Bun Purchased
+  - id: Duck
+    displayName: Duck
+    baseValue: 150
+    unlockKey: DuckPurchased
+  - id: Duck 2
+    displayName: Duck 2
+    baseValue: 150
+    unlockKey: Duck2Purchased
+  - id: Toy
+    displayName: Toy
+    baseValue: 150
+    unlockKey: ToyPurchased
+  - id: Dragon
+    displayName: Dragon
+    baseValue: 150
+    unlockKey: DragonPurchased
+  - id: Dino
+    displayName: Dino
+    baseValue: 150
+    unlockKey: DinoPurchased
+  - id: Frog
+    displayName: Frog
+    baseValue: 150
+    unlockKey: FrogPurchased
   contentRoot: {fileID: 789044917}
   rowPrefab: {fileID: 67398280467866611, guid: 919be8070f4ca8940b417e792fe9a232, type: 3}
 --- !u!4 &1262783863
@@ -2025,7 +2073,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1259804452}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -35,6 +35,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] float castSpeed = 2f;
     [SerializeField] float waterPosition = -3f;
     [SerializeField] List<Item> availableItems;
+    [SerializeField] List<Item> unlockableItems;
 
     bool isFishing = false;
     bool isCasting = false;
@@ -186,26 +187,60 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     //function to select the random item from the list using weighted probabilities
     Item GetRandomItem()
     {
+        List<Item> currentPool = new List<Item>();
+        currentPool.AddRange(availableItems);
+
+        foreach (Item item in unlockableItems)
+        {
+            if (item == null) continue;
+
+            if (IsLandItemUnlocked(item.itemName))
+            {
+                currentPool.Add(item);
+            }
+        }
+
         float totalWeight = 0f;
-        foreach (Item item in availableItems)
+        foreach (Item item in currentPool)
         {
             totalWeight += item.probabilityOfCatch;
         }
 
         float randomNum = UnityEngine.Random.Range(0f, totalWeight);
-        float currentWright = 0f;
+        float currentWeight = 0f;
 
-        foreach (Item item in availableItems)
+        foreach (Item item in currentPool)
         {
-            currentWright += item.probabilityOfCatch;
-            if (randomNum <= currentWright)
+            currentWeight += item.probabilityOfCatch;
+            if (randomNum <= currentWeight)
             {
                 return item;
             }
         }
 
         //default item returned if above somehow errors
-        return availableItems[0];
+        return currentPool[0];
+    }
+
+    bool IsLandItemUnlocked(string itemName)
+    {
+        switch (itemName)
+        {
+            case "Duck":
+                return PlayerPrefs.GetInt("DuckPurchased", 0) == 1;
+            case "Duck 2":
+                return PlayerPrefs.GetInt("Duck2Purchased", 0) == 1;
+            case "Toy":
+                return PlayerPrefs.GetInt("ToyPurchased", 0) == 1;
+            case "Dragon":
+                return PlayerPrefs.GetInt("DragonPurchased", 0) == 1;
+            case "Dino":
+                return PlayerPrefs.GetInt("DinoPurchased", 0) == 1;
+            case "Frog":
+                return PlayerPrefs.GetInt("FrogPurchased", 0) == 1;
+            default:
+                return false;
+        }
     }
 
     //returning the fishing line back to the player

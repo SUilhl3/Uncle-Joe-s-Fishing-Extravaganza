@@ -19,3 +19,5 @@ MonoBehaviour:
   itemWeight: 60
   probabilityOfCatch: 10
   itemRarity: 2
+  isFish: 1
+  fishSize: 3

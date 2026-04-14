@@ -102,9 +102,71 @@ public class ShopTooltipUI : MonoBehaviour
                 PlayerPrefs.SetInt("TeleporterPurchased", 1);
                 PlayerPrefs.Save();
             }
+            else if (currentItem.itemName == "Crab")
+            {
+                PlayerPrefs.SetInt("CrabPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Elephant Fish")
+            {
+                PlayerPrefs.SetInt("ElephantFishPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Unknown Fish")
+            {
+                PlayerPrefs.SetInt("UnknownFishPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Super Sea Cucumber")
+            {
+                PlayerPrefs.SetInt("SuperSeaCucumberPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Plate Fish")
+            {
+                PlayerPrefs.SetInt("PlateFishPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Sea Bun")
+            {
+                PlayerPrefs.SetInt("SeaBunPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Duck")
+            {
+                PlayerPrefs.SetInt("DuckPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Duck 2")
+            {
+                PlayerPrefs.SetInt("Duck2Purchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Toy")
+            {
+                PlayerPrefs.SetInt("ToyPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Dragon")
+            {
+                PlayerPrefs.SetInt("DragonPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Dino")
+            {
+                PlayerPrefs.SetInt("DinoPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Frog")
+            {
+                PlayerPrefs.SetInt("FrogPurchased", 1);
+                PlayerPrefs.Save();
+            }
 
             currentHotspot.OnPurchased();
             Hide();
+
+            FindObjectOfType<FishingDailyUI>()?.Refresh();
         }
         else
         {

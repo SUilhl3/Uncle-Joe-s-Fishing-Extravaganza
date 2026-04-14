@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee27dd1b3d48fb74dab52e203f9ad238, type: 3}
-  m_Name: BluePike
+  m_Name: Crab
   m_EditorClassIdentifier: Assembly-CSharp::Boat_Fish_SO
-  fishName: Bluepike
-  description: A pike with a unique blue colour
-  fishSprite: {fileID: 21300000, guid: 0aa0ba0469561cc40b3dee83af080f1a, type: 3}
-  value: 15
-  fishSize: 2
+  fishName: Crab
+  description: Crab
+  fishSprite: {fileID: -4068327758537392850, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
+  value: 20
+  fishSize: 1

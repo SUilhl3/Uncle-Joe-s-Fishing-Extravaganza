@@ -4981,6 +4981,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5d4413b4031cda2448641f3b71022e18, type: 2}
   - {fileID: 11400000, guid: cf539b5386f09464b90a3298964ae9d1, type: 2}
   - {fileID: 11400000, guid: fade749d4240cda4dacb5edf95dd7c46, type: 2}
+  unlockableItems:
+  - {fileID: 11400000, guid: ed543654a39554e4884a6ba98f6fbf4b, type: 2}
+  - {fileID: 11400000, guid: 0ff86edd47259084ca13f478a78b2c49, type: 2}
+  - {fileID: 11400000, guid: eda7582245b06454eb0c2b2676991a5f, type: 2}
+  - {fileID: 11400000, guid: aeea974bd0ee7624eb1363cdf0c7806c, type: 2}
+  - {fileID: 11400000, guid: 1b2e6e767f69e4c40946508de6d8a614, type: 2}
+  - {fileID: 11400000, guid: a0b679b252636a344bd1ea568c73a5c9, type: 2}
 --- !u!4 &1012857796
 Transform:
   m_ObjectHideFlags: 0

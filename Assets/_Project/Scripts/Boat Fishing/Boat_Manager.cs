@@ -12,6 +12,10 @@ public class Boat_Manager : MonoBehaviour
 
     public List<Boat_Fish_SO> caughtFish = new List<Boat_Fish_SO>();
 
+    [Header("Boat Fish Pools")]
+    public List<Boat_Fish_SO> startingFish = new List<Boat_Fish_SO>();
+    public List<Boat_Fish_SO> unlockableFish = new List<Boat_Fish_SO>();
+
     void Awake()
     {
         if (instance == null)
@@ -62,6 +66,45 @@ public class Boat_Manager : MonoBehaviour
         );
 
         Debug.Log($"Caught {fish.fishName}. Total today: {FishingDailyLimitManager.GetFishCaughtToday()}/{FishingDailyLimitManager.GetDailyCatchLimit()}");
+    }
+
+    public List<Boat_Fish_SO> GetCurrentBoatFishPool()
+    {
+        List<Boat_Fish_SO> pool = new List<Boat_Fish_SO>();
+        pool.AddRange(startingFish);
+
+        foreach (Boat_Fish_SO fish in unlockableFish)
+        {
+            if (fish == null) continue;
+
+            if (IsBoatFishUnlocked(fish.fishName))
+            {
+                pool.Add(fish);
+            }
+        }
+
+        return pool;
+    }
+
+    bool IsBoatFishUnlocked(string fishName)
+    {
+        switch (fishName)
+        {
+            case "Crab":
+                return PlayerPrefs.GetInt("CrabPurchased", 0) == 1;
+            case "Elephant Fish":
+                return PlayerPrefs.GetInt("ElephantFishPurchased", 0) == 1;
+            case "Unknown Fish":
+                return PlayerPrefs.GetInt("UnknownFishPurchased", 0) == 1;
+            case "Super Sea Cucumber":
+                return PlayerPrefs.GetInt("SuperSeaCucumberPurchased", 0) == 1;
+            case "Plate Fish":
+                return PlayerPrefs.GetInt("PlateFishPurchased", 0) == 1;
+            case "Sea Bun":
+                return PlayerPrefs.GetInt("SeaBunPurchased", 0) == 1;
+            default:
+                return false;
+        }
     }
 
     public void clearBoat()
