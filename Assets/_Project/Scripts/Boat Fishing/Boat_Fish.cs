@@ -36,6 +36,8 @@ public class Boat_Fish : MonoBehaviour
 
     //fish rotations
     [SerializeField] private float xRotation = 0f;
+    [SerializeField] private float yRotation = 0f;
+    [SerializeField] private float zRotation = 0f;
 
     private void Start()
     {
@@ -133,12 +135,12 @@ public class Boat_Fish : MonoBehaviour
             else
             {
                 transform.SetParent(collision.transform); //make the fish a child of the hook so it moves with it
-            transform.localScale = originalScale;
-            currentState = FishState.OnHook;
-            pulling = true;
-            hookScript.setFishOnHook(true);   
-            hookScript.setFish(this);
-            hookScript.startFishBattle();
+                transform.localScale = originalScale;
+                currentState = FishState.OnHook;
+                pulling = true;
+                hookScript.setFishOnHook(true);   
+                hookScript.setFish(this);
+                hookScript.startFishBattle();
             }
         }
     }
@@ -155,16 +157,24 @@ public class Boat_Fish : MonoBehaviour
     {
         if(currentState == FishState.caught)
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            transform.rotation = Quaternion.Euler(0f, 0f, -45f);
             return;
         }
         // Rotate to face movement direction
-            xRotation = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+        zRotation = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 45f; 
+        float finalZRotation = zRotation;
 
-            if (xRotation > 90 || xRotation < -90) { transform.localScale = new Vector3(transform.localScale.x, -1f, transform.localScale.z); }
-            else { transform.localScale = new Vector3(transform.localScale.x, 1f, transform.localScale.z); }
-
-            transform.rotation = Quaternion.Euler(0f, 0f, xRotation);
+        if(zRotation > 45 || zRotation < -135)
+        {
+            // yRotation = 180f;
+            transform.localScale = new Vector3(transform.localScale.x, -1f * Mathf.Abs(transform.localScale.y), transform.localScale.z);
+            finalZRotation += 100f;
+        }
+        else
+        {
+            transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
+        }
+            transform.rotation = Quaternion.Euler(yRotation, 0f, finalZRotation);
     }
 
     public bool getChasingHook() => currentState == FishState.ChasingHook;
