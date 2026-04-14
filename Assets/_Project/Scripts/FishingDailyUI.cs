@@ -5,12 +5,12 @@ public class FishingDailyUI : MonoBehaviour
 {
     public TextMeshProUGUI fishCounterText;
 
-    void Update()
+    void Start()
     {
-        UpdateUI();
+        Refresh();
     }
 
-    void UpdateUI()
+    public void Refresh()
     {
         int caught = FishingDailyLimitManager.GetFishCaughtToday();
         int max = FishingDailyLimitManager.GetDailyCatchLimit();

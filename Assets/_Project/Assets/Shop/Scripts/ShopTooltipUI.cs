@@ -92,17 +92,19 @@ public class ShopTooltipUI : MonoBehaviour
             {
                 FishingDailyLimitManager.PurchaseBait2();
             }
-
             else if (currentItem.itemName == "Tackle")
             {
                 PlayerPrefs.SetInt("TacklePurchased", 1);
                 PlayerPrefs.Save();
             }
+            else if (currentItem.itemName == "Teleporter")
+            {
+                PlayerPrefs.SetInt("TeleporterPurchased", 1);
+                PlayerPrefs.Save();
+            }
 
             currentHotspot.OnPurchased();
             Hide();
-
-            FindObjectOfType<FishingDailyUI>()?.Refresh();
         }
         else
         {
