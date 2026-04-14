@@ -1,25 +1,10 @@
 fileFormatVersion: 2
-guid: 64c1e0d6e386b21448b08d52699cd6ec
+guid: 710f93c3c92265744bb7974f1a6dc55c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4548796474974412338
-    second: Boat_0
-  - first:
-      213: 7632911036448307472
-    second: Boat_1
-  - first:
-      213: -6510708078897605904
-    second: Boat_2
-  - first:
-      213: -4004004091888637276
-    second: Boat_3
-  - first:
-      213: -7633493894899425504
-    second: Boat_4
-  - first:
-      213: 7666187526099574008
-    second: Boat_5
+      213: -6970451306341171704
+    second: pixelbuildings128-v1-downscale-x8-_00039__0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -128,133 +113,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boat_0
+      name: pixelbuildings128-v1-downscale-x8-_00039__0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 111
-        width: 56
-        height: 16
+        x: 19
+        y: 49
+        width: 50
+        height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ec1e991e4bd6fd0c0800000000000000
-      internalID: -4548796474974412338
+      spriteID: 80e7069c77bf34f90800000000000000
+      internalID: -6970451306341171704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boat_1
+      name: pixelbuildings128-v1-downscale-x8-_00039__1
       rect:
         serializedVersion: 2
-        x: 55
-        y: 111
-        width: 57
-        height: 18
+        x: 73
+        y: 25
+        width: 33
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 019f8a1952c8de960800000000000000
-      internalID: 7632911036448307472
+      spriteID: 8c222115692f0e842a7547e16ca8303d
+      internalID: -1312211982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boat_2
+      name: pixelbuildings128-v1-downscale-x8-_00039__2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 55
-        width: 56
-        height: 28
+        x: 72
+        y: 30
+        width: 34
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0f2da095f7155a5a0800000000000000
-      internalID: -6510708078897605904
+      spriteID: c325fe60fafdc5545a06569b18327a2a
+      internalID: -293160837
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boat_3
+      name: pixelbuildings128-v1-downscale-x8-_00039__3
       rect:
         serializedVersion: 2
-        x: 55
-        y: 55
-        width: 57
-        height: 28
+        x: 89
+        y: 61
+        width: 21
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4aa64c71e7bee68c0800000000000000
-      internalID: -4004004091888637276
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boat_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 56
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 02f186f1fb1601690800000000000000
-      internalID: -7633493894899425504
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boat_5
-      rect:
-        serializedVersion: 2
-        x: 55
-        y: 0
-        width: 57
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8fc12b210f4c36a60800000000000000
-      internalID: 7666187526099574008
+      spriteID: e5de76eb535afe04fb1dcf2dbc8d6cd4
+      internalID: -294909053
       vertices: []
       indices: 
       edges: []
@@ -263,7 +204,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f4c6d3f914a31834b84fa3948e46fdb5
     internalID: 0
     vertices: []
     indices: 
@@ -273,12 +214,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Boat_0: -4548796474974412338
-      Boat_1: 7632911036448307472
-      Boat_2: -6510708078897605904
-      Boat_3: -4004004091888637276
-      Boat_4: -7633493894899425504
-      Boat_5: 7666187526099574008
+      pixelbuildings128-v1-downscale-x8-_00039__0: -6970451306341171704
+      pixelbuildings128-v1-downscale-x8-_00039__1: -1312211982
+      pixelbuildings128-v1-downscale-x8-_00039__2: -293160837
+      pixelbuildings128-v1-downscale-x8-_00039__3: -294909053
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

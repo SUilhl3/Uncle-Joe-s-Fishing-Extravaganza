@@ -1,49 +1,43 @@
 fileFormatVersion: 2
-guid: 3f14eabc43b0bf14abfad7470fe882ec
+guid: 34f395a9b194bc5458d94dc32dc282b4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1465139857436032952
-    second: Cooking appliences_0
+      213: -3652716676293677665
+    second: pipo-nekonin001_0
   - first:
-      213: 9067986103757153554
-    second: Cooking appliences_1
+      213: -8159679073280113966
+    second: pipo-nekonin001_1
   - first:
-      213: -3668840000885209450
-    second: Cooking appliences_2
+      213: -7976287978837077696
+    second: pipo-nekonin001_2
   - first:
-      213: -1917802222803755765
-    second: Cooking appliences_3
+      213: 1159312930061944632
+    second: pipo-nekonin001_3
   - first:
-      213: 816223919866936034
-    second: Cooking appliences_4
+      213: -5712262134988590572
+    second: pipo-nekonin001_4
   - first:
-      213: -6985968939085745890
-    second: Cooking appliences_5
+      213: -5395833338718574206
+    second: pipo-nekonin001_5
   - first:
-      213: 6402702242636050290
-    second: Cooking appliences_6
+      213: 2745666305979858144
+    second: pipo-nekonin001_6
   - first:
-      213: -2506574690599287309
-    second: Cooking appliences_7
+      213: -2074235051028853170
+    second: pipo-nekonin001_7
   - first:
-      213: -1117548920301572727
-    second: Cooking appliences_8
+      213: 5048457141354000675
+    second: pipo-nekonin001_8
   - first:
-      213: 5699530008266427877
-    second: Cooking appliences_9
+      213: 6062738488276958887
+    second: pipo-nekonin001_9
   - first:
-      213: -4716319668072437005
-    second: Cooking appliences_10
+      213: 1450261363465110782
+    second: pipo-nekonin001_10
   - first:
-      213: 214413293220955528
-    second: Cooking appliences_11
-  - first:
-      213: 2201340141493201291
-    second: Cooking appliences_12
-  - first:
-      213: 6295961902383216498
-    second: Cooking appliences_13
+      213: 825736517168722659
+    second: pipo-nekonin001_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -152,276 +146,210 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rice Cooker
+      name: pipo-nekonin001_0
       rect:
         serializedVersion: 2
-        x: 208
-        y: 82
-        width: 19
-        height: 20
+        x: 6
+        y: 95
+        width: 21
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8404243ff07caabe0800000000000000
-      internalID: -1465139857436032952
+      spriteID: f9dae5c2981fe4dc0800000000000000
+      internalID: -3652716676293677665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Onions
+      name: pipo-nekonin001_1
       rect:
         serializedVersion: 2
-        x: 53
-        y: 36
-        width: 25
-        height: 28
+        x: 38
+        y: 96
+        width: 21
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 215af9e2155f7dd70800000000000000
-      internalID: 9067986103757153554
+      spriteID: 2d243fb5d1ff2ce80800000000000000
+      internalID: -8159679073280113966
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Air Frier
+      name: pipo-nekonin001_2
       rect:
         serializedVersion: 2
-        x: 150
-        y: 39
+        x: 70
+        y: 95
         width: 22
-        height: 28
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6964e712579a51dc0800000000000000
-      internalID: -3668840000885209450
+      spriteID: 041923be7588e4190800000000000000
+      internalID: -7976287978837077696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Steamer
+      name: pipo-nekonin001_3
       rect:
         serializedVersion: 2
-        x: 174
-        y: 36
-        width: 38
-        height: 41
+        x: 7
+        y: 63
+        width: 19
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2ea78d0a45fc35b00800000000000000
-      internalID: 816223919866936034
+      spriteID: 8370cd3b7f4b61010800000000000000
+      internalID: 1159312930061944632
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grill
+      name: pipo-nekonin001_4
       rect:
         serializedVersion: 2
-        x: 227
-        y: 36
-        width: 29
-        height: 34
+        x: 39
+        y: 64
+        width: 20
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e11b1ed534adc0f90800000000000000
-      internalID: -6985968939085745890
+      spriteID: 41237146ad7f9b0b0800000000000000
+      internalID: -5712262134988590572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Fish
+      name: pipo-nekonin001_5
       rect:
         serializedVersion: 2
-        x: 2
-        y: 3
-        width: 25
-        height: 28
+        x: 71
+        y: 63
+        width: 22
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 27f2be644c7fad850800000000000000
-      internalID: 6402702242636050290
+      spriteID: 2892872ba262e15b0800000000000000
+      internalID: -5395833338718574206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Small fish
+      name: pipo-nekonin001_6
       rect:
         serializedVersion: 2
-        x: 28
-        y: 3
-        width: 25
-        height: 28
+        x: 4
+        y: 31
+        width: 22
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3f548db699bd63dd0800000000000000
-      internalID: -2506574690599287309
+      spriteID: 0ec30b745f09a1620800000000000000
+      internalID: 2745666305979858144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lemons
+      name: pipo-nekonin001_7
       rect:
         serializedVersion: 2
-        x: 54
-        y: 3
-        width: 25
-        height: 28
+        x: 38
+        y: 32
+        width: 20
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 98dad429d2bad70f0800000000000000
-      internalID: -1117548920301572727
+      spriteID: e4ec2caf536d633e0800000000000000
+      internalID: -2074235051028853170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dishes
+      name: pipo-nekonin001_8
       rect:
         serializedVersion: 2
-        x: 150
-        y: 3
-        width: 25
-        height: 28
+        x: 71
+        y: 31
+        width: 19
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3faaa5100444c8eb0800000000000000
-      internalID: -4716319668072437005
+      spriteID: 321703ea509bf0640800000000000000
+      internalID: 5048457141354000675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cutting board
+      name: pipo-nekonin001_9
       rect:
         serializedVersion: 2
-        x: 176
-        y: 3
-        width: 25
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8858e8111cfb9f200800000000000000
-      internalID: 214413293220955528
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Soup pot
-      rect:
-        serializedVersion: 2
-        x: 203
-        y: 4
-        width: 23
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b89a28b023bbc8e10800000000000000
-      internalID: 2201340141493201291
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Oven
-      rect:
-        serializedVersion: 2
-        x: 227
+        x: 6
         y: 0
-        width: 29
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 277b1f62effbf5750800000000000000
-      internalID: 6295961902383216498
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cooking appliences_0
-      rect:
-        serializedVersion: 2
-        x: 82
-        y: 4
-        width: 66
+        width: 21
         height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -429,10 +357,54 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e4a2b0f5eaa35674485767b9821111b8
-      internalID: -1430638876
+      spriteID: 7ae36d7888c232450800000000000000
+      internalID: 6062738488276958887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-nekonin001_10
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 0
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef4cfc8b60d502410800000000000000
+      internalID: 1450261363465110782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pipo-nekonin001_11
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 0
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e2f8e7ccfa957b00800000000000000
+      internalID: 825736517168722659
       vertices: []
       indices: 
       edges: []
@@ -441,7 +413,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 35037d8e2b5797443b836c9becb00716
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -451,21 +423,18 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Air Frier: -3668840000885209450
-      Big Fish: 6402702242636050290
-      Cooking appliences_0: -1430638876
-      Cooking appliences_3: -1917802222803755765
-      Cooking appliences_9: 5699530008266427877
-      Cutting board: 214413293220955528
-      Dishes: -4716319668072437005
-      Grill: -6985968939085745890
-      Lemons: -1117548920301572727
-      Onions: 9067986103757153554
-      Oven: 6295961902383216498
-      Rice Cooker: -1465139857436032952
-      Small fish: -2506574690599287309
-      Soup pot: 2201340141493201291
-      Steamer: 816223919866936034
+      pipo-nekonin001_0: -3652716676293677665
+      pipo-nekonin001_1: -8159679073280113966
+      pipo-nekonin001_10: 1450261363465110782
+      pipo-nekonin001_11: 825736517168722659
+      pipo-nekonin001_2: -7976287978837077696
+      pipo-nekonin001_3: 1159312930061944632
+      pipo-nekonin001_4: -5712262134988590572
+      pipo-nekonin001_5: -5395833338718574206
+      pipo-nekonin001_6: 2745666305979858144
+      pipo-nekonin001_7: -2074235051028853170
+      pipo-nekonin001_8: 5048457141354000675
+      pipo-nekonin001_9: 6062738488276958887
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

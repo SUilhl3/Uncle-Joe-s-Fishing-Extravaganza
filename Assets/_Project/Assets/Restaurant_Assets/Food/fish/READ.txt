@@ -1,0 +1,3 @@
+All included assets are under the license CC0.
+You can do with them what you want in commercial projects or non-commercial projects;
+You cannot redistribute the assets without including them in a project(game,...);
