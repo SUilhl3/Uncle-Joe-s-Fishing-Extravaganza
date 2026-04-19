@@ -28,6 +28,12 @@ public static class FishingDailyLimitManager
         if (HasBait()) bonus += BaitBonus;
         if (HasBait2()) bonus += Bait2Bonus;
 
+        if (DailyEffectManager.Instance != null)
+        {
+            bonus += DailyEffectManager.Instance.GetIntValue(DailyEffectType.ExtraDailyCatch);
+            bonus -= DailyEffectManager.Instance.GetIntValue(DailyEffectType.ReducedDailyCatch);
+        }
+
         return BaseDailyLimit + bonus;
     }
 

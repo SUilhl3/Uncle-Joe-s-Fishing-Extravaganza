@@ -88,6 +88,17 @@ public class TreasureBuyerManager : MonoBehaviour
 
     int GetOfferPrice(TreasureBuyerCatalogEntry entry)
     {
-        return Mathf.CeilToInt(entry.baseValue * 1.2f);
+        float multiplier = 1.2f;
+
+        if (DailyEffectManager.Instance != null)
+        {
+            if (DailyEffectManager.Instance.HasEffect(DailyEffectType.BetterTreasureBuyerPayout))
+                multiplier += DailyEffectManager.Instance.GetFloatValue(DailyEffectType.BetterTreasureBuyerPayout);
+
+            if (DailyEffectManager.Instance.HasEffect(DailyEffectType.WorseTreasureBuyerPayout))
+                multiplier -= DailyEffectManager.Instance.GetFloatValue(DailyEffectType.WorseTreasureBuyerPayout);
+        }
+
+        return Mathf.CeilToInt(entry.baseValue * multiplier);
     }
 }

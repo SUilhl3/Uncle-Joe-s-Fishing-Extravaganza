@@ -947,6 +947,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811131594}
   m_CullTransparentMesh: 1
+--- !u!1 &1183287691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1183287693}
+  - component: {fileID: 1183287692}
+  m_Layer: 0
+  m_Name: DailyEffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1183287692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183287691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38fc8f53478df141887ef09dfd536eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DailyEffectManager
+  positiveEffects:
+  - {fileID: 11400000, guid: 4bab4e5325aca314f8c458b9051a043a, type: 2}
+  - {fileID: 11400000, guid: 72019783bbb91bf40b9b316c0e434f55, type: 2}
+  - {fileID: 11400000, guid: f3cc481588fa4cc41a55a86501686fa8, type: 2}
+  negativeEffects:
+  - {fileID: 11400000, guid: b883992bfb2370248878a330ef55db10, type: 2}
+  - {fileID: 11400000, guid: 15953aec4608d1a4ba4aa9d6a61967a9, type: 2}
+  - {fileID: 11400000, guid: 0b27dd2f3df8caf45968da59219fa92d, type: 2}
+  activeEffect: {fileID: 0}
+--- !u!4 &1183287693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183287691}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 378.79413, y: 22.7072, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1207390300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,3 +1718,4 @@ SceneRoots:
   - {fileID: 1207390302}
   - {fileID: 800880079}
   - {fileID: 71813695}
+  - {fileID: 1183287693}

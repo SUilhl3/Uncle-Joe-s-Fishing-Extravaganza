@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -52,6 +53,9 @@ public class GameManager : MonoBehaviour
     public GameObject tutorialPanel;
     public GameObject pausePanel;
 
+    [Header("Scene Flow")]
+    [SerializeField] private string dailyEffectSceneName = "DailyEffectScene";
+
     float timer;
     Coroutine timerCoroutine;
 
@@ -86,7 +90,6 @@ public class GameManager : MonoBehaviour
     {
         if (dayComplete)
         {
-            // Prevent serving more than allowed per day
             return;
         }
 
@@ -110,6 +113,21 @@ public class GameManager : MonoBehaviour
 
             float totalEarned = basePrice + tip;
 
+            if (DailyEffectManager.Instance != null)
+            {
+                if (DailyEffectManager.Instance.HasEffect(DailyEffectType.BetterRestaurantPayout))
+                {
+                    float bonus = DailyEffectManager.Instance.GetFloatValue(DailyEffectType.BetterRestaurantPayout);
+                    totalEarned *= (1f + bonus);
+                }
+
+                if (DailyEffectManager.Instance.HasEffect(DailyEffectType.WorseRestaurantPayout))
+                {
+                    float penalty = DailyEffectManager.Instance.GetFloatValue(DailyEffectType.WorseRestaurantPayout);
+                    totalEarned *= (1f - penalty);
+                }
+            }
+
             SaveManager.AddToDailyTotal(totalEarned);
 
             int centsEarned = Mathf.RoundToInt(totalEarned * 100f);
@@ -127,7 +145,7 @@ public class GameManager : MonoBehaviour
 
             sessionTotal += totalEarned;
 
-            string payoutText = "$" + basePrice.ToString("F2") + " + $" + tip.ToString("F2") + " tip!";
+            string payoutText = "$" + totalEarned.ToString("F2") + " earned!";
 
             if (resultText != null)
                 resultText.text = payoutText;
@@ -306,9 +324,6 @@ public class GameManager : MonoBehaviour
 
     public void StartDay()
     {
-        SaveManager.AdvanceGameDate(1);
-        SaveManager.AdvanceDayNumber(1);
-
         if (startDayPanel != null)
             startDayPanel.SetActive(false);
 
@@ -316,12 +331,10 @@ public class GameManager : MonoBehaviour
             uiContainer.SetActive(true);
 
         Time.timeScale = 1f;
+        isPaused = false;
 
         ordersServed = 0;
         dayComplete = false;
-
-        StartCoroutine(StartFirstOrder());
-
         sessionTotal = 0f;
 
         if (dailyTotalText != null)
@@ -331,7 +344,20 @@ public class GameManager : MonoBehaviour
             currentTotalText.text = "$" + sessionTotal.ToString("F2");
 
         if (dayText != null)
-            dayText.text = "Day" + SaveManager.GetDayNumber();
+            dayText.text = "Day " + SaveManager.GetDayNumber();
+
+        StartCoroutine(StartFirstOrder());
+    }
+
+    public void EndDay()
+    {
+        if (DailyEffectManager.Instance != null)
+            DailyEffectManager.Instance.ClearActiveEffect();
+
+        SaveManager.AdvanceGameDate(1);
+        SaveManager.AdvanceDayNumber(1);
+
+        SceneManager.LoadScene(dailyEffectSceneName);
     }
 
     public void TogglePause()
@@ -367,6 +393,8 @@ public class GameManager : MonoBehaviour
 
         if (customer != null && customer.orderText != null)
             customer.orderText.text = "Time to go home!";
+
+        EndDay();
     }
 
     void UpdateTimerUI(float t, bool visible)
