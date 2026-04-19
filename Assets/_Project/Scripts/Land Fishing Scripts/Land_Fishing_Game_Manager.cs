@@ -12,6 +12,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] Button startFishingButton;
     [SerializeField] Button castButton;
     [SerializeField] TextMeshProUGUI baitText;
+    [SerializeField] FishingDailyUI fishingDailyUI;
 
     [Header("Caught Item Panel UI")]
     [SerializeField] GameObject caughtItemPanel;
@@ -59,6 +60,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         fishAi = item.GetComponent<Fish_AI>();
         storedItems = new List<Item>();
         baitText.text = "Bait: " + numBait;
+        fishingDailyUI = FindFirstObjectByType<FishingDailyUI>();
     }
 
     //Starts the cast distance slider moving up and down
@@ -311,7 +313,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             ResetFishingGame();
             return;
         }
-
+        fishingDailyUI.Refresh(); //update daily limit UI
         castDistanceSlider.value = 0;
         DisplayCaughtItem(caughtItem);
         UpdateInventory();
