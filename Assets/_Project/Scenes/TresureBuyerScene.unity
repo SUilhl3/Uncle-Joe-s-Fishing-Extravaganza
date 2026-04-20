@@ -2142,7 +2142,7 @@ MonoBehaviour:
   - id: Lamp
     displayName: Lamp
     baseValue: 20
-    unlockKey: 
+    unlockKey: LampPurchased
   - id: Lake Sunfish
     displayName: Lake Sunfish
     baseValue: 100
@@ -2188,7 +2188,7 @@ MonoBehaviour:
     baseValue: 150
     unlockKey: ToyPurchased
   - id: Dragon
-    displayName: Dragon
+    displayName: Dragon Fish
     baseValue: 150
     unlockKey: DragonPurchased
   - id: Dino
@@ -2199,6 +2199,30 @@ MonoBehaviour:
     displayName: Frog
     baseValue: 150
     unlockKey: FrogPurchased
+  - id: 0-0
+    displayName: 0-0
+    baseValue: 150
+    unlockKey: ZeroZeroPurchased
+  - id: BluePike
+    displayName: BluePike
+    baseValue: 150
+    unlockKey: 
+  - id: Pink
+    displayName: Pink
+    baseValue: 150
+    unlockKey: PinkPurchased
+  - id: MissPuff
+    displayName: Miss Puff
+    baseValue: 150
+    unlockKey: MissPuffPurchased
+  - id: Jug
+    displayName: Jug
+    baseValue: 150
+    unlockKey: 
+  - id: PatrickHouse
+    displayName: Patrick House
+    baseValue: 150
+    unlockKey: PatrickHousePurchased
   contentRoot: {fileID: 789044917}
   rowPrefab: {fileID: 67398280467866611, guid: 919be8070f4ca8940b417e792fe9a232, type: 3}
 --- !u!4 &1262783863
@@ -2596,7 +2620,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1259804452}
   m_Direction: 0
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
