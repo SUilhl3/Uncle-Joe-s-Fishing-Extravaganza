@@ -16,4 +16,6 @@ MonoBehaviour:
   description: Small freshwater fish
   fishSprite: {fileID: 21300000, guid: f2484d7cd99618f479b73122af0e6237, type: 3}
   value: 10
+  probabilityOfCatch: 35
+  rarity: 0
   fishSize: 1

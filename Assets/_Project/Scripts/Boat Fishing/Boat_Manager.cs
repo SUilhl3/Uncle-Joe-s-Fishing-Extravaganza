@@ -164,8 +164,28 @@ public class Boat_Manager : MonoBehaviour
 
         if (fishOnly.Count == 0)
             return null;
+        
+        float totalWeight = 0f;
 
-        int index = Random.Range(0, fishOnly.Count);
-        return fishOnly[index];
+        foreach (var fish in fishOnly)
+        {
+            totalWeight += fish.probabilityOfCatch;
+        }
+
+        float randomNum = Random.Range(0f, totalWeight);
+        float currentWeight = 0f;
+
+        foreach (var fish in fishOnly)
+        {
+            currentWeight += fish.probabilityOfCatch;
+            if (randomNum <= currentWeight)
+            {
+                return fish;
+            }
+        }
+
+        return fishOnly[0];
+        //int index = Random.Range(0, fishOnly.Count);
+        //return fishOnly[index];
     }
 }

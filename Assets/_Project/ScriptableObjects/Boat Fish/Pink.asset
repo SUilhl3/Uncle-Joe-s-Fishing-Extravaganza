@@ -16,4 +16,6 @@ MonoBehaviour:
   description: Pink
   fishSprite: {fileID: -118556472, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   value: 100
+  probabilityOfCatch: 7
+  rarity: 2
   fishSize: 1

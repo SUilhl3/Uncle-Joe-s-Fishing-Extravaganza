@@ -16,4 +16,6 @@ MonoBehaviour:
   description: Crab
   fishSprite: {fileID: -4068327758537392850, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   value: 20
+  probabilityOfCatch: 7
+  rarity: 2
   fishSize: 1

@@ -16,4 +16,6 @@ MonoBehaviour:
   description: Sea Turtle Egg
   fishSprite: {fileID: -2178467043915682464, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   value: 0
+  probabilityOfCatch: 18
+  rarity: 1
   fishSize: 2
