@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-[Serializable] public class SaveData 
+[Serializable] public class SaveData
 {
     public string playerName;
     public int money;
@@ -11,4 +11,5 @@ using System.Collections.Generic;
     public bool hasChest;
     public bool hasBait;
     public bool hasBait2;
+    public int slotIndex;
 }
