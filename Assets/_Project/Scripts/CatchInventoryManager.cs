@@ -162,4 +162,15 @@ public static class CatchInventoryManager
 
         return false;
     }
+
+    public static CatchInventorySaveData Export() 
+    {
+        return Load(); 
+    }
+
+    public static void Import(CatchInventorySaveData data) 
+    {
+        cachedData = data ?? new CatchInventorySaveData(); 
+        Save(); 
+    }
 }
