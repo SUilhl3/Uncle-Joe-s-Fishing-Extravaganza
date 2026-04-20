@@ -7,6 +7,7 @@ public class Boat_Fish : MonoBehaviour
     //this is just going to do the basic fish movement and behavior for now
 
     [SerializeField] private Boat_Fish_SO fishSO;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
     [SerializeField] private float swimSpeed = 2f;
     [SerializeField] private Vector2 wanderDirection;
@@ -39,8 +40,16 @@ public class Boat_Fish : MonoBehaviour
     [SerializeField] private float yRotation = 0f;
     [SerializeField] private float zRotation = 0f;
 
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        boat = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     private void Start()
     {
+        fishSO = Boat_Manager.instance.startingFish[Random.Range(0, Boat_Manager.instance.startingFish.Count)];
+        spriteRenderer.sprite = fishSO.fishSprite;
         originalScale = transform.localScale;
         // Set up the fish's mouth collider
         fish_collider = GetComponent<CircleCollider2D>();
@@ -124,6 +133,8 @@ public class Boat_Fish : MonoBehaviour
             fishOffHook(4);
             transform.position = boat.position; 
             Boat_Manager.instance.addFishToBoat(fishSO);
+            Fish_Spawner fishSpawner = FindFirstObjectByType<Fish_Spawner>();
+            fishSpawner.RemoveFish(this);
             hookScript.InitializeCast(); //reset the hook for the next cast
         }
         else if (collision.gameObject.CompareTag("Hook"))
