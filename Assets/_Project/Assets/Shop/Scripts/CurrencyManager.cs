@@ -11,7 +11,7 @@ public class CurrencyManager : MonoBehaviour
     [Header("UI (optional, can be set per-scene)")]
     [SerializeField] private TMP_Text coinsText;
 
-    private const string CurrencyKey = "PlayerCents";
+    private string CurrencyKey => $"save_{SaveManager.GetCurrentSlot()}_PlayerCents";
 
     private void Awake()
     {
@@ -24,8 +24,7 @@ public class CurrencyManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        cents = PlayerPrefs.GetInt(CurrencyKey, cents);
-        RefreshUI();
+        Load();
     }
 
     public int Cents => cents;
@@ -35,6 +34,7 @@ public class CurrencyManager : MonoBehaviour
     public bool Spend(int costInCents)
     {
         if (!CanAfford(costInCents)) return false;
+
         cents -= costInCents;
         Save();
         RefreshUI();
@@ -44,21 +44,35 @@ public class CurrencyManager : MonoBehaviour
     public void AddCents(int amountInCents)
     {
         if (amountInCents <= 0) return;
+
         cents += amountInCents;
         Save();
         RefreshUI();
+    }
+
+    public void SetCents(int newAmount)
+    {
+        cents = Mathf.Max(0, newAmount);
+        Save();
+        RefreshUI();
+    }
+
+    public void Load()
+    {
+        cents = PlayerPrefs.GetInt(CurrencyKey, cents);
+        RefreshUI();
+    }
+
+    public void Save()
+    {
+        PlayerPrefs.SetInt(CurrencyKey, cents);
+        PlayerPrefs.Save();
     }
 
     public void SetUIText(TMP_Text text)
     {
         coinsText = text;
         RefreshUI();
-    }
-
-    private void Save()
-    {
-        PlayerPrefs.SetInt(CurrencyKey, cents);
-        PlayerPrefs.Save();
     }
 
     private void RefreshUI()

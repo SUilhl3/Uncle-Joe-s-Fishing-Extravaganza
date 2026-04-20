@@ -14,14 +14,21 @@ public class SaveGameUI : MonoBehaviour
     {
         SaveManager.SetActiveSlot(slotIndex);
 
-        PlayerPrefs.SetString($"save_{slotIndex}_PlayerName", "Player");
-        PlayerPrefs.SetInt($"save_{slotIndex}_Money", 100);
-        PlayerPrefs.SetInt($"save_{slotIndex}_GameDayNumber", 1);
+        string playerName = SaveManager.GetPlayerName();
+        int day = SaveManager.GetDayNumber();
+
+        int cents = 0;
+
+        if (CurrencyManager.Instance != null)
+            cents = CurrencyManager.Instance.Cents;
+
+        PlayerPrefs.SetString($"save_{slotIndex}_PlayerName", playerName);
+        PlayerPrefs.SetInt($"save_{slotIndex}_PlayerCents", cents);
+        PlayerPrefs.SetInt($"save_{slotIndex}_GameDayNumber", day);
         PlayerPrefs.SetInt($"save_{slotIndex}_HasSave", 1);
 
         PlayerPrefs.Save();
 
-        Debug.Log("Saved to slot: " + slotIndex);
-
+        Debug.Log($"Saved slot {slotIndex}: {playerName}, ${(cents / 100f):F2}, Day {day}");
     }
 }

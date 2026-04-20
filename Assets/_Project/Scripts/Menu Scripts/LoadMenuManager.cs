@@ -16,8 +16,11 @@ public class LoadMenuManager : MonoBehaviour
         foreach (Transform child in contentParent)
             Destroy(child.gameObject);
 
+        Debug.Log("numberOfSlots = " + numberOfSlots);
+
         for (int i = 0; i < numberOfSlots; i++)
         {
+            Debug.Log("Creating slot " + i);
             GameObject slotObj = Instantiate(slotPrefab, contentParent);
             slotObj.GetComponent<SaveSlotUI>().Setup(i);
         }

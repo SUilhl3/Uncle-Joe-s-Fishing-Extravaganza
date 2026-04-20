@@ -26,7 +26,8 @@ public static class SaveManager
         string v = PlayerPrefs.GetString(Prefix(GameDateKey), "");
         if (string.IsNullOrEmpty(v))
         {
-            var today = DateTime.Now.Date; SetCurrentGameDate(today);
+            var today = DateTime.Now.Date;
+            SetCurrentGameDate(today);
             return today;
         }
 
@@ -46,7 +47,8 @@ public static class SaveManager
 
     public static DateTime AdvanceGameDate(int days = 1)
     {
-        var d = GetCurrentGameDate().AddDays(days); SetCurrentGameDate(d);
+        var d = GetCurrentGameDate().AddDays(days);
+        SetCurrentGameDate(d);
         return d;
     }
 
@@ -59,14 +61,20 @@ public static class SaveManager
     {
         int day = GetDayNumber() + by;
         PlayerPrefs.SetInt(Prefix(GameDayKey), day);
-        PlayerPrefs.Save(); return day;
+        PlayerPrefs.Save();
+        return day;
     }
 
     public static void AddToDailyTotal(float amount)
     {
-        if (amount <= 0f) return; var key = DailyKey(GetCurrentGameDate());
-        float current = PlayerPrefs.GetFloat(key, 0f); current += amount;
-        PlayerPrefs.SetFloat(key, current); PlayerPrefs.Save();
+        if (amount <= 0f) return;
+
+        var key = DailyKey(GetCurrentGameDate());
+        float current = PlayerPrefs.GetFloat(key, 0f);
+        current += amount;
+
+        PlayerPrefs.SetFloat(key, current);
+        PlayerPrefs.Save();
     }
 
     public static float GetDailyTotal(DateTime date)
@@ -110,10 +118,12 @@ public static class SaveManager
     {
         string prefix = $"save_{slot}_";
 
+        PlayerPrefs.DeleteKey(prefix + "HasSave");
         PlayerPrefs.DeleteKey(prefix + "GameDate");
         PlayerPrefs.DeleteKey(prefix + "GameDayNumber");
         PlayerPrefs.DeleteKey(prefix + "PlayerName");
         PlayerPrefs.DeleteKey(prefix + "Money");
+        PlayerPrefs.DeleteKey(prefix + "PlayerCents");
 
         PlayerPrefs.Save();
     }
@@ -122,7 +132,6 @@ public static class SaveManager
     {
         AdvanceGameDate(1);
         AdvanceDayNumber(1);
-
         PlayerPrefs.Save();
     }
 
