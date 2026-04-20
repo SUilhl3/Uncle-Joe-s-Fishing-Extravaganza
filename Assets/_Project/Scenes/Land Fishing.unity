@@ -4586,7 +4586,16 @@ MonoBehaviour:
   buttonRoot: {fileID: 909385821}
   radioButton: {fileID: 909385825}
   audioSource: {fileID: 909385824}
-  voiceLines: []
+  voiceLines:
+  - {fileID: 8300000, guid: 09daa6d0250f75d4ebefb37b0e4f713e, type: 3}
+  - {fileID: 8300000, guid: 0b4609df8c4f204458a031aa359fc126, type: 3}
+  - {fileID: 8300000, guid: c217a07aac362774ca6ad19074ab2ae7, type: 3}
+  - {fileID: 8300000, guid: e8e645a0a25e5ae45b6aeb25c0be77ba, type: 3}
+  - {fileID: 8300000, guid: 1dccb653e9261c048a7d602491fdcfb9, type: 3}
+  - {fileID: 8300000, guid: cf72607a281e8f44d9b5289e07164157, type: 3}
+  - {fileID: 8300000, guid: 2fa6c70190cb3dc49a765ef0f31886af, type: 3}
+  - {fileID: 8300000, guid: 992e190ef4ce0674ab42ae5bff760518, type: 3}
+  - {fileID: 8300000, guid: 9e8e494a32d584244b15e66a4204f45b, type: 3}
   stopCurrentClipBeforePlaying: 1
 --- !u!82 &909385824
 AudioSource:
