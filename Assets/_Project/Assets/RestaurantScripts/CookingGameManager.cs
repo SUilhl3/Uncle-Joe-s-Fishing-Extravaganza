@@ -360,9 +360,6 @@ public class GameManager : MonoBehaviour
         if (DailyEffectManager.Instance != null)
             DailyEffectManager.Instance.ClearActiveEffect();
 
-        SaveManager.AdvanceGameDate(1);
-        SaveManager.AdvanceDayNumber(1);
-
         SceneManager.LoadScene(dailyEffectSceneName);
     }
 

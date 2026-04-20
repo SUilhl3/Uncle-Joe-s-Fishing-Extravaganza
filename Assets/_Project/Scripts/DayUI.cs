@@ -1,23 +1,26 @@
 using UnityEngine;
 using TMPro;
-using System;
 
 public class DayUI : MonoBehaviour
 {
     public TextMeshProUGUI dayText;
-
-    private DateTime startingDate = new DateTime(2026, 1, 1);
 
     void Start()
     {
         UpdateDayText();
     }
 
+    void OnEnable()
+    {
+        UpdateDayText();
+    }
+
     public void UpdateDayText()
     {
-        DateTime currentDate = SaveManager.GetCurrentGameDate();
-        int dayNumber = (currentDate - startingDate).Days + 1;
+        if (dayText == null)
+            return;
 
+        int dayNumber = SaveManager.GetDayNumber();
         dayText.text = $"Day {dayNumber}";
     }
 }
