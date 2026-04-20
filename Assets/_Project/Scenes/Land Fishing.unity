@@ -5062,6 +5062,7 @@ MonoBehaviour:
   caughtItemName: {fileID: 270610350}
   caughtItemDescription: {fileID: 1604488691}
   caughtItemImage: {fileID: 1619314364}
+  catchLimitImage: {fileID: 2121806477683260608, guid: 0d289039c065dfd4ea2e23b828fce29b, type: 3}
   item: {fileID: 480042076}
   playerBar: {fileID: 1879742996}
   progressBar: {fileID: 118333270}
