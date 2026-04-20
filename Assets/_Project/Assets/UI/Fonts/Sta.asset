@@ -2507,7 +2507,7 @@ Material:
     m_Floats:
     - _Ambient: 0.5
     - _Bevel: 1
-    - _BevelClamp: 0.837
+    - _BevelClamp: 1
     - _BevelOffset: 0.5
     - _BevelRoundness: 1
     - _BevelWidth: 0.5
