@@ -15,6 +15,6 @@ public class FishingDailyUI : MonoBehaviour
         int caught = FishingDailyLimitManager.GetFishCaughtToday();
         int max = FishingDailyLimitManager.GetDailyCatchLimit();
 
-        fishCounterText.text = $"Fish Today: {caught} / {max}";
+        fishCounterText.text = $"Catches Today: {caught} / {max}";
     }
 }
