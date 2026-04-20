@@ -427,6 +427,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7fa71a6e98bf19b47832ae869171fc66, type: 2}
   - {fileID: 11400000, guid: ef876c87f1223bd4b981c2cd5e5dbc47, type: 2}
   - {fileID: 11400000, guid: 6da16886eebb1ab4e86b2bc15a0ced8d, type: 2}
+  fishingDailyUI: {fileID: 1220821766}
 --- !u!4 &203354076
 Transform:
   m_ObjectHideFlags: 0
@@ -860,7 +861,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fish Today 0/10
+  m_text: Catches Today 0/10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2975,6 +2976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneSwitcher
   OptionsPanel: {fileID: 637805979}
   PausePanel: {fileID: 2044697318}
+  NewGamePanel: {fileID: 0}
 --- !u!4 &1789689046
 Transform:
   m_ObjectHideFlags: 0

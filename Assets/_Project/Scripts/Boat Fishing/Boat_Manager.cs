@@ -16,6 +16,8 @@ public class Boat_Manager : MonoBehaviour
     public List<Boat_Fish_SO> startingFish = new List<Boat_Fish_SO>();
     public List<Boat_Fish_SO> unlockableFish = new List<Boat_Fish_SO>();
 
+    public FishingDailyUI fishingDailyUI;
+
     void Awake()
     {
         if (instance == null)
@@ -56,6 +58,7 @@ public class Boat_Manager : MonoBehaviour
         caughtFish.Add(fish);
         fishAmount++;
         boatValue += fish.value;
+        fishingDailyUI.Refresh();
 
         CatchInventoryManager.RegisterCatch(
             fish.fishName,
