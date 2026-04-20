@@ -6,7 +6,7 @@ public class Boat_Manager : MonoBehaviour
 {
     public static Boat_Manager instance;
 
-    public int baitAmount = 5;
+    //public int baitAmount = 5;
     public int fishAmount = 0;
     public float boatValue = 0f;
 
@@ -31,15 +31,15 @@ public class Boat_Manager : MonoBehaviour
         }
     }
 
-    public void addBait(int amount)
-    {
-        baitAmount += amount;
-    }
+    //public void addBait(int amount)
+    //{
+    //    baitAmount += amount;
+    //}
 
-    public void setBait(int amount)
-    {
-        baitAmount = amount;
-    }
+    //public void setBait(int amount)
+    //{
+    //    baitAmount = amount;
+    //}
 
     public void addFishToBoat(Boat_Fish_SO fish)
     {
@@ -130,22 +130,22 @@ public class Boat_Manager : MonoBehaviour
         boatValue = 0f;
     }
 
-    public void useBait()
-    {
-        if (baitAmount > 0)
-        {
-            baitAmount--;
-        }
-        else
-        {
-            Debug.Log("No more bait! Can't fish.");
-        }
-    }
+    //public void useBait()
+    //{
+    //    if (baitAmount > 0)
+    //    {
+    //        baitAmount--;
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("No more bait! Can't fish.");
+    //    }
+    //}
 
-    public bool hasBait()
-    {
-        return baitAmount > 0;
-    }
+    //public bool hasBait()
+    //{
+    //    return baitAmount > 0;
+    //}
 
     public Boat_Fish_SO GetRandomBoatFishOnly()
     {

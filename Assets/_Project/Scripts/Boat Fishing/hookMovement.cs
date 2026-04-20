@@ -285,11 +285,11 @@ public class hookMovement : MonoBehaviour
     {
         if (currentState != HookState.casting) { return; }
 
-        if (!Boat_Manager.instance.hasBait())
-        {
-            Debug.Log("No bait left! Can't cast.");
-            return;
-        }
+        //if (!Boat_Manager.instance.hasBait())
+        //{
+        //    Debug.Log("No bait left! Can't cast.");
+        //    return;
+        //}
 
         if (FishingDailyLimitManager.HasReachedLimit())
         {
@@ -297,7 +297,7 @@ public class hookMovement : MonoBehaviour
             return;
         }
 
-        Boat_Manager.instance.useBait();
+        //Boat_Manager.instance.useBait();
         currentState = HookState.dropping;
         castPanel.SetActive(false);
         moveInput.y = ambientDropSpeed; //start ambient drop
