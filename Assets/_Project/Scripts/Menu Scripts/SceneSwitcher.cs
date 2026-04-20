@@ -18,7 +18,7 @@ public class SceneSwitcher : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("Load Menu");
+        SceneManager.LoadScene("LoadMenu");
     }
 
     public void OptionsMenuOpen()
