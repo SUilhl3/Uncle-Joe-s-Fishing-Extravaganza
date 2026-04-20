@@ -17,7 +17,7 @@ public class TreasureBuyerManager : MonoBehaviour
     private List<TreasureBuyerCatalogEntry> todaysOffers = new List<TreasureBuyerCatalogEntry>();
 
     private string OfferKey =>
-        "TreasureOffers_" + SaveManager.GetCurrentGameDate().ToString("yyyyMMdd");
+        SaveManager.SlotKey("TreasureOffers_" + SaveManager.GetCurrentGameDate().ToString("yyyyMMdd"));
 
     void Start()
     {
@@ -51,7 +51,7 @@ public class TreasureBuyerManager : MonoBehaviour
 
         foreach (var entry in catalog)
         {
-            if (string.IsNullOrEmpty(entry.unlockKey) || PlayerPrefs.GetInt(entry.unlockKey, 0) == 1)
+            if (string.IsNullOrEmpty(entry.unlockKey) || SaveManager.GetSlotInt(entry.unlockKey, 0) == 1)
             {
                 available.Add(entry);
             }
@@ -60,8 +60,8 @@ public class TreasureBuyerManager : MonoBehaviour
         int requestCount = 5;
 
         // Shop upgrades that increase daily treasure buyer requests
-        if (PlayerPrefs.GetInt("PaintingPurchased", 0) == 1) requestCount += 1;
-        if (PlayerPrefs.GetInt("StackOfBooksPurchased", 0) == 1) requestCount += 1;
+        if (SaveManager.GetSlotInt("PaintingPurchased", 0) == 1) requestCount += 1;
+        if (SaveManager.GetSlotInt("StackOfBooksPurchased", 0) == 1) requestCount += 1;
 
         requestCount = Mathf.Min(requestCount, available.Count);
 
@@ -107,13 +107,13 @@ public class TreasureBuyerManager : MonoBehaviour
         }
 
         // Shop upgrades
-        if (PlayerPrefs.GetInt("ChickenNuggetPurchased", 0) == 1)
+        if (SaveManager.GetSlotInt("ChickenNuggetPurchased", 0) == 1)
             multiplier += 0.20f;
 
-        if (PlayerPrefs.GetInt("MirrorPurchased", 0) == 1)
+        if (SaveManager.GetSlotInt("MirrorPurchased", 0) == 1)
             multiplier += 0.10f;
 
-        if (PlayerPrefs.GetInt("AlsoMirrorPurchased", 0) == 1)
+        if (SaveManager.GetSlotInt("AlsoMirrorPurchased", 0) == 1)
             multiplier += 0.10f;
 
         return Mathf.CeilToInt(entry.baseValue * multiplier);

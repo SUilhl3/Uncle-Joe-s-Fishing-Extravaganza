@@ -122,15 +122,15 @@ public class GameManager : MonoBehaviour
                     multiplier -= DailyEffectManager.Instance.GetFloatValue(DailyEffectType.MarketCrash);
             }
 
-            // Dish upgrades
-            if (PlayerPrefs.GetInt("DishPurchased", 0) == 1) multiplier += 0.05f;
-            if (PlayerPrefs.GetInt("Dish2Purchased", 0) == 1) multiplier += 0.10f;
-            if (PlayerPrefs.GetInt("Dish3Purchased", 0) == 1) multiplier += 0.15f;
-            if (PlayerPrefs.GetInt("Dish4Purchased", 0) == 1) multiplier += 0.20f;
+            // Dish upgrades (slot-specific)
+            if (SaveManager.GetSlotInt("DishPurchased", 0) == 1) multiplier += 0.05f;
+            if (SaveManager.GetSlotInt("Dish2Purchased", 0) == 1) multiplier += 0.10f;
+            if (SaveManager.GetSlotInt("Dish3Purchased", 0) == 1) multiplier += 0.15f;
+            if (SaveManager.GetSlotInt("Dish4Purchased", 0) == 1) multiplier += 0.20f;
 
-            // Global mirror bonuses
-            if (PlayerPrefs.GetInt("MirrorPurchased", 0) == 1) multiplier += 0.10f;
-            if (PlayerPrefs.GetInt("AlsoMirrorPurchased", 0) == 1) multiplier += 0.10f;
+            // Global mirror bonuses (slot-specific)
+            if (SaveManager.GetSlotInt("MirrorPurchased", 0) == 1) multiplier += 0.10f;
+            if (SaveManager.GetSlotInt("AlsoMirrorPurchased", 0) == 1) multiplier += 0.10f;
 
             totalEarned *= multiplier;
 
@@ -427,7 +427,7 @@ public class GameManager : MonoBehaviour
     {
         int total = 10;
 
-        if (PlayerPrefs.GetInt("SmallPlatePurchased", 0) == 1)
+        if (SaveManager.GetSlotInt("SmallPlatePurchased", 0) == 1)
             total += 1;
 
         return total;

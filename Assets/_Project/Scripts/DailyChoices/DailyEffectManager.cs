@@ -170,13 +170,13 @@ public class DailyEffectManager : MonoBehaviour
 
     public bool HasUsedBonusCatchToday()
     {
-        string key = "BonusCatchUsed_" + SaveManager.GetCurrentGameDate().ToString("yyyyMMdd");
+        string key = SaveManager.SlotKey("BonusCatchUsed_" + SaveManager.GetCurrentGameDate().ToString("yyyyMMdd"));
         return PlayerPrefs.GetInt(key, 0) == 1;
     }
 
     public void MarkBonusCatchUsedToday()
     {
-        string key = "BonusCatchUsed_" + SaveManager.GetCurrentGameDate().ToString("yyyyMMdd");
+        string key = SaveManager.SlotKey("BonusCatchUsed_" + SaveManager.GetCurrentGameDate().ToString("yyyyMMdd"));
         PlayerPrefs.SetInt(key, 1);
         PlayerPrefs.Save();
     }

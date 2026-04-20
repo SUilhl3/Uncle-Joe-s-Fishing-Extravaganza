@@ -228,14 +228,13 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     {
         float weight = item.probabilityOfCatch;
 
-        // Permanent shop effects: make Can/Gum/Jug less common
-        if (item.itemName == "Can" && PlayerPrefs.GetInt("CanPurchased", 0) == 1)
+        if (item.itemName == "Can" && SaveManager.GetSlotInt("CanPurchased", 0) == 1)
             weight *= 0.5f;
 
-        if (item.itemName == "Gum" && PlayerPrefs.GetInt("GumPurchased", 0) == 1)
+        if (item.itemName == "Gum" && SaveManager.GetSlotInt("GumPurchased", 0) == 1)
             weight *= 0.5f;
 
-        if (item.itemName == "Jug" && PlayerPrefs.GetInt("JugPurchased", 0) == 1)
+        if (item.itemName == "Jug" && SaveManager.GetSlotInt("JugPurchased", 0) == 1)
             weight *= 0.5f;
 
         bool isJunk = item.itemName == "Can" || item.itemName == "Gum" || item.itemName == "Jug";
@@ -260,15 +259,14 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             }
         }
 
-        // Permanent shop effects: Eye and Void increase rare catch chance
         bool isPermanentRare = item.itemRarity == ItemRarity.RARE || item.itemRarity == ItemRarity.LEGENDARY;
 
         if (isPermanentRare)
         {
-            if (PlayerPrefs.GetInt("EyePurchased", 0) == 1)
+            if (SaveManager.GetSlotInt("EyePurchased", 0) == 1)
                 weight *= 1.3f;
 
-            if (PlayerPrefs.GetInt("VoidPurchased", 0) == 1)
+            if (SaveManager.GetSlotInt("VoidPurchased", 0) == 1)
                 weight *= 1.6f;
         }
 
@@ -280,25 +278,25 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         switch (itemName)
         {
             case "Egg":
-                return PlayerPrefs.GetInt("EggPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("EggPurchased", 0) == 1;
             case "Lamp":
-                return PlayerPrefs.GetInt("LampPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("LampPurchased", 0) == 1;
             case "Duck":
-                return PlayerPrefs.GetInt("DuckPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("DuckPurchased", 0) == 1;
             case "Duck 2":
-                return PlayerPrefs.GetInt("Duck2Purchased", 0) == 1;
+                return SaveManager.GetSlotInt("Duck2Purchased", 0) == 1;
             case "Toy":
-                return PlayerPrefs.GetInt("ToyPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("ToyPurchased", 0) == 1;
             case "Dragon Fish":
-                return PlayerPrefs.GetInt("DragonPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("DragonPurchased", 0) == 1;
             case "Dino":
-                return PlayerPrefs.GetInt("DinoPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("DinoPurchased", 0) == 1;
             case "Frog":
-                return PlayerPrefs.GetInt("FrogPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("FrogPurchased", 0) == 1;
             case "Patrick House":
-                return PlayerPrefs.GetInt("PatrickHousePurchased", 0) == 1;
+                return SaveManager.GetSlotInt("PatrickHousePurchased", 0) == 1;
             case "Egg 2":
-                return PlayerPrefs.GetInt("Egg2Purchased", 0) == 1;
+                return SaveManager.GetSlotInt("Egg2Purchased", 0) == 1;
             default:
                 return false;
         }

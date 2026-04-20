@@ -101,23 +101,23 @@ public class Boat_Manager : MonoBehaviour
         switch (fishName)
         {
             case "Crab":
-                return PlayerPrefs.GetInt("CrabPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("CrabPurchased", 0) == 1;
             case "Elephant Fish":
-                return PlayerPrefs.GetInt("ElephantFishPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("ElephantFishPurchased", 0) == 1;
             case "Unknown Fish":
-                return PlayerPrefs.GetInt("UnknownFishPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("UnknownFishPurchased", 0) == 1;
             case "Super Sea Cucumber":
-                return PlayerPrefs.GetInt("SuperSeaCucumberPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("SuperSeaCucumberPurchased", 0) == 1;
             case "Plate Fish":
-                return PlayerPrefs.GetInt("PlateFishPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("PlateFishPurchased", 0) == 1;
             case "Sea Bun":
-                return PlayerPrefs.GetInt("SeaBunPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("SeaBunPurchased", 0) == 1;
             case "Miss Puff":
-                return PlayerPrefs.GetInt("MissPuffPurchased", 0) == 1;
-            case "Pink": 
-                return PlayerPrefs.GetInt("PinkPurchased", 0) == 1;
-            case "0-0": 
-                return PlayerPrefs.GetInt("ZeroZeroPurchased", 0) == 1;
+                return SaveManager.GetSlotInt("MissPuffPurchased", 0) == 1;
+            case "Pink":
+                return SaveManager.GetSlotInt("PinkPurchased", 0) == 1;
+            case "0-0":
+                return SaveManager.GetSlotInt("ZeroZeroPurchased", 0) == 1;
             default:
                 return false;
         }
