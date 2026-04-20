@@ -94,7 +94,7 @@ public class TreasureBuyerManager : MonoBehaviour
 
     int GetOfferPrice(TreasureBuyerCatalogEntry entry)
     {
-        float multiplier = 1.2f;
+        float multiplier = 5f;
 
         // Daily card effects
         if (DailyEffectManager.Instance != null)
