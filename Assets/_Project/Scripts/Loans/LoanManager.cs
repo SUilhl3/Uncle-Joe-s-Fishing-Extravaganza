@@ -45,6 +45,11 @@ public class LoanManager : MonoBehaviour
         return PlayerPrefs.GetInt(DebtKey, startingDebtInCents);
     }
 
+    public bool IsDebtCleared()
+    {
+        return GetDebtInCents() <= 0;
+    }
+
     public int GetWeeklyMinimumInCents()
     {
         int amount = PlayerPrefs.GetInt(WeeklyMinimumKey, weeklyMinimumPaymentInCents);
@@ -67,10 +72,14 @@ public class LoanManager : MonoBehaviour
         return Mathf.Max(0, amount);
     }
 
-    public int GetCurrentWeekNumber()
+    public int GetCurrentPaymentCycle()
     {
         int day = SaveManager.GetDayNumber();
-        return Mathf.CeilToInt(day / 7f);
+
+        // Day 1-6 = cycle 0
+        // Day 7-13 = cycle 1
+        // Day 14-20 = cycle 2
+        return Mathf.FloorToInt(day / 7f);
     }
 
     public int GetLastPaidWeek()
@@ -80,17 +89,22 @@ public class LoanManager : MonoBehaviour
 
     public bool IsPaidForCurrentWeek()
     {
-        return GetLastPaidWeek() >= GetCurrentWeekNumber();
-    }
+        int currentCycle = GetCurrentPaymentCycle();
 
-    public bool IsDebtCleared()
-    {
-        return GetDebtInCents() <= 0;
+        if (currentCycle <= 0)
+            return true;
+
+        return GetLastPaidWeek() >= currentCycle;
     }
 
     public bool IsPaymentDueThisWeek()
     {
         if (IsDebtCleared())
+            return false;
+
+        int currentCycle = GetCurrentPaymentCycle();
+
+        if (currentCycle <= 0)
             return false;
 
         return !IsPaidForCurrentWeek();
@@ -116,7 +130,7 @@ public class LoanManager : MonoBehaviour
             return false;
 
         ReduceDebt(amount);
-        PlayerPrefs.SetInt(LastPaidWeekKey, GetCurrentWeekNumber());
+        PlayerPrefs.SetInt(LastPaidWeekKey, GetCurrentPaymentCycle());
         PlayerPrefs.Save();
         return true;
     }
