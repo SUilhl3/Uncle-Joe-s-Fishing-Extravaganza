@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -32,10 +33,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] float chanceToCatchNothing = 0.9f;
 
     [Header("Fishing Elements")]
-    //[SerializeField] GameObject castingLine;
-    //[SerializeField] float maxCastDistance = 10f;
-    //[SerializeField] float castSpeed = 2f;
-    //[SerializeField] float waterPosition = -3f;
     [SerializeField] List<Item> availableItems;
     [SerializeField] List<Item> unlockableItems;
 
@@ -43,13 +40,9 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] Animator playerAnimator;
 
     bool isFishing = false;
-   // bool isCasting = false;
     bool isReturning = false;
     bool isFishingGameActive = false;
     float sliderMovementSpeed = 1.0f;
-    float castStrength;
-    Vector2 targetPosition;
-    Vector2 castStartingPosition;
     Vector2 playerBarStart;
     Vector2 itemStart;
     Vector2 originalPlayerBarSize;
@@ -68,7 +61,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        //castStartingPosition = castingLine.transform.position;
         playerBarStart = playerBar.anchoredPosition;
         itemStart = item.anchoredPosition;
         originalPlayerBarSize = playerBar.sizeDelta;
@@ -98,19 +90,9 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     public void Cast()
     {
         castButton.gameObject.SetActive(false);
-        //castStrength = castDistanceSlider.value;
-        playerAnimator.SetTrigger("Casting");  
-
-        //sets where to cast the line based on slider value 
-        //setup to be fishing towards the right side for now
-        //float castDistance = castStrength * maxCastDistance;
-
-        //float targetX = castStartingPosition.x + castDistance;
-        //targetPosition = new Vector2(targetX, waterPosition);
-
-        //isCasting = true;
         isFishing = false;
         castDistanceSlider.gameObject.SetActive(false);
+        playerAnimator.SetTrigger("Casting");  
     }
 
     // Update is called once per frame
@@ -120,11 +102,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         {
             Fishing();
         }
-
-        //if (isCasting)
-        //{
-        //    Casting();
-        //}
 
         if (isFishingGameActive)
         {
@@ -163,52 +140,50 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     //casting the line out to the water 
     public void Casting()
     {
-        //Vector2 currentPos = castingLine.transform.position;
-        //castingLine.transform.position = Vector2.MoveTowards(currentPos, targetPosition, castSpeed * Time.deltaTime);
+        StartCoroutine(CastingRoutine());
+    }
 
-        //if (Vector2.Distance(currentPos, targetPosition) < 0.01f)
-        //{
-            //isCasting = false;
+    IEnumerator CastingRoutine()
+    {
+        //checks for chance that nothing is on hook 
+        float adjustedChanceToCatchNothing = chanceToCatchNothing;
 
-            //checks for chance that nothing is on hook 
-            float adjustedChanceToCatchNothing = chanceToCatchNothing;
+        if (DailyEffectManager.Instance != null &&
+            DailyEffectManager.Instance.HasEffect(DailyEffectType.EmptyWaters))
+        {
+            adjustedChanceToCatchNothing += DailyEffectManager.Instance.GetFloatValue(DailyEffectType.EmptyWaters);
+        }
 
-            if (DailyEffectManager.Instance != null &&
-                DailyEffectManager.Instance.HasEffect(DailyEffectType.EmptyWaters))
-            {
-                adjustedChanceToCatchNothing += DailyEffectManager.Instance.GetFloatValue(DailyEffectType.EmptyWaters);
-            }
+        adjustedChanceToCatchNothing = Mathf.Clamp01(adjustedChanceToCatchNothing);
 
-            adjustedChanceToCatchNothing = Mathf.Clamp01(adjustedChanceToCatchNothing);
+        float fishOnHook = UnityEngine.Random.value;
+        if (fishOnHook < adjustedChanceToCatchNothing)
+        {
+            DisplayCaughtNothing(true);
+            yield return new WaitForSeconds(2.0f);
+            ResetFishingGame();
+            yield break;
+        }
 
-            float fishOnHook = UnityEngine.Random.value;
-            if (fishOnHook < adjustedChanceToCatchNothing)
-            {
-                DisplayCaughtNothing(true);
-                ResetFishingGame();
-                return;
-            }
+        caughtItem = GetRandomItem();
+        fishAi.rarity = caughtItem.itemRarity;
 
-            caughtItem = GetRandomItem();
-            fishAi.rarity = caughtItem.itemRarity;
+        // Reset player bar size before applying daily penalty
+        playerBar.sizeDelta = originalPlayerBarSize;
 
-            // Reset player bar size before applying daily penalty
-            playerBar.sizeDelta = originalPlayerBarSize;
+        if (DailyEffectManager.Instance != null &&
+            DailyEffectManager.Instance.HasEffect(DailyEffectType.ClumsyHands))
+        {
+            float penalty = DailyEffectManager.Instance.GetFloatValue(DailyEffectType.ClumsyHands);
+            playerBar.sizeDelta = new Vector2(originalPlayerBarSize.x * (1f - penalty), originalPlayerBarSize.y);
+        }
 
-            if (DailyEffectManager.Instance != null &&
-                DailyEffectManager.Instance.HasEffect(DailyEffectType.ClumsyHands))
-            {
-                float penalty = DailyEffectManager.Instance.GetFloatValue(DailyEffectType.ClumsyHands);
-                playerBar.sizeDelta = new Vector2(originalPlayerBarSize.x * (1f - penalty), originalPlayerBarSize.y);
-            }
-
-            progressBar.gameObject.SetActive(true);
-            progressBar.value = progressBar.maxValue / 3;
-            fishingMiniGame.SetActive(true);
-            isFishingGameActive = true;
-            castButton.gameObject.SetActive(false);
-            playerAnimator.SetTrigger("Reeling");
-        // }
+        progressBar.gameObject.SetActive(true);
+        progressBar.value = progressBar.maxValue / 3;
+        fishingMiniGame.SetActive(true);
+        isFishingGameActive = true;
+        castButton.gameObject.SetActive(false);
+        playerAnimator.SetTrigger("Reeling");
     }
 
     //function to select the random item from the list using weighted probabilities
@@ -328,21 +303,19 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         }
     }
 
+
     //returning the fishing line back to the player
     public void Returning()
     {
-        //castingLine.transform.position = Vector2.MoveTowards(
-        //    castingLine.transform.position,
-        //    castStartingPosition,
-        //    castSpeed * Time.deltaTime
-        //);
+        isReturning = false;
+        StartCoroutine(Return());
+    }
 
-       // if (Vector2.Distance(castingLine.transform.position, castStartingPosition) < 0.01f)
-        //{
-            caughtItemPanel.SetActive(false);
-            isReturning = false;
-            if (!FishingDailyLimitManager.HasReachedLimit()) { startFishingButton.gameObject.SetActive(true); }
-        //}
+    IEnumerator Return()
+    {
+        yield return new WaitForSeconds(2.0f);
+        caughtItemPanel.SetActive(false);
+        if (!FishingDailyLimitManager.HasReachedLimit()) { startFishingButton.gameObject.SetActive(true); }
     }
 
     void FishingMiniGame()
