@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item15
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Bait 2
-  description: 
+  description: Adds 5 more catch limit
   icon: {fileID: 6244358684371955587, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 2244

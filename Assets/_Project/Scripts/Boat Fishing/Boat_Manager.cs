@@ -43,6 +43,13 @@ public class Boat_Manager : MonoBehaviour
 
     public void addFishToBoat(Boat_Fish_SO fish)
     {
+        if (fish != null && fish.fishName == "Sea Turtle Egg")
+        {
+            Boat_Fish_SO newFish = GetRandomBoatFishOnly();
+            if (newFish != null)
+                fish = newFish;
+        }
+
         if (FishingDailyLimitManager.HasReachedLimit())
         {
             Debug.Log($"Daily limit reached! ({FishingDailyLimitManager.GetFishCaughtToday()}/{FishingDailyLimitManager.GetDailyCatchLimit()})");
@@ -105,6 +112,12 @@ public class Boat_Manager : MonoBehaviour
                 return PlayerPrefs.GetInt("PlateFishPurchased", 0) == 1;
             case "Sea Bun":
                 return PlayerPrefs.GetInt("SeaBunPurchased", 0) == 1;
+            case "Miss Puff":
+                return PlayerPrefs.GetInt("MissPuffPurchased", 0) == 1;
+            case "Pink": 
+                return PlayerPrefs.GetInt("PinkPurchased", 0) == 1;
+            case "0-0": 
+                return PlayerPrefs.GetInt("ZeroZeroPurchased", 0) == 1;
             default:
                 return false;
         }
@@ -132,5 +145,27 @@ public class Boat_Manager : MonoBehaviour
     public bool hasBait()
     {
         return baitAmount > 0;
+    }
+
+    public Boat_Fish_SO GetRandomBoatFishOnly()
+    {
+        List<Boat_Fish_SO> pool = GetCurrentBoatFishPool();
+
+        if (pool == null || pool.Count == 0)
+            return null;
+
+        List<Boat_Fish_SO> fishOnly = new List<Boat_Fish_SO>();
+
+        foreach (var fish in pool)
+        {
+            if (fish != null && fish.fishName != "Sea Turtle Egg")
+                fishOnly.Add(fish);
+        }
+
+        if (fishOnly.Count == 0)
+            return null;
+
+        int index = Random.Range(0, fishOnly.Count);
+        return fishOnly[index];
     }
 }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item38
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Void
-  description: 
+  description: Increase rare catch chance
   icon: {fileID: 4639506938558671751, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 2523

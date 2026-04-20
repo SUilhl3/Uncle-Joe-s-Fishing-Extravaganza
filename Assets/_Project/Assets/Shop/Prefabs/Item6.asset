@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item6
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Sea Turtle Egg
-  description: 
+  description: Catchable item in boat fishing that turns into a random boat fish
   icon: {fileID: -2178467043915682464, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 3567

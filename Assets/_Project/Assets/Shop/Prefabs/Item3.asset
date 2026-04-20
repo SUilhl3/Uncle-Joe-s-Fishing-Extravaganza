@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item3
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Painting
-  description: 
+  description: Adds an additional requested item in the treasure shop
   icon: {fileID: -3004918560657441691, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 3567

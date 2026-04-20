@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item30
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Uhhh yes
-  description: 
+  description: Gives you a reroll for daily chance cards
   icon: {fileID: 5248844365648247204, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 3785

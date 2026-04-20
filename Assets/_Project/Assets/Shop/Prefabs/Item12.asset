@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item12
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Dino
-  description: 
+  description: Unlocks new catchable item
   icon: {fileID: -893012132824976593, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 2446

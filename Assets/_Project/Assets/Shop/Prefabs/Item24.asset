@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item24
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Tackle
-  description: 
+  description: Increase fishing line durability in boat fishing
   icon: {fileID: -6822941647383629172, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 3626

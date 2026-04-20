@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item29
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Super Sea Cucumber
-  description: 
+  description: Unlocks new catchable item
   icon: {fileID: 3719068211130651045, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 2676

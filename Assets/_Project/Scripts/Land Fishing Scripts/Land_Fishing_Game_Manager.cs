@@ -213,7 +213,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         float totalWeight = 0f;
         foreach (Item item in currentPool)
         {
-            totalWeight += item.probabilityOfCatch;
+            totalWeight += GetAdjustedCatchWeight(item);
         }
 
         float randomNum = UnityEngine.Random.Range(0f, totalWeight);
@@ -221,7 +221,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
 
         foreach (Item item in currentPool)
         {
-            currentWeight += item.probabilityOfCatch;
+            currentWeight += GetAdjustedCatchWeight(item);
             if (randomNum <= currentWeight)
             {
                 return item;
@@ -232,22 +232,59 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         return currentPool[0];
     }
 
+    float GetAdjustedCatchWeight(Item item)
+    {
+        float weight = item.probabilityOfCatch;
+
+        // Can, Gum, Jug become less common after purchase
+        if (item.itemName == "Can" && PlayerPrefs.GetInt("CanPurchased", 0) == 1)
+            weight *= 0.5f;
+
+        if (item.itemName == "Gum" && PlayerPrefs.GetInt("GumPurchased", 0) == 1)
+            weight *= 0.5f;
+
+        if (item.itemName == "Jug" && PlayerPrefs.GetInt("JugPurchased", 0) == 1)
+            weight *= 0.5f;
+
+        // Eye and Void increase rare catch chance
+        bool isRare = item.itemRarity == ItemRarity.RARE || item.itemRarity == ItemRarity.LEGENDARY;
+
+        if (isRare)
+        {
+            if (PlayerPrefs.GetInt("EyePurchased", 0) == 1)
+                weight *= 1.3f;
+
+            if (PlayerPrefs.GetInt("VoidPurchased", 0) == 1)
+                weight *= 1.6f;
+        }
+
+        return Mathf.Max(0.001f, weight);
+    }
+
     bool IsLandItemUnlocked(string itemName)
     {
         switch (itemName)
         {
+            case "Egg":
+                return PlayerPrefs.GetInt("EggPurchased", 0) == 1;
+            case "Lamp":
+                return PlayerPrefs.GetInt("LampPurchased", 0) == 1;
             case "Duck":
                 return PlayerPrefs.GetInt("DuckPurchased", 0) == 1;
             case "Duck 2":
                 return PlayerPrefs.GetInt("Duck2Purchased", 0) == 1;
             case "Toy":
                 return PlayerPrefs.GetInt("ToyPurchased", 0) == 1;
-            case "Dragon":
+            case "Dragon Fish":
                 return PlayerPrefs.GetInt("DragonPurchased", 0) == 1;
             case "Dino":
                 return PlayerPrefs.GetInt("DinoPurchased", 0) == 1;
             case "Frog":
                 return PlayerPrefs.GetInt("FrogPurchased", 0) == 1;
+            case "Patrick House":
+                return PlayerPrefs.GetInt("PatrickHousePurchased", 0) == 1;
+            case "Egg 2":
+                return PlayerPrefs.GetInt("Egg2Purchased", 0) == 1;
             default:
                 return false;
         }
@@ -303,7 +340,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
 
     void CheckCatchItem(bool itemCaught)
     {
-
         if (!itemCaught)
         {
             ResetFishingGame();
@@ -319,8 +355,22 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             ResetFishingGame();
             return;
         }
+
         fishingDailyUI.Refresh(); //update daily limit UI
         castDistanceSlider.value = 0;
+        if (caughtItem.itemName == "Egg")
+        {
+            Item newFish = GetRandomFishOnly();
+            if (newFish != null)
+                caughtItem = newFish;
+        }
+
+        if (caughtItem.itemName == "Egg 2")
+        {
+            Item newFish = GetRandomRareFishOnly();
+            if (newFish != null)
+                caughtItem = newFish;
+        }
         DisplayCaughtItem(caughtItem);
         UpdateInventory();
 
@@ -395,5 +445,58 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             caughtItem.fishSize,
             Mathf.RoundToInt(caughtItem.itemValue)
         );
+    }
+
+    Item GetRandomFishOnly()
+    {
+        List<Item> fishPool = new List<Item>();
+
+        foreach (Item item in availableItems)
+        {
+            if (item != null && item.isFish)
+                fishPool.Add(item);
+        }
+
+        foreach (Item item in unlockableItems)
+        {
+            if (item != null && item.isFish && IsLandItemUnlocked(item.itemName))
+                fishPool.Add(item);
+        }
+
+        if (fishPool.Count == 0)
+            return null;
+
+        int index = UnityEngine.Random.Range(0, fishPool.Count);
+        return fishPool[index];
+    }
+
+    Item GetRandomRareFishOnly()
+    {
+        List<Item> fishPool = new List<Item>();
+
+        foreach (Item item in availableItems)
+        {
+            if (item != null && item.isFish &&
+                (item.itemRarity == ItemRarity.RARE || item.itemRarity == ItemRarity.LEGENDARY))
+            {
+                fishPool.Add(item);
+            }
+        }
+
+        foreach (Item item in unlockableItems)
+        {
+            if (item != null && item.isFish &&
+                IsLandItemUnlocked(item.itemName) &&
+                (item.itemRarity == ItemRarity.RARE || item.itemRarity == ItemRarity.LEGENDARY))
+            {
+                fishPool.Add(item);
+            }
+        }
+
+        if (fishPool.Count == 0)
+            return GetRandomFishOnly();
+
+        int index = UnityEngine.Random.Range(0, fishPool.Count);
+        return fishPool[index];
     }
 }

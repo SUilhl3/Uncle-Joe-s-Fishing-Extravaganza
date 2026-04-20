@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb085ed36782da45bac0efb2e3ba022, type: 3}
-  m_Name: LandJunk
+  m_Name: Egg2
   m_EditorClassIdentifier: Assembly-CSharp::LandJunk
-  itemName: Gum
-  itemDescription: Some gum
-  itemImage: {fileID: -6099050445329199328, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  itemValue: 2
-  itemWeight: 4
-  probabilityOfCatch: 24
-  itemRarity: 0
+  itemName: Egg2
+  itemDescription: Egg 2
+  itemImage: {fileID: 612596470744354101, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
+  itemValue: 50
+  itemWeight: 20
+  probabilityOfCatch: 3
+  itemRarity: 2
+  isFish: 0
+  fishSize: 0

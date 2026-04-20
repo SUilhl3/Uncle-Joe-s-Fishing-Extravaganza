@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item31
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Egg 2
-  description: 
+  description: Catchable land fishing item that gives you a random fish
   icon: {fileID: -7652154954077232485, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 5384

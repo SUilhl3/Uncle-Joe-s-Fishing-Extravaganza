@@ -16,4 +16,4 @@ MonoBehaviour:
   description: A pike with a unique blue colour
   fishSprite: {fileID: 21300000, guid: 0aa0ba0469561cc40b3dee83af080f1a, type: 3}
   value: 15
-  fishSize: 2
+  fishSize: 1

@@ -167,6 +167,131 @@ public class ShopTooltipUI : MonoBehaviour
                 PlayerPrefs.SetInt("RadioPurchased", 1);
                 PlayerPrefs.Save();
             }
+            else if (currentItem.itemName == "Patrick House")
+            {
+                PlayerPrefs.SetInt("PatrickHousePurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Lamp")
+            {
+                PlayerPrefs.SetInt("LampPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Miss Puff")
+            {
+                PlayerPrefs.SetInt("MissPuffPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Pink")
+            {
+                PlayerPrefs.SetInt("PinkPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "0-0")
+            {
+                PlayerPrefs.SetInt("ZeroZeroPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Egg")
+            {
+                PlayerPrefs.SetInt("EggPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Can")
+            {
+                PlayerPrefs.SetInt("CanPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Gum")
+            {
+                PlayerPrefs.SetInt("GumPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Jug")
+            {
+                PlayerPrefs.SetInt("JugPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Dish")
+            {
+                PlayerPrefs.SetInt("DishPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Dish 2")
+            {
+                PlayerPrefs.SetInt("Dish2Purchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Dish 3")
+            {
+                PlayerPrefs.SetInt("Dish3Purchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Dish 4")
+            {
+                PlayerPrefs.SetInt("Dish4Purchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Uhhh yes")
+            {
+                PlayerPrefs.SetInt("UhhhYesPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Painting")
+            {
+                PlayerPrefs.SetInt("PaintingPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Stack of Books")
+            {
+                PlayerPrefs.SetInt("StackOfBooksPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Chicken Nugget")
+            {
+                PlayerPrefs.SetInt("ChickenNuggetPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Eye")
+            {
+                PlayerPrefs.SetInt("EyePurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Void")
+            {
+                PlayerPrefs.SetInt("VoidPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Mirror")
+            {
+                PlayerPrefs.SetInt("MirrorPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Also Mirror")
+            {
+                PlayerPrefs.SetInt("AlsoMirrorPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Small Plate")
+            {
+                PlayerPrefs.SetInt("SmallPlatePurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Sea Turtle Egg")
+            {
+                PlayerPrefs.SetInt("SeaTurtleEggPurchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Egg 2")
+            {
+                PlayerPrefs.SetInt("Egg2Purchased", 1);
+                PlayerPrefs.Save();
+            }
+            else if (currentItem.itemName == "Sea Turtle Egg")
+            {
+                PlayerPrefs.SetInt("SeaTurtleEggPurchased", 1);
+                PlayerPrefs.Save();
+            }
 
             currentHotspot.OnPurchased();
             Hide();

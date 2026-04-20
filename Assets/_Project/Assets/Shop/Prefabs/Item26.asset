@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item26
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Also Mirror
-  description: 
+  description: Adds 10% to all selling (restaurant and treasure buyer)
   icon: {fileID: -427409585, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 3446

@@ -427,6 +427,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7fa71a6e98bf19b47832ae869171fc66, type: 2}
   - {fileID: 11400000, guid: ef876c87f1223bd4b981c2cd5e5dbc47, type: 2}
   - {fileID: 11400000, guid: 6da16886eebb1ab4e86b2bc15a0ced8d, type: 2}
+  - {fileID: 11400000, guid: 775a7e1745e6d3e4bbddeb7a7adb440b, type: 2}
+  - {fileID: 11400000, guid: af6ae628d5783b340908953eff6dbd79, type: 2}
+  - {fileID: 11400000, guid: d8b487339f8740b49a0a0f29874c258c, type: 2}
+  - {fileID: 11400000, guid: a055d9de5323869499edec1129f16c3b, type: 2}
   fishingDailyUI: {fileID: 1220821766}
 --- !u!4 &203354076
 Transform:

@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     Coroutine timerCoroutine;
 
     int ordersServed = 0;
-    const int ordersPerDay = 10;
+    int ordersPerDay = 10;
     bool dayComplete = false;
 
     bool isPaused = false;
@@ -113,20 +113,29 @@ public class GameManager : MonoBehaviour
 
             float totalEarned = basePrice + tip;
 
+            float multiplier = 1f;
+
+            // Daily card effects
             if (DailyEffectManager.Instance != null)
             {
                 if (DailyEffectManager.Instance.HasEffect(DailyEffectType.BetterRestaurantPayout))
-                {
-                    float bonus = DailyEffectManager.Instance.GetFloatValue(DailyEffectType.BetterRestaurantPayout);
-                    totalEarned *= (1f + bonus);
-                }
+                    multiplier += DailyEffectManager.Instance.GetFloatValue(DailyEffectType.BetterRestaurantPayout);
 
                 if (DailyEffectManager.Instance.HasEffect(DailyEffectType.WorseRestaurantPayout))
-                {
-                    float penalty = DailyEffectManager.Instance.GetFloatValue(DailyEffectType.WorseRestaurantPayout);
-                    totalEarned *= (1f - penalty);
-                }
+                    multiplier -= DailyEffectManager.Instance.GetFloatValue(DailyEffectType.WorseRestaurantPayout);
             }
+
+            // Dish upgrades
+            if (PlayerPrefs.GetInt("DishPurchased", 0) == 1) multiplier += 0.05f;
+            if (PlayerPrefs.GetInt("Dish2Purchased", 0) == 1) multiplier += 0.10f;
+            if (PlayerPrefs.GetInt("Dish3Purchased", 0) == 1) multiplier += 0.15f;
+            if (PlayerPrefs.GetInt("Dish4Purchased", 0) == 1) multiplier += 0.20f;
+
+            // Global mirror bonuses
+            if (PlayerPrefs.GetInt("MirrorPurchased", 0) == 1) multiplier += 0.10f;
+            if (PlayerPrefs.GetInt("AlsoMirrorPurchased", 0) == 1) multiplier += 0.10f;
+
+            totalEarned *= multiplier;
 
             SaveManager.AddToDailyTotal(totalEarned);
 
@@ -175,7 +184,7 @@ public class GameManager : MonoBehaviour
         UpdateTimerUI(0f, false);
 
         ordersServed++;
-        if (ordersServed >= ordersPerDay)
+        if (ordersServed >= GetOrdersPerDay())
         {
             dayComplete = true;
             StartCoroutine(DayCompleteDelay());
@@ -235,7 +244,7 @@ public class GameManager : MonoBehaviour
 
     void StartNewOrder()
     {
-        if (ordersServed >= ordersPerDay)
+        if (ordersServed >= GetOrdersPerDay())
             return;
 
         if (orders != null && orders.Count > 0)
@@ -415,5 +424,15 @@ public class GameManager : MonoBehaviour
             else
                 timerFill.fillAmount = 0f;
         }
+    }
+
+    int GetOrdersPerDay()
+    {
+        int total = 10;
+
+        if (PlayerPrefs.GetInt("SmallPlatePurchased", 0) == 1)
+            total += 1;
+
+        return total;
     }
 }

@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb085ed36782da45bac0efb2e3ba022, type: 3}
-  m_Name: LandJunk 3
+  m_Name: Patrick House
   m_EditorClassIdentifier: Assembly-CSharp::LandJunk
-  itemName: Lamp
-  itemDescription: This is also some junk
-  itemImage: {fileID: -2360418572804486258, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  itemValue: 40
-  itemWeight: 15
+  itemName: Patrick House
+  itemDescription: Patrick House
+  itemImage: {fileID: 2049916588613589399, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
+  itemValue: 200
+  itemWeight: 100
   probabilityOfCatch: 3
   itemRarity: 3
+  isFish: 0
+  fishSize: 0

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item4
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Eye
-  description: 
+  description: Increase rare catch chance
   icon: {fileID: -3074023447068413781, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 5375

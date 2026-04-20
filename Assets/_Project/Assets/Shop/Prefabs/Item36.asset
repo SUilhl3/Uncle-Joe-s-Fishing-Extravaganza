@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item36
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Small Plate
-  description: 
+  description: Adds one more customer a day
   icon: {fileID: 1801263428120863714, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 3474

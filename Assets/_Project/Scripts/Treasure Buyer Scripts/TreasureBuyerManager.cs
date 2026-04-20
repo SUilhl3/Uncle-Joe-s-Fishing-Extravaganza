@@ -57,7 +57,12 @@ public class TreasureBuyerManager : MonoBehaviour
             }
         }
 
-        int requestCount = Mathf.Min(5, available.Count);
+        int requestCount = 5;
+
+        if (PlayerPrefs.GetInt("PaintingPurchased", 0) == 1) requestCount += 1;
+        if (PlayerPrefs.GetInt("StackOfBooksPurchased", 0) == 1) requestCount += 1;
+
+        requestCount = Mathf.Min(requestCount, available.Count);
 
         for (int i = 0; i < requestCount; i++)
         {
@@ -98,6 +103,15 @@ public class TreasureBuyerManager : MonoBehaviour
             if (DailyEffectManager.Instance.HasEffect(DailyEffectType.WorseTreasureBuyerPayout))
                 multiplier -= DailyEffectManager.Instance.GetFloatValue(DailyEffectType.WorseTreasureBuyerPayout);
         }
+
+        if (PlayerPrefs.GetInt("ChickenNuggetPurchased", 0) == 1)
+            multiplier += 0.20f;
+
+        if (PlayerPrefs.GetInt("MirrorPurchased", 0) == 1)
+            multiplier += 0.10f;
+
+        if (PlayerPrefs.GetInt("AlsoMirrorPurchased", 0) == 1)
+            multiplier += 0.10f;
 
         return Mathf.CeilToInt(entry.baseValue * multiplier);
     }

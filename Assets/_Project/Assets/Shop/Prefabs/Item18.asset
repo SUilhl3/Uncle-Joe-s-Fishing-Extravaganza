@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item18
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Chest
-  description: 
+  description: Allows for 10 more fish to be caught a day
   icon: {fileID: -9075936618163766259, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 4743

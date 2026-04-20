@@ -1,16 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DailyEffectSelectionUI : MonoBehaviour
 {
     [SerializeField] private Transform contentRoot;
     [SerializeField] private DailyEffectCardUI cardPrefab;
     [SerializeField] private string nextSceneName = "Map";
+    [SerializeField] private Button rerollButton;
+    private bool hasUsedReroll = false;
 
     private void Start()
     {
         BuildCards();
+        if (rerollButton != null)
+        {
+            rerollButton.onClick.RemoveAllListeners();
+            rerollButton.onClick.AddListener(RerollCards);
+
+            bool hasRerollUpgrade = PlayerPrefs.GetInt("UhhhYesPurchased", 0) == 1;
+            rerollButton.gameObject.SetActive(hasRerollUpgrade);
+        }
     }
 
     void BuildCards()
@@ -39,5 +50,24 @@ public class DailyEffectSelectionUI : MonoBehaviour
         {
             SceneManager.LoadScene("Map");
         }
+    }
+
+    public void RerollCards()
+    {
+        if (hasUsedReroll)
+            return;
+
+        if (PlayerPrefs.GetInt("UhhhYesPurchased", 0) != 1)
+            return;
+
+        hasUsedReroll = true;
+
+        PlayerPrefs.DeleteKey("DailyEffectOffers_" + SaveManager.GetCurrentGameDate().ToString("yyyyMMdd"));
+        PlayerPrefs.Save();
+
+        BuildCards();
+
+        if (rerollButton != null)
+            rerollButton.interactable = false;
     }
 }

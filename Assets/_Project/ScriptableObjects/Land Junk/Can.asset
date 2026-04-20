@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb085ed36782da45bac0efb2e3ba022, type: 3}
-  m_Name: LandJunk 1
+  m_Name: Can
   m_EditorClassIdentifier: Assembly-CSharp::LandJunk
   itemName: Can
   itemDescription: A can
@@ -18,4 +18,6 @@ MonoBehaviour:
   itemValue: 12
   itemWeight: 10
   probabilityOfCatch: 12
-  itemRarity: 1
+  itemRarity: 0
+  isFish: 0
+  fishSize: 0

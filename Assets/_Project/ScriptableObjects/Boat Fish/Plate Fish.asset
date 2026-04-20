@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Plate Fish
   fishSprite: {fileID: -4676655390728407469, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   value: 100
-  fishSize: 2
+  fishSize: 1

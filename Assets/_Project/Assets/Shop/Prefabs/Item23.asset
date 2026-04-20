@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Item23
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemData
   itemName: Dish 3
-  description: 
+  description: add an additional 5% restaurant profit
   icon: {fileID: -7375459094207900620, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
   priceInCents: 8556
