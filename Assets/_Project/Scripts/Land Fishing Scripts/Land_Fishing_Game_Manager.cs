@@ -159,6 +159,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         float fishOnHook = UnityEngine.Random.value;
         if (fishOnHook < adjustedChanceToCatchNothing)
         {
+            playerAnimator.SetTrigger("Reeling");
             DisplayCaughtNothing(true);
             yield return new WaitForSeconds(2.0f);
             ResetFishingGame();
