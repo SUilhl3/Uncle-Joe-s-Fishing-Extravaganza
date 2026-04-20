@@ -18,4 +18,5 @@ MonoBehaviour:
   value: 300
   probabilityOfCatch: 3
   rarity: 3
+  needChangeSize: 1
   fishSize: 3
