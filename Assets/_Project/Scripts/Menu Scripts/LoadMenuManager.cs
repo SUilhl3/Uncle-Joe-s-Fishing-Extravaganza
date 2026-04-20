@@ -11,7 +11,7 @@ public class LoadMenuManager : MonoBehaviour
         PopulateSlots();
     }
 
-    void PopulateSlots()
+    public void PopulateSlots()
     {
         foreach (Transform child in contentParent)
             Destroy(child.gameObject);
@@ -21,5 +21,10 @@ public class LoadMenuManager : MonoBehaviour
             GameObject slotObj = Instantiate(slotPrefab, contentParent);
             slotObj.GetComponent<SaveSlotUI>().Setup(i);
         }
+    }
+
+    void OnEnable()
+    {
+        PopulateSlots();
     }
 }

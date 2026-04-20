@@ -12,29 +12,25 @@ public class SaveSlotUI : MonoBehaviour
     {
         slotIndex = index;
 
-        bool exists = PlayerPrefs.GetInt($"save_{index}_HasSave", 0) == 1;
+        int test = PlayerPrefs.GetInt($"save_{index}_HasSave", -1);
+        Debug.Log("Slot " + index + " HasSave = " + test);
 
-        if (!exists)
+        if (test != 1)
         {
-            nameText.text = "Empty Slot";
-            moneyText.text = "";
-            dayText.text = "";
+            nameText.text = "EMPTY";
             return;
         }
 
-        nameText.text = PlayerPrefs.GetString($"save_{index}_PlayerName", "Player");
-        moneyText.text = "$" + PlayerPrefs.GetInt($"save_{index}_Money", 0);
-        dayText.text = "Day " + PlayerPrefs.GetInt($"save_{index}_GameDayNumber", 1);
+        nameText.text = PlayerPrefs.GetString($"save_{index}_PlayerName", "ERROR");
+        moneyText.text = PlayerPrefs.GetInt($"save_{index}_Money", -999).ToString();
+        dayText.text = PlayerPrefs.GetInt($"save_{index}_GameDayNumber", -999).ToString();
     }
 
-    public void OnClick()
+    public void OnClickSave()
     {
-        if (!SaveManager.SaveExists(slotIndex))
-            return;
-
-        SaveManager.SetActiveSlot(slotIndex);
-
-        SceneManager.LoadScene("GameScene");
+        SaveGameUI save = FindObjectOfType<SaveGameUI>();
+        save.SetSlot(slotIndex);
+        save.SaveGame();
     }
 
     public void OnDeleteClick()

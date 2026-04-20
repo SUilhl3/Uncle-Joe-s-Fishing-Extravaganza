@@ -1029,6 +1029,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3644b0fa813180d439377b97084e0b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveGameUI
+  slotIndex: 0
+  menu: {fileID: 0}
 --- !u!1 &4095602613909498642
 GameObject:
   m_ObjectHideFlags: 0
