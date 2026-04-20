@@ -11,7 +11,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] Slider castDistanceSlider;
     [SerializeField] Button startFishingButton;
     [SerializeField] Button castButton;
-    [SerializeField] TextMeshProUGUI baitText;
     [SerializeField] FishingDailyUI fishingDailyUI;
 
     [Header("Caught Item Panel UI")]
@@ -28,7 +27,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] float progressDecreaseSpeed = 1.0f;
     [SerializeField] GameObject fishingMiniGame;
     [SerializeField] float chanceToCatchNothing = 0.9f;
-    [SerializeField] int numBait = 5;
 
     [Header("Fishing Elements")]
     [SerializeField] GameObject castingLine;
@@ -59,8 +57,15 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         itemStart = item.anchoredPosition;
         fishAi = item.GetComponent<Fish_AI>();
         storedItems = new List<Item>();
-        baitText.text = "Bait: " + numBait;
         fishingDailyUI = FindFirstObjectByType<FishingDailyUI>();
+    }
+
+    private void Start()
+    {
+        if (FishingDailyLimitManager.HasReachedLimit())
+        {
+            startFishingButton.gameObject.SetActive(false);
+        }
     }
 
     //Starts the cast distance slider moving up and down
@@ -83,6 +88,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     //Casts the line into the water and starts the mini-game
     public void Cast()
     {
+        castButton.gameObject.SetActive(false);
         castStrength = castDistanceSlider.value;
 
         //sets where to cast the line based on slider value 
@@ -258,7 +264,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         {
             caughtItemPanel.SetActive(false);
             isReturning = false;
-            if (numBait != 0) { startFishingButton.gameObject.SetActive(true); }
+            if (!FishingDailyLimitManager.HasReachedLimit()) { startFishingButton.gameObject.SetActive(true); }
         }
     }
 
@@ -295,8 +301,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
 
     void CheckCatchItem(bool itemCaught)
     {
-        numBait--;
-        baitText.text = "Bait: " + numBait;
 
         if (!itemCaught)
         {
