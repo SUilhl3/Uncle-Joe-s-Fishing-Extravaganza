@@ -10,6 +10,44 @@ public static class SaveManager
         currentSlot = slot;
     }
 
+    public static int GetCurrentSlot()
+    {
+        return currentSlot;
+    }
+
+    public static string SlotKey(string key)
+    {
+        return $"save_{currentSlot}_{key}";
+    }
+
+    public static void SetSlotInt(string key, int value)
+    {
+        PlayerPrefs.SetInt(SlotKey(key), value);
+        PlayerPrefs.Save();
+    }
+
+    public static int GetSlotInt(string key, int defaultValue = 0)
+    {
+        return PlayerPrefs.GetInt(SlotKey(key), defaultValue);
+    }
+
+    public static void SetSlotString(string key, string value)
+    {
+        PlayerPrefs.SetString(SlotKey(key), value);
+        PlayerPrefs.Save();
+    }
+
+    public static string GetSlotString(string key, string defaultValue = "")
+    {
+        return PlayerPrefs.GetString(SlotKey(key), defaultValue);
+    }
+
+    public static void DeleteSlotKey(string key)
+    {
+        PlayerPrefs.DeleteKey(SlotKey(key));
+        PlayerPrefs.Save();
+    }
+
     private static string Prefix(string key) => $"save_{currentSlot}_{key}";
     const string GameDateKey = "GameDate";
     const string GameDayKey = "GameDayNumber";
@@ -98,6 +136,7 @@ public static class SaveManager
         return PlayerPrefs.GetString(Prefix("PlayerName"), "Player");
     }
 
+    // Legacy
     public static void SetMoney(int money)
     {
         PlayerPrefs.SetInt(Prefix("Money"), money);
@@ -124,6 +163,10 @@ public static class SaveManager
         PlayerPrefs.DeleteKey(prefix + "PlayerName");
         PlayerPrefs.DeleteKey(prefix + "Money");
         PlayerPrefs.DeleteKey(prefix + "PlayerCents");
+        PlayerPrefs.DeleteKey(prefix + "CatchInventory");
+        PlayerPrefs.DeleteKey(prefix + "LoanDebtInCents");
+        PlayerPrefs.DeleteKey(prefix + "LoanWeeklyMinimumInCents");
+        PlayerPrefs.DeleteKey(prefix + "LoanLastPaidWeek");
 
         PlayerPrefs.Save();
     }
@@ -133,10 +176,5 @@ public static class SaveManager
         AdvanceGameDate(1);
         AdvanceDayNumber(1);
         PlayerPrefs.Save();
-    }
-
-    public static int GetCurrentSlot()
-    {
-        return currentSlot;
     }
 }

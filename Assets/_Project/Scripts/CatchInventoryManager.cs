@@ -21,14 +21,20 @@ public class CatchInventorySaveData
 
 public static class CatchInventoryManager
 {
-    private const string InventoryKey = "CatchInventory";
+    private static string InventoryKey => SaveManager.SlotKey("CatchInventory");
 
     private static CatchInventorySaveData cachedData;
+    private static int cachedSlot = -1;
 
     private static CatchInventorySaveData Load()
     {
-        if (cachedData != null)
+        int currentSlot = SaveManager.GetCurrentSlot();
+
+        // Reload if cache is for a different slot
+        if (cachedData != null && cachedSlot == currentSlot)
             return cachedData;
+
+        cachedSlot = currentSlot;
 
         string json = PlayerPrefs.GetString(InventoryKey, "");
         if (string.IsNullOrEmpty(json))
@@ -47,9 +53,20 @@ public static class CatchInventoryManager
 
     private static void Save()
     {
+        if (cachedData == null)
+            cachedData = new CatchInventorySaveData();
+
+        cachedSlot = SaveManager.GetCurrentSlot();
+
         string json = JsonUtility.ToJson(cachedData);
         PlayerPrefs.SetString(InventoryKey, json);
         PlayerPrefs.Save();
+    }
+
+    public static void ClearCache()
+    {
+        cachedData = null;
+        cachedSlot = -1;
     }
 
     public static List<CatchInventoryEntry> GetAllEntries()
@@ -163,15 +180,16 @@ public static class CatchInventoryManager
         return false;
     }
 
-    public static CatchInventorySaveData Export() 
+    public static CatchInventorySaveData Export()
     {
-        return Load(); 
+        return Load();
     }
 
-    public static void Import(CatchInventorySaveData data) 
+    public static void Import(CatchInventorySaveData data)
     {
-        cachedData = data ?? new CatchInventorySaveData(); 
-        Save(); 
+        cachedSlot = SaveManager.GetCurrentSlot();
+        cachedData = data ?? new CatchInventorySaveData();
+        Save();
     }
 
     public static bool RemoveRandomItem()

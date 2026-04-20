@@ -8,9 +8,9 @@ public class LoanManager : MonoBehaviour
     [SerializeField] private int startingDebtInCents = 500000; // $5000.00
     [SerializeField] private int weeklyMinimumPaymentInCents = 25000; // $250.00
 
-    private const string DebtKey = "LoanDebtInCents";
-    private const string WeeklyMinimumKey = "LoanWeeklyMinimumInCents";
-    private const string LastPaidWeekKey = "LoanLastPaidWeek";
+    private string DebtKey => SaveManager.SlotKey("LoanDebtInCents");
+    private string WeeklyMinimumKey => SaveManager.SlotKey("LoanWeeklyMinimumInCents");
+    private string LastPaidWeekKey => SaveManager.SlotKey("LoanLastPaidWeek");
 
     private void Awake()
     {

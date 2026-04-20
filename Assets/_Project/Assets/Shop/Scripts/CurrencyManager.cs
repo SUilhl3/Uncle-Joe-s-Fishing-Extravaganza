@@ -6,7 +6,7 @@ public class CurrencyManager : MonoBehaviour
     public static CurrencyManager Instance { get; private set; }
 
     [Header("Starting Money (in cents, used if no save exists)")]
-    [SerializeField] private int cents = 0; // 100 = $1.00
+    [SerializeField] private int cents = 0;
 
     [Header("UI (optional, can be set per-scene)")]
     [SerializeField] private TMP_Text coinsText;

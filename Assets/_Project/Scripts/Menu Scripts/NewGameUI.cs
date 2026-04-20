@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewGameUI : MonoBehaviour
 {
@@ -20,19 +21,13 @@ public class NewGameUI : MonoBehaviour
         SaveManager.SetPlayerName(playerName);
         PlayerPrefs.SetInt($"save_{selectedSlot}_GameDayNumber", 1);
         PlayerPrefs.SetString($"save_{selectedSlot}_GameDate", System.DateTime.Now.Date.ToString("yyyyMMdd"));
+        PlayerPrefs.SetInt($"save_{selectedSlot}_PlayerCents", 0);
+        PlayerPrefs.SetInt($"save_{selectedSlot}_HasSave", 1);
 
-        if (CurrencyManager.Instance != null)
-        {
-            CurrencyManager.Instance.SetCents(0);
-        }
-        else
-        {
-            PlayerPrefs.SetInt($"save_{selectedSlot}_PlayerCents", 0);
-        }
-
-        SaveManager.MarkSlotAsUsed();
         PlayerPrefs.Save();
 
         Debug.Log($"Started new game in slot {selectedSlot} for {playerName}");
+
+        SceneManager.LoadScene("Map");
     }
 }

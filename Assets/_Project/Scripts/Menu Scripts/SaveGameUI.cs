@@ -16,11 +16,7 @@ public class SaveGameUI : MonoBehaviour
 
         string playerName = SaveManager.GetPlayerName();
         int day = SaveManager.GetDayNumber();
-
-        int cents = 0;
-
-        if (CurrencyManager.Instance != null)
-            cents = CurrencyManager.Instance.Cents;
+        int cents = CurrencyManager.Instance != null ? CurrencyManager.Instance.Cents : 0;
 
         PlayerPrefs.SetString($"save_{slotIndex}_PlayerName", playerName);
         PlayerPrefs.SetInt($"save_{slotIndex}_PlayerCents", cents);

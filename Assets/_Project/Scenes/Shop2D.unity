@@ -3523,7 +3523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a4de5f02e376146a8f431feed3f619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemHotspot
-  itemData: {fileID: 11400000, guid: 1b49355affc33be438a3845d81d228dc, type: 2}
+  itemData: {fileID: 11400000, guid: 0600d2b665ea06d4391472ae5d422d2d, type: 2}
   highlight: {fileID: 1045195011}
   tooltip: {fileID: 1751297325}
 --- !u!114 &701475559
@@ -10254,7 +10254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a4de5f02e376146a8f431feed3f619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopItemHotspot
-  itemData: {fileID: 11400000, guid: 0600d2b665ea06d4391472ae5d422d2d, type: 2}
+  itemData: {fileID: 11400000, guid: 1b49355affc33be438a3845d81d228dc, type: 2}
   highlight: {fileID: 1672337935}
   tooltip: {fileID: 1751297325}
 --- !u!114 &2144436167
