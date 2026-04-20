@@ -12,8 +12,10 @@ public class SaveSlotUI : MonoBehaviour
         slotIndex = index;
         
         if (SaveManager.SaveExists(index))
-        { 
-            SaveManager.SetActiveSlot(index);
+        {
+            string tempName = PlayerPrefs.GetString($"save_{index}_PlayerName", "Player");
+            int tempMoney = PlayerPrefs.GetInt($"save_{index}_Money", 0);
+            int tempDay = PlayerPrefs.GetInt($"save_{index}_GameDayNumber", 1);
             nameText.text = SaveManager.GetPlayerName();
             moneyText.text = "$" + SaveManager.GetMoney();
             dayText.text = "Day " + SaveManager.GetDayNumber();
@@ -24,11 +26,15 @@ public class SaveSlotUI : MonoBehaviour
             moneyText.text = "";
             dayText.text = "";
         }
-    } 
-    public void OnClick() 
+    }
+    public void OnClick()
     {
+        if (!SaveManager.SaveExists(slotIndex))
+            return;
+
         SaveManager.SetActiveSlot(slotIndex);
-        SceneManager.LoadScene("GameScene"); 
+
+        SceneManager.LoadScene("GameScene");
     }
 
     public void OnDeleteClick()

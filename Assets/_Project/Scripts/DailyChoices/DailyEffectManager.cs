@@ -17,10 +17,9 @@ public class DailyEffectManager : MonoBehaviour
 
     [SerializeField] private DailyEffectData activeEffect;
 
-    private const string ActiveEffectKey = "ActiveDailyEffectId";
+    private string ActiveEffectKey => $"save_{SaveManager.GetCurrentSlot()}_ActiveDailyEffectId";
 
-    private string OfferKey =>
-        "DailyEffectOffers_" + SaveManager.GetCurrentGameDate().ToString("yyyyMMdd");
+    private string OfferKey => $"save_{SaveManager.GetCurrentSlot()}_DailyEffectOffers_" + SaveManager.GetCurrentGameDate().ToString("yyyyMMdd");
 
     private void Awake()
     {

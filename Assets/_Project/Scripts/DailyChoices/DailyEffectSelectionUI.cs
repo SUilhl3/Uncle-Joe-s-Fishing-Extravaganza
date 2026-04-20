@@ -43,6 +43,8 @@ public class DailyEffectSelectionUI : MonoBehaviour
     {
         DailyEffectManager.Instance.ChooseEffect(chosen);
 
+        SaveManager.StartNewDay();
+
         if (LoanManager.Instance != null && LoanManager.Instance.IsPaymentDueThisWeek())
         {
             SceneManager.LoadScene("LoanBuildingScene");
