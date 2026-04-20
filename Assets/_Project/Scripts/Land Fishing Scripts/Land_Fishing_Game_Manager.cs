@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class Land_Fishing_Game_Manager : MonoBehaviour
 {
+    public static Land_Fishing_Game_Manager instance;
+
     [Header("UI Elements")]
     [SerializeField] Slider castDistanceSlider;
     [SerializeField] Button startFishingButton;
@@ -30,15 +32,18 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     [SerializeField] float chanceToCatchNothing = 0.9f;
 
     [Header("Fishing Elements")]
-    [SerializeField] GameObject castingLine;
-    [SerializeField] float maxCastDistance = 10f;
-    [SerializeField] float castSpeed = 2f;
-    [SerializeField] float waterPosition = -3f;
+    //[SerializeField] GameObject castingLine;
+    //[SerializeField] float maxCastDistance = 10f;
+    //[SerializeField] float castSpeed = 2f;
+    //[SerializeField] float waterPosition = -3f;
     [SerializeField] List<Item> availableItems;
     [SerializeField] List<Item> unlockableItems;
 
+    [Header("Animator")]
+    [SerializeField] Animator playerAnimator;
+
     bool isFishing = false;
-    bool isCasting = false;
+   // bool isCasting = false;
     bool isReturning = false;
     bool isFishingGameActive = false;
     float sliderMovementSpeed = 1.0f;
@@ -54,7 +59,16 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
 
     private void Awake()
     {
-        castStartingPosition = castingLine.transform.position;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        //castStartingPosition = castingLine.transform.position;
         playerBarStart = playerBar.anchoredPosition;
         itemStart = item.anchoredPosition;
         originalPlayerBarSize = playerBar.sizeDelta;
@@ -84,16 +98,17 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     public void Cast()
     {
         castButton.gameObject.SetActive(false);
-        castStrength = castDistanceSlider.value;
+        //castStrength = castDistanceSlider.value;
+        playerAnimator.SetTrigger("Casting");  
 
         //sets where to cast the line based on slider value 
         //setup to be fishing towards the right side for now
-        float castDistance = castStrength * maxCastDistance;
+        //float castDistance = castStrength * maxCastDistance;
 
-        float targetX = castStartingPosition.x + castDistance;
-        targetPosition = new Vector2(targetX, waterPosition);
+        //float targetX = castStartingPosition.x + castDistance;
+        //targetPosition = new Vector2(targetX, waterPosition);
 
-        isCasting = true;
+        //isCasting = true;
         isFishing = false;
         castDistanceSlider.gameObject.SetActive(false);
     }
@@ -106,10 +121,10 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             Fishing();
         }
 
-        if (isCasting)
-        {
-            Casting();
-        }
+        //if (isCasting)
+        //{
+        //    Casting();
+        //}
 
         if (isFishingGameActive)
         {
@@ -146,14 +161,14 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     }
 
     //casting the line out to the water 
-    void Casting()
+    public void Casting()
     {
-        Vector2 currentPos = castingLine.transform.position;
-        castingLine.transform.position = Vector2.MoveTowards(currentPos, targetPosition, castSpeed * Time.deltaTime);
+        //Vector2 currentPos = castingLine.transform.position;
+        //castingLine.transform.position = Vector2.MoveTowards(currentPos, targetPosition, castSpeed * Time.deltaTime);
 
-        if (Vector2.Distance(currentPos, targetPosition) < 0.01f)
-        {
-            isCasting = false;
+        //if (Vector2.Distance(currentPos, targetPosition) < 0.01f)
+        //{
+            //isCasting = false;
 
             //checks for chance that nothing is on hook 
             float adjustedChanceToCatchNothing = chanceToCatchNothing;
@@ -174,19 +189,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
                 return;
             }
 
-            if (castStrength >= 0.01 && castStrength <= 0.4)
-            {
-                Debug.Log("Low Cast Strength");
-            }
-            else if (castStrength > 0.4 && castStrength <= 0.7)
-            {
-                Debug.Log("Med Cast Strength");
-            }
-            else
-            {
-                Debug.Log("High Cast Strength");
-            }
-
             caughtItem = GetRandomItem();
             fishAi.rarity = caughtItem.itemRarity;
 
@@ -205,7 +207,8 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             fishingMiniGame.SetActive(true);
             isFishingGameActive = true;
             castButton.gameObject.SetActive(false);
-        }
+            playerAnimator.SetTrigger("Reeling");
+        // }
     }
 
     //function to select the random item from the list using weighted probabilities
@@ -326,20 +329,20 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     }
 
     //returning the fishing line back to the player
-    void Returning()
+    public void Returning()
     {
-        castingLine.transform.position = Vector2.MoveTowards(
-            castingLine.transform.position,
-            castStartingPosition,
-            castSpeed * Time.deltaTime
-        );
+        //castingLine.transform.position = Vector2.MoveTowards(
+        //    castingLine.transform.position,
+        //    castStartingPosition,
+        //    castSpeed * Time.deltaTime
+        //);
 
-        if (Vector2.Distance(castingLine.transform.position, castStartingPosition) < 0.01f)
-        {
+       // if (Vector2.Distance(castingLine.transform.position, castStartingPosition) < 0.01f)
+        //{
             caughtItemPanel.SetActive(false);
             isReturning = false;
             if (!FishingDailyLimitManager.HasReachedLimit()) { startFishingButton.gameObject.SetActive(true); }
-        }
+        //}
     }
 
     void FishingMiniGame()
@@ -472,6 +475,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     //resets everything back to the starting place
     void ResetFishingGame()
     {
+        playerAnimator.SetTrigger("Returning");
         fishingMiniGame.SetActive(false);
         castButton.gameObject.SetActive(false);
         progressBar.gameObject.SetActive(false);
