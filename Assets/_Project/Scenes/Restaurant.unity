@@ -4878,7 +4878,7 @@ MonoBehaviour:
   instance:
     type: 8
     method: 3
-  rawSprite: {fileID: 0}
+  rawSprite: {fileID: -1117548920301572727, guid: 3f14eabc43b0bf14abfad7470fe882ec, type: 3}
   friedSprite: {fileID: 0}
   bakedSprite: {fileID: 0}
   cutSprite: {fileID: 0}
