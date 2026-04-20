@@ -59,6 +59,7 @@ public class TreasureBuyerManager : MonoBehaviour
 
         int requestCount = 5;
 
+        // Shop upgrades that increase daily treasure buyer requests
         if (PlayerPrefs.GetInt("PaintingPurchased", 0) == 1) requestCount += 1;
         if (PlayerPrefs.GetInt("StackOfBooksPurchased", 0) == 1) requestCount += 1;
 
@@ -95,15 +96,17 @@ public class TreasureBuyerManager : MonoBehaviour
     {
         float multiplier = 1.2f;
 
+        // Daily card effects
         if (DailyEffectManager.Instance != null)
         {
-            if (DailyEffectManager.Instance.HasEffect(DailyEffectType.BetterTreasureBuyerPayout))
-                multiplier += DailyEffectManager.Instance.GetFloatValue(DailyEffectType.BetterTreasureBuyerPayout);
+            if (DailyEffectManager.Instance.HasEffect(DailyEffectType.HighDemand))
+                multiplier += DailyEffectManager.Instance.GetFloatValue(DailyEffectType.HighDemand);
 
-            if (DailyEffectManager.Instance.HasEffect(DailyEffectType.WorseTreasureBuyerPayout))
-                multiplier -= DailyEffectManager.Instance.GetFloatValue(DailyEffectType.WorseTreasureBuyerPayout);
+            if (DailyEffectManager.Instance.HasEffect(DailyEffectType.MarketCrash))
+                multiplier -= DailyEffectManager.Instance.GetFloatValue(DailyEffectType.MarketCrash);
         }
 
+        // Shop upgrades
         if (PlayerPrefs.GetInt("ChickenNuggetPurchased", 0) == 1)
             multiplier += 0.20f;
 

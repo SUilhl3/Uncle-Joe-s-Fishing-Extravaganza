@@ -118,11 +118,8 @@ public class GameManager : MonoBehaviour
             // Daily card effects
             if (DailyEffectManager.Instance != null)
             {
-                if (DailyEffectManager.Instance.HasEffect(DailyEffectType.BetterRestaurantPayout))
-                    multiplier += DailyEffectManager.Instance.GetFloatValue(DailyEffectType.BetterRestaurantPayout);
-
-                if (DailyEffectManager.Instance.HasEffect(DailyEffectType.WorseRestaurantPayout))
-                    multiplier -= DailyEffectManager.Instance.GetFloatValue(DailyEffectType.WorseRestaurantPayout);
+                if (DailyEffectManager.Instance.HasEffect(DailyEffectType.MarketCrash))
+                    multiplier -= DailyEffectManager.Instance.GetFloatValue(DailyEffectType.MarketCrash);
             }
 
             // Dish upgrades

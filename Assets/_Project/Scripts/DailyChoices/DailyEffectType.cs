@@ -3,16 +3,26 @@ public enum DailyEffectType
     None,
 
     // Positive
-    ExtraDailyCatch,
-    BetterRestaurantPayout,
-    BetterTreasureBuyerPayout,
-    MoreRareCatches,
-    StrongerFishingLine,
+    HighDemand,
+    AbundantWaters,
+    RushHour,
+    LuckyPool,
+    StrongLine,
+    MagnetBait,
+    RareSurge,
+    FullNets,
+    EasyWeek,
+    BonusCatch,
 
     // Negative
-    ReducedDailyCatch,
-    WorseRestaurantPayout,
-    WorseTreasureBuyerPayout,
-    LowerRareCatchChance,
-    WeakerFishingLine
+    SlowWaters,
+    PollutedWater,
+    MarketCrash,
+    ClumsyHands,
+    ShortDay,
+    BadLuck,
+    EmptyWaters,
+    DebtPressure,
+    LowEnergy,
+    SpoiledCatch
 }

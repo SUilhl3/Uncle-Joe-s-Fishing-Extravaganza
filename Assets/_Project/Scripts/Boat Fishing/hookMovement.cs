@@ -158,6 +158,17 @@ public class hookMovement : MonoBehaviour
             maxLineHealth += TackleMaxHealthBonus;
             lineRecoveryRate += TackleRecoveryBonus;
         }
+
+        if (DailyEffectManager.Instance != null)
+        {
+            if (DailyEffectManager.Instance.HasEffect(DailyEffectType.StrongLine))
+            {
+                float bonus = DailyEffectManager.Instance.GetFloatValue(DailyEffectType.StrongLine);
+                maxLineHealth += bonus;
+            }
+        }
+
+        maxLineHealth = Mathf.Max(10f, maxLineHealth);
     }
 
     //coroutines

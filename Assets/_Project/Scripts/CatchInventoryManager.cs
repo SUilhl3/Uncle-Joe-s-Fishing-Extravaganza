@@ -173,4 +173,31 @@ public static class CatchInventoryManager
         cachedData = data ?? new CatchInventorySaveData(); 
         Save(); 
     }
+
+    public static bool RemoveRandomItem()
+    {
+        var entries = GetAllEntries();
+
+        List<CatchInventoryEntry> validEntries = new List<CatchInventoryEntry>();
+
+        foreach (var entry in entries)
+        {
+            if (entry != null && entry.count > 0)
+                validEntries.Add(entry);
+        }
+
+        if (validEntries.Count == 0)
+            return false;
+
+        int randomIndex = UnityEngine.Random.Range(0, validEntries.Count);
+        CatchInventoryEntry chosen = validEntries[randomIndex];
+
+        chosen.count--;
+
+        if (chosen.count <= 0)
+            entries.Remove(chosen);
+
+        Save();
+        return true;
+    }
 }

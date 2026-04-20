@@ -17,20 +17,27 @@ public static class FishingDailyLimitManager
     {
         return PlayerPrefs.GetInt(TodayKey, 0);
     }
-    
-    public static int GetDailyCatchLimit() 
+
+    public static int GetDailyCatchLimit()
     {
-        int bonus = 0; if (HasChest()) bonus += ChestBonus;
+        int bonus = 0;
+
+        if (HasChest()) bonus += ChestBonus;
         if (HasBait()) bonus += BaitBonus;
         if (HasBait2()) bonus += Bait2Bonus;
-        if (DailyEffectManager.Instance != null) 
+
+        if (DailyEffectManager.Instance != null)
         {
-            bonus += DailyEffectManager.Instance.GetIntValue(DailyEffectType.ExtraDailyCatch);
-            bonus -= DailyEffectManager.Instance.GetIntValue(DailyEffectType.ReducedDailyCatch);
-        } 
-        return BaseDailyLimit + bonus;
+            if (DailyEffectManager.Instance.HasEffect(DailyEffectType.AbundantWaters))
+                bonus += DailyEffectManager.Instance.GetIntValue(DailyEffectType.AbundantWaters);
+
+            if (DailyEffectManager.Instance.HasEffect(DailyEffectType.LowEnergy))
+                bonus -= DailyEffectManager.Instance.GetIntValue(DailyEffectType.LowEnergy);
+        }
+
+        return Mathf.Max(1, BaseDailyLimit + bonus);
     }
-    
+
     public static bool HasReachedLimit() 
     {
         return GetFishCaughtToday() >= GetDailyCatchLimit();

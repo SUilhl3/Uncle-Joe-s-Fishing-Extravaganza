@@ -47,6 +47,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     Vector2 castStartingPosition;
     Vector2 playerBarStart;
     Vector2 itemStart;
+    Vector2 originalPlayerBarSize;
     Fish_AI fishAi;
     Item caughtItem;
     List<Item> storedItems;
@@ -56,6 +57,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         castStartingPosition = castingLine.transform.position;
         playerBarStart = playerBar.anchoredPosition;
         itemStart = item.anchoredPosition;
+        originalPlayerBarSize = playerBar.sizeDelta;
         fishAi = item.GetComponent<Fish_AI>();
         storedItems = new List<Item>();
         fishingDailyUI = FindFirstObjectByType<FishingDailyUI>();
@@ -88,8 +90,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         //setup to be fishing towards the right side for now
         float castDistance = castStrength * maxCastDistance;
 
-        //will need to do something to change what fish you get based on cast strength later
-
         float targetX = castStartingPosition.x + castDistance;
         targetPosition = new Vector2(targetX, waterPosition);
 
@@ -101,13 +101,11 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Moves cast strength slider up and down
         if (isFishing)
         {
             Fishing();
         }
 
-        //moves casting line into the water 
         if (isCasting)
         {
             Casting();
@@ -118,7 +116,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             FishingMiniGame();
         }
 
-        //returns the casting line back to the starting position after catching or not catching a fish
         if (isReturning)
         {
             Returning();
@@ -159,16 +156,24 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             isCasting = false;
 
             //checks for chance that nothing is on hook 
+            float adjustedChanceToCatchNothing = chanceToCatchNothing;
+
+            if (DailyEffectManager.Instance != null &&
+                DailyEffectManager.Instance.HasEffect(DailyEffectType.EmptyWaters))
+            {
+                adjustedChanceToCatchNothing += DailyEffectManager.Instance.GetFloatValue(DailyEffectType.EmptyWaters);
+            }
+
+            adjustedChanceToCatchNothing = Mathf.Clamp01(adjustedChanceToCatchNothing);
+
             float fishOnHook = UnityEngine.Random.value;
-            if (fishOnHook < chanceToCatchNothing)
+            if (fishOnHook < adjustedChanceToCatchNothing)
             {
                 DisplayCaughtNothing(true);
                 ResetFishingGame();
                 return;
             }
 
-            //changes type of fish/items can catch based on castStrength
-            //does nothing for now 
             if (castStrength >= 0.01 && castStrength <= 0.4)
             {
                 Debug.Log("Low Cast Strength");
@@ -182,9 +187,18 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
                 Debug.Log("High Cast Strength");
             }
 
-            //sets difficulty for fishing mini game based on enum value of fish/junk
             caughtItem = GetRandomItem();
             fishAi.rarity = caughtItem.itemRarity;
+
+            // Reset player bar size before applying daily penalty
+            playerBar.sizeDelta = originalPlayerBarSize;
+
+            if (DailyEffectManager.Instance != null &&
+                DailyEffectManager.Instance.HasEffect(DailyEffectType.ClumsyHands))
+            {
+                float penalty = DailyEffectManager.Instance.GetFloatValue(DailyEffectType.ClumsyHands);
+                playerBar.sizeDelta = new Vector2(originalPlayerBarSize.x * (1f - penalty), originalPlayerBarSize.y);
+            }
 
             progressBar.gameObject.SetActive(true);
             progressBar.value = progressBar.maxValue / 3;
@@ -228,7 +242,6 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             }
         }
 
-        //default item returned if above somehow errors
         return currentPool[0];
     }
 
@@ -236,7 +249,7 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
     {
         float weight = item.probabilityOfCatch;
 
-        // Can, Gum, Jug become less common after purchase
+        // Permanent shop effects: make Can/Gum/Jug less common
         if (item.itemName == "Can" && PlayerPrefs.GetInt("CanPurchased", 0) == 1)
             weight *= 0.5f;
 
@@ -246,10 +259,32 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         if (item.itemName == "Jug" && PlayerPrefs.GetInt("JugPurchased", 0) == 1)
             weight *= 0.5f;
 
-        // Eye and Void increase rare catch chance
-        bool isRare = item.itemRarity == ItemRarity.RARE || item.itemRarity == ItemRarity.LEGENDARY;
+        bool isJunk = item.itemName == "Can" || item.itemName == "Gum" || item.itemName == "Jug";
 
-        if (isRare)
+        if (DailyEffectManager.Instance != null)
+        {
+            if (DailyEffectManager.Instance.HasEffect(DailyEffectType.MagnetBait) && isJunk)
+                weight *= (1f - DailyEffectManager.Instance.GetFloatValue(DailyEffectType.MagnetBait));
+
+            if (DailyEffectManager.Instance.HasEffect(DailyEffectType.PollutedWater) && isJunk)
+                weight *= (1f + DailyEffectManager.Instance.GetFloatValue(DailyEffectType.PollutedWater));
+
+            bool isRare = item.itemRarity == ItemRarity.RARE || item.itemRarity == ItemRarity.LEGENDARY;
+
+            if (isRare)
+            {
+                if (DailyEffectManager.Instance.HasEffect(DailyEffectType.RareSurge))
+                    weight *= (1f + DailyEffectManager.Instance.GetFloatValue(DailyEffectType.RareSurge));
+
+                if (DailyEffectManager.Instance.HasEffect(DailyEffectType.BadLuck))
+                    weight *= (1f - DailyEffectManager.Instance.GetFloatValue(DailyEffectType.BadLuck));
+            }
+        }
+
+        // Permanent shop effects: Eye and Void increase rare catch chance
+        bool isPermanentRare = item.itemRarity == ItemRarity.RARE || item.itemRarity == ItemRarity.LEGENDARY;
+
+        if (isPermanentRare)
         {
             if (PlayerPrefs.GetInt("EyePurchased", 0) == 1)
                 weight *= 1.3f;
@@ -313,9 +348,17 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
 
         UpdateItemMovement();
 
+        float adjustedIncreaseSpeed = progressIncreaseSpeed;
+
+        if (DailyEffectManager.Instance != null &&
+            DailyEffectManager.Instance.HasEffect(DailyEffectType.SlowWaters))
+        {
+            adjustedIncreaseSpeed *= (1f - DailyEffectManager.Instance.GetFloatValue(DailyEffectType.SlowWaters));
+        }
+
         if (overlapping)
         {
-            progressBar.value += progressIncreaseSpeed * Time.deltaTime;
+            progressBar.value += adjustedIncreaseSpeed * Time.deltaTime;
         }
         else
         {
@@ -356,8 +399,9 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             return;
         }
 
-        fishingDailyUI.Refresh(); //update daily limit UI
+        fishingDailyUI.Refresh();
         castDistanceSlider.value = 0;
+
         if (caughtItem.itemName == "Egg")
         {
             Item newFish = GetRandomFishOnly();
@@ -371,8 +415,56 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
             if (newFish != null)
                 caughtItem = newFish;
         }
+
+        // Lucky Pool: reroll once and keep the better-value result
+        if (DailyEffectManager.Instance != null &&
+            DailyEffectManager.Instance.HasEffect(DailyEffectType.LuckyPool))
+        {
+            Item rerolled = GetRandomItem();
+            if (rerolled != null && rerolled.itemValue > caughtItem.itemValue)
+                caughtItem = rerolled;
+        }
+
         DisplayCaughtItem(caughtItem);
         UpdateInventory();
+
+        // Bonus Catch: first catch of the day gives one extra copy
+        if (DailyEffectManager.Instance != null &&
+            DailyEffectManager.Instance.HasEffect(DailyEffectType.BonusCatch) &&
+            !DailyEffectManager.Instance.HasUsedBonusCatchToday())
+        {
+            CatchInventoryManager.RegisterCatch(
+                caughtItem.itemName,
+                caughtItem.itemName,
+                caughtItem.isFish,
+                caughtItem.fishSize,
+                Mathf.RoundToInt(caughtItem.itemValue)
+            );
+
+            DailyEffectManager.Instance.MarkBonusCatchUsedToday();
+        }
+
+        // Full Nets: chance to catch one extra random item
+        if (DailyEffectManager.Instance != null &&
+            DailyEffectManager.Instance.HasEffect(DailyEffectType.FullNets))
+        {
+            float extraChance = DailyEffectManager.Instance.GetFloatValue(DailyEffectType.FullNets);
+
+            if (UnityEngine.Random.value < extraChance)
+            {
+                Item extraItem = GetRandomItem();
+                if (extraItem != null)
+                {
+                    CatchInventoryManager.RegisterCatch(
+                        extraItem.itemName,
+                        extraItem.itemName,
+                        extraItem.isFish,
+                        extraItem.fishSize,
+                        Mathf.RoundToInt(extraItem.itemValue)
+                    );
+                }
+            }
+        }
 
         ResetFishingGame();
     }
@@ -386,11 +478,11 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
         isFishingGameActive = false;
         playerBar.anchoredPosition = playerBarStart;
         item.anchoredPosition = itemStart;
+        playerBar.sizeDelta = originalPlayerBarSize;
         isReturning = true;
     }
 
     //displays a panel with all the info of the caught item
-    //panel is permanently there for now, will make into a popup later
     void DisplayCaughtItem(Item item)
     {
         caughtItemPanel.SetActive(true);
@@ -434,10 +526,8 @@ public class Land_Fishing_Game_Manager : MonoBehaviour
 
     void UpdateInventory()
     {
-        //stores fish in local inventory
         storedItems.Add(caughtItem);
 
-        //stores fish/item in shared persistent inventory
         CatchInventoryManager.RegisterCatch(
             caughtItem.itemName,
             caughtItem.itemName,

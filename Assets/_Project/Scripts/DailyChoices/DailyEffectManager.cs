@@ -117,6 +117,8 @@ public class DailyEffectManager : MonoBehaviour
         activeEffect = chosen;
         PlayerPrefs.SetString(ActiveEffectKey, chosen.effectId);
         PlayerPrefs.Save();
+
+        ApplyImmediateChosenEffect(chosen);
     }
 
     public bool IsNegativeDay()
@@ -152,5 +154,31 @@ public class DailyEffectManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void ApplyImmediateChosenEffect(DailyEffectData chosen)
+    {
+        if (chosen == null)
+            return;
+
+        switch (chosen.effectType)
+        {
+            case DailyEffectType.SpoiledCatch:
+                CatchInventoryManager.RemoveRandomItem();
+                break;
+        }
+    }
+
+    public bool HasUsedBonusCatchToday()
+    {
+        string key = "BonusCatchUsed_" + SaveManager.GetCurrentGameDate().ToString("yyyyMMdd");
+        return PlayerPrefs.GetInt(key, 0) == 1;
+    }
+
+    public void MarkBonusCatchUsedToday()
+    {
+        string key = "BonusCatchUsed_" + SaveManager.GetCurrentGameDate().ToString("yyyyMMdd");
+        PlayerPrefs.SetInt(key, 1);
+        PlayerPrefs.Save();
     }
 }

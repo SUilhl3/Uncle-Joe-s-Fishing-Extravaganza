@@ -1959,13 +1959,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DailyEffectManager
   positiveEffects:
-  - {fileID: 11400000, guid: 4bab4e5325aca314f8c458b9051a043a, type: 2}
-  - {fileID: 11400000, guid: 72019783bbb91bf40b9b316c0e434f55, type: 2}
-  - {fileID: 11400000, guid: f3cc481588fa4cc41a55a86501686fa8, type: 2}
+  - {fileID: 11400000, guid: 85c5f0402c5a3b54ab8db7b37019c918, type: 2}
+  - {fileID: 11400000, guid: db0f9145b4af1fa45b6a35952610267c, type: 2}
+  - {fileID: 11400000, guid: 1967be03fe8a4454399f16289863d654, type: 2}
+  - {fileID: 11400000, guid: 488f348a7e097ef4da6617b08fac11bb, type: 2}
+  - {fileID: 11400000, guid: 6040542afd2edbe46a119e6197c2f232, type: 2}
+  - {fileID: 11400000, guid: 8e0ae5716f7282a4b8b007618d770473, type: 2}
+  - {fileID: 11400000, guid: 94c4d41b5281b1440b8f407d74cd2d8b, type: 2}
+  - {fileID: 11400000, guid: 975c1ef84fb2ebc458556236683d7867, type: 2}
+  - {fileID: 11400000, guid: 098d79a8800313948a6b6343481a80a7, type: 2}
+  - {fileID: 11400000, guid: b1f40c5881a605a4d8435798d13c9a1b, type: 2}
   negativeEffects:
-  - {fileID: 11400000, guid: b883992bfb2370248878a330ef55db10, type: 2}
-  - {fileID: 11400000, guid: 15953aec4608d1a4ba4aa9d6a61967a9, type: 2}
-  - {fileID: 11400000, guid: 0b27dd2f3df8caf45968da59219fa92d, type: 2}
+  - {fileID: 11400000, guid: b90b78a2bfb1c7b48b8605133885b3f8, type: 2}
+  - {fileID: 11400000, guid: 86e0df608f69bd340b736994fd7164f0, type: 2}
+  - {fileID: 11400000, guid: 15945d6a5ea8098478246cc1e06412b2, type: 2}
+  - {fileID: 11400000, guid: e16f00c00e4e12747a6b981b65dff36b, type: 2}
+  - {fileID: 11400000, guid: 7db9efaae968aa742bc858150bf39898, type: 2}
+  - {fileID: 11400000, guid: df31b059d1f0f1647b00b2f74c59c923, type: 2}
+  - {fileID: 11400000, guid: abf871eef0d2058479c42019e4dcbb85, type: 2}
+  - {fileID: 11400000, guid: 6bf2248411968734fa6607cf76ffbaab, type: 2}
+  - {fileID: 11400000, guid: 07db99e6029445c478cfae03319ec5ae, type: 2}
+  - {fileID: 11400000, guid: 2d7fbb5a28469ba488244f80ba909d7e, type: 2}
   activeEffect: {fileID: 0}
 --- !u!4 &1183287693
 Transform:

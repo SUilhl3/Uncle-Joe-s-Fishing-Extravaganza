@@ -47,7 +47,24 @@ public class LoanManager : MonoBehaviour
 
     public int GetWeeklyMinimumInCents()
     {
-        return PlayerPrefs.GetInt(WeeklyMinimumKey, weeklyMinimumPaymentInCents);
+        int amount = PlayerPrefs.GetInt(WeeklyMinimumKey, weeklyMinimumPaymentInCents);
+
+        if (DailyEffectManager.Instance != null)
+        {
+            if (DailyEffectManager.Instance.HasEffect(DailyEffectType.EasyWeek))
+            {
+                float reduction = DailyEffectManager.Instance.GetFloatValue(DailyEffectType.EasyWeek);
+                amount = Mathf.RoundToInt(amount * (1f - reduction));
+            }
+
+            if (DailyEffectManager.Instance.HasEffect(DailyEffectType.DebtPressure))
+            {
+                float increase = DailyEffectManager.Instance.GetFloatValue(DailyEffectType.DebtPressure);
+                amount = Mathf.RoundToInt(amount * (1f + increase));
+            }
+        }
+
+        return Mathf.Max(0, amount);
     }
 
     public int GetCurrentWeekNumber()

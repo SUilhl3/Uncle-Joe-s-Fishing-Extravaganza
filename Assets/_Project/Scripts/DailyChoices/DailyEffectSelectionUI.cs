@@ -21,6 +21,7 @@ public class DailyEffectSelectionUI : MonoBehaviour
 
             bool hasRerollUpgrade = PlayerPrefs.GetInt("UhhhYesPurchased", 0) == 1;
             rerollButton.gameObject.SetActive(hasRerollUpgrade);
+            rerollButton.interactable = hasRerollUpgrade;
         }
     }
 
@@ -62,7 +63,8 @@ public class DailyEffectSelectionUI : MonoBehaviour
 
         hasUsedReroll = true;
 
-        PlayerPrefs.DeleteKey("DailyEffectOffers_" + SaveManager.GetCurrentGameDate().ToString("yyyyMMdd"));
+        string offerKey = "DailyEffectOffers_" + SaveManager.GetCurrentGameDate().ToString("yyyyMMdd");
+        PlayerPrefs.DeleteKey(offerKey);
         PlayerPrefs.Save();
 
         BuildCards();
