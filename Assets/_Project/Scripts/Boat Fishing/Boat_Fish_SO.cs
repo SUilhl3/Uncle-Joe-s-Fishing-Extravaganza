@@ -9,6 +9,7 @@ public class Boat_Fish_SO : ScriptableObject
     public int value;
     public float probabilityOfCatch;
     public ItemRarity rarity;
+    public bool needChangeSize = false;
 
     [Header("Inventory / Restaurant Data")]
     public FishSize fishSize = FishSize.Medium;

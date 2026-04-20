@@ -52,6 +52,7 @@ public class Boat_Fish : MonoBehaviour
         //fishSO = Boat_Manager.instance.startingFish[Random.Range(0, Boat_Manager.instance.startingFish.Count)];
         spriteRenderer.sprite = fishSO.fishSprite;
         originalScale = transform.localScale;
+        NormalizeSprite(fishSO.needChangeSize);
         // Set up the fish's mouth collider
         fish_collider = GetComponent<CircleCollider2D>();
         fish_collider.offset = mouthOffset;
@@ -71,6 +72,16 @@ public class Boat_Fish : MonoBehaviour
 
         //fish combat init
         stamina = maxStamina;
+    }
+
+    //For the really large fishes
+    void NormalizeSprite(bool needChangeSize)
+    {
+        if (needChangeSize)
+        {
+            transform.localScale = new Vector3(1,1,1);
+            originalScale = transform.localScale;
+        }
     }
 
     private void Update()
