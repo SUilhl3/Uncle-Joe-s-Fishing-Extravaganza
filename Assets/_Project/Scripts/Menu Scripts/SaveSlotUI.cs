@@ -7,26 +7,26 @@ public class SaveSlotUI : MonoBehaviour
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI dayText;
     private int slotIndex;
-    
-    public void Setup(int index) {
+
+    public void Setup(int index)
+    {
         slotIndex = index;
-        
-        if (SaveManager.SaveExists(index))
+
+        bool exists = PlayerPrefs.GetInt($"save_{index}_HasSave", 0) == 1;
+
+        if (!exists)
         {
-            string tempName = PlayerPrefs.GetString($"save_{index}_PlayerName", "Player");
-            int tempMoney = PlayerPrefs.GetInt($"save_{index}_Money", 0);
-            int tempDay = PlayerPrefs.GetInt($"save_{index}_GameDayNumber", 1);
-            nameText.text = SaveManager.GetPlayerName();
-            moneyText.text = "$" + SaveManager.GetMoney();
-            dayText.text = "Day " + SaveManager.GetDayNumber();
-        } 
-        else
-        { 
             nameText.text = "Empty Slot";
             moneyText.text = "";
             dayText.text = "";
+            return;
         }
+
+        nameText.text = PlayerPrefs.GetString($"save_{index}_PlayerName", "Player");
+        moneyText.text = "$" + PlayerPrefs.GetInt($"save_{index}_Money", 0);
+        dayText.text = "Day " + PlayerPrefs.GetInt($"save_{index}_GameDayNumber", 1);
     }
+
     public void OnClick()
     {
         if (!SaveManager.SaveExists(slotIndex))
@@ -40,6 +40,9 @@ public class SaveSlotUI : MonoBehaviour
     public void OnDeleteClick()
     {
         SaveManager.DeleteSave(slotIndex);
+
+        Debug.Log("Deleted slot " + slotIndex);
+
         Setup(slotIndex);
     }
 }

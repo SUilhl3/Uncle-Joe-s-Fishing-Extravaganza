@@ -15,6 +15,12 @@ public static class SaveManager
     const string GameDayKey = "GameDayNumber";
     static string DailyKey(DateTime date) => Prefix($"TotalEarned_{date:yyyyMMdd}");
 
+    public static void MarkSlotAsUsed()
+    {
+        PlayerPrefs.SetInt(Prefix("HasSave"), 1);
+        PlayerPrefs.Save();
+    }
+
     public static DateTime GetCurrentGameDate()
     {
         string v = PlayerPrefs.GetString(Prefix(GameDateKey), "");
@@ -97,7 +103,7 @@ public static class SaveManager
 
     public static bool SaveExists(int slot)
     {
-        return PlayerPrefs.HasKey($"save_{slot}_{GameDateKey}");
+        return PlayerPrefs.GetInt($"save_{slot}_HasSave", 0) == 1;
     }
 
     public static void DeleteSave(int slot)

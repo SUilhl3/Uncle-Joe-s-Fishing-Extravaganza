@@ -10,14 +10,16 @@ public class LoadMenuManager : MonoBehaviour
     {
         PopulateSlots();
     }
-    
+
     void PopulateSlots()
     {
-        for (int i = 0; i < numberOfSlots; i++) 
+        foreach (Transform child in contentParent)
+            Destroy(child.gameObject);
+
+        for (int i = 0; i < numberOfSlots; i++)
         {
             GameObject slotObj = Instantiate(slotPrefab, contentParent);
-            SaveSlotUI slotUI = slotObj.GetComponent<SaveSlotUI>();
-            slotUI.Setup(i);
+            slotObj.GetComponent<SaveSlotUI>().Setup(i);
         }
     }
 }
