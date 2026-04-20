@@ -162,6 +162,11 @@ public class ShopTooltipUI : MonoBehaviour
                 PlayerPrefs.SetInt("FrogPurchased", 1);
                 PlayerPrefs.Save();
             }
+            else if (currentItem.itemName == "Radio")
+            {
+                PlayerPrefs.SetInt("RadioPurchased", 1);
+                PlayerPrefs.Save();
+            }
 
             currentHotspot.OnPurchased();
             Hide();

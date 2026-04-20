@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Elephant Fish
   description: 
   icon: {fileID: 1969185590929313799, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  priceInCents: 4326
+  priceInCents: 1
