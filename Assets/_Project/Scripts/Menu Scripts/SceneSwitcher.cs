@@ -83,6 +83,11 @@ public class SceneSwitcher : MonoBehaviour
         SceneManager.LoadScene("TresureBuyerScene");
     }
 
+    public void LoanBuilding()
+    {
+        SceneManager.LoadScene("LoanBuildingScene");
+    }
+
     public void Exit()
     {
         Application.Quit();

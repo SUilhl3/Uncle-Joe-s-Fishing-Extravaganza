@@ -30,6 +30,14 @@ public class DailyEffectSelectionUI : MonoBehaviour
     void OnCardChosen(DailyEffectData chosen)
     {
         DailyEffectManager.Instance.ChooseEffect(chosen);
-        SceneManager.LoadScene(nextSceneName);
+
+        if (LoanManager.Instance != null && LoanManager.Instance.IsPaymentDueThisWeek())
+        {
+            SceneManager.LoadScene("LoanBuildingScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("Map");
+        }
     }
 }
