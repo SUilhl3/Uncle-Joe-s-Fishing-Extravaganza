@@ -48,7 +48,8 @@ public class Boat_Fish : MonoBehaviour
 
     private void Start()
     {
-        fishSO = Boat_Manager.instance.startingFish[Random.Range(0, Boat_Manager.instance.startingFish.Count)];
+        fishSO = Boat_Manager.instance.GetRandomBoatFishOnly();
+        //fishSO = Boat_Manager.instance.startingFish[Random.Range(0, Boat_Manager.instance.startingFish.Count)];
         spriteRenderer.sprite = fishSO.fishSprite;
         originalScale = transform.localScale;
         // Set up the fish's mouth collider
