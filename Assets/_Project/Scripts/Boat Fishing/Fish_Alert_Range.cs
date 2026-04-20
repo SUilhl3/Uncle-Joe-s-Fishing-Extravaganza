@@ -11,7 +11,8 @@ public class Fish_Alert_Range : MonoBehaviour
     {
         fish = GetComponentInParent<Boat_Fish>();
         alertCollider = GetComponent<CircleCollider2D>(); 
-        alertCollider.radius = alertRange; 
+        alertCollider.radius = alertRange;
+        hookScript = FindFirstObjectByType<hookMovement>();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
