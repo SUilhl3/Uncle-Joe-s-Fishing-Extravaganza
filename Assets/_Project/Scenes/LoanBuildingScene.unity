@@ -795,8 +795,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -871, y: 407}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -871, y: 414.41992}
+  m_SizeDelta: {x: 160, y: 40.0151}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &543078486
 MonoBehaviour:
@@ -2296,6 +2296,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350316029}
   m_CullTransparentMesh: 1
+--- !u!82 &1534583538 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8174403150702669289, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
+  m_PrefabInstance: {fileID: 2003125590}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1700527528
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,6 +3141,38 @@ PrefabInstance:
     - target: {fileID: 1327418310180987458, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
       propertyPath: m_AnchorMin.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387294105409964427, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387294105409964427, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1534583538}
+    - target: {fileID: 1387294105409964427, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 76544798}
+    - target: {fileID: 1387294105409964427, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387294105409964427, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OptionsMenuClose
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387294105409964427, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387294105409964427, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SceneSwitcher, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1387294105409964427, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1650050653535036452, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
       propertyPath: m_AnchorMax.x
