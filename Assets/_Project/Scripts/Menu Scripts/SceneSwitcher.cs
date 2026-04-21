@@ -100,6 +100,12 @@ public class SceneSwitcher : MonoBehaviour
         SceneManager.LoadScene("LoanBuildingScene");
     }
 
+    public void GameOver()
+    {
+        SceneManager.LoadScene("Lose Screen");
+    }
+
+
     public void Exit()
     {
         Application.Quit();
