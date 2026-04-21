@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/LoanBuildingScene.unity
     guid: 0632e53564e24034a86468e2c1312857
+  - enabled: 1
+    path: Assets/_Project/Scenes/Intro scene.unity
+    guid: 2b9b2716e2b68d0458a0ff87bc3b3a85
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8e425f4c86441a34b9b95dac904c48cf, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
