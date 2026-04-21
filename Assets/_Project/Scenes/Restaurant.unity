@@ -279,11 +279,12 @@ MonoBehaviour:
     their order.
   - To make the customer's order, click the buttons that correspond to what they
     asked for.
-  - For example, if they ordered a Big Fish with Lemon, you would click the Big Fish
-    button and the Lemon button.
+  - For example, if they ordered a Baked Big Fish with Lemon, you would click the
+    Big Fish button, the Lemon button, the oven button and the plate button.
   - After you add all elements of the order, click Serve To Customer to give the
     customer their order.
-  - The map can be accessed through the pause menu.
+  - If you screw up an order, click on uncle joe and he will eat it for you.
+  - If you are out of fish early, you can click end day to end the day early.
   - Press the X on this box when you are ready to begin.
 --- !u!114 &94991715
 MonoBehaviour:
