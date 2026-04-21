@@ -294,8 +294,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.1663, y: -40.4067}
-  m_SizeDelta: {x: 1731.6658, y: 745.621}
+  m_AnchoredPosition: {x: -4.5781, y: -40.4067}
+  m_SizeDelta: {x: 1722.1619, y: 745.621}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &143015006
 MonoBehaviour:
@@ -940,7 +940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7809287089588001412, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -14
+      value: -14.0000305
       objectReference: {fileID: 0}
     - target: {fileID: 7809287089588001412, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1527,8 +1527,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1828433439}
   m_HandleRect: {fileID: 1828433438}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.9999999
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1881,8 +1881,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: $0.00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 99978494f4ca2d043b5f8642266262fd, type: 2}
+  m_sharedMaterial: {fileID: 2355200397445912512, guid: 99978494f4ca2d043b5f8642266262fd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2278,7 +2278,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 10
+  m_Spacing: 13
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
