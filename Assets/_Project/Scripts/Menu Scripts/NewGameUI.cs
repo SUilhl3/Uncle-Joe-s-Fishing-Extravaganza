@@ -28,6 +28,6 @@ public class NewGameUI : MonoBehaviour
 
         Debug.Log($"Started new game in slot {selectedSlot} for {playerName}");
 
-        SceneManager.LoadScene("Map");
+        SceneManager.LoadScene("Intro Scene");
     }
 }
