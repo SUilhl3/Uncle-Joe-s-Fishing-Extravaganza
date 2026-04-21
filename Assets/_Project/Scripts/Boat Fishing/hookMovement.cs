@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class hookMovement : MonoBehaviour
 {
@@ -26,7 +27,6 @@ public class hookMovement : MonoBehaviour
     [SerializeField] private float rightBoundaryX;
     [SerializeField] private float upperBoundaryY;
 
-    [SerializeField] private GameObject castPanel;
     [SerializeField] private bool fishOnHook = false;
     [SerializeField] private Boat_Fish fish = null;
 
@@ -47,6 +47,10 @@ public class hookMovement : MonoBehaviour
     private const float BaseLineRecoveryRate = 1f;
     private const float TackleMaxHealthBonus = 50f;
     private const float TackleRecoveryBonus = 0.5f;
+
+    [Header("UI")]
+    [SerializeField] private GameObject castPanel;
+    [SerializeField] private GameObject fishCounterCanvas;
 
     void Start()
     {
@@ -270,7 +274,8 @@ public class hookMovement : MonoBehaviour
         lineHealth = maxLineHealth;
         brokenLine = false;
         fishOnHook = false;
-        castPanel.SetActive(true);
+        castPanel.SetActive(true);        
+        fishCounterCanvas.SetActive(true);
         moveInput = Vector2.zero; // Reset movement input
     }
 
@@ -300,6 +305,7 @@ public class hookMovement : MonoBehaviour
         //Boat_Manager.instance.useBait();
         currentState = HookState.dropping;
         castPanel.SetActive(false);
+        fishCounterCanvas.SetActive(false);
         moveInput.y = ambientDropSpeed; //start ambient drop
     }
 

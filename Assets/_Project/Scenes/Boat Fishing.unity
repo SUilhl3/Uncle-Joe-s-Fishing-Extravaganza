@@ -1460,6 +1460,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6574391720990299760, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -7.7473145
+      objectReference: {fileID: 0}
     - target: {fileID: 6952851581667400793, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
       propertyPath: m_Name
       value: Options Panel
@@ -1816,7 +1820,6 @@ MonoBehaviour:
   leftBoundaryX: 0
   rightBoundaryX: 0
   upperBoundaryY: 0
-  castPanel: {fileID: 1569399018}
   fishOnHook: 0
   fish: {fileID: 0}
   lineHealth: 0
@@ -1826,6 +1829,8 @@ MonoBehaviour:
   brokenLine: 0
   lineRenderer: {fileID: 0}
   currentState: 3
+  castPanel: {fileID: 1569399018}
+  fishCounterCanvas: {fileID: 1220821765}
 --- !u!50 &678972848
 Rigidbody2D:
   serializedVersion: 5
@@ -2559,6 +2564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TeleporterButton
   buttonRoot: {fileID: 897255634}
   restaurantSceneName: Restaurant
+  isTeleporterPurchased: 0
 --- !u!114 &897255637
 MonoBehaviour:
   m_ObjectHideFlags: 0
