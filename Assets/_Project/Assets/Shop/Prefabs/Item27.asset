@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Dragon Fish
   description: Unlocks new catchable item
   icon: {fileID: -4261047623482395726, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  priceInCents: 3574
+  priceInCents: 2396

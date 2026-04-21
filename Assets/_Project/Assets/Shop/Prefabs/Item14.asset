@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Jug
   description: Raises the rarity of jugs showing up
   icon: {fileID: -586250976929357127, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  priceInCents: 3667
+  priceInCents: 2332

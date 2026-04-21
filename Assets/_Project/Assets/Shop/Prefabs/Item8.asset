@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Teleporter
   description: Unlocks new teleporter to go straight to restaurant from fishing
   icon: {fileID: -8700347722689439309, guid: 47774990b1352cc4dbd069911214be4d, type: 3}
-  priceInCents: 1
+  priceInCents: 2314
