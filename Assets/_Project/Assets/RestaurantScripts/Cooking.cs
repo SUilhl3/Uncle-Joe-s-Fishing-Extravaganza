@@ -50,6 +50,8 @@ public class Cooking : MonoBehaviour
         if (CatchInventoryManager.GetFishCountBySize(fishSize) <= 0)
         {
             Debug.Log("No " + fishSize + " fish in inventory.");
+            if (NotificationManager.Instance != null)
+                NotificationManager.Instance.ShowMessage($"No {fishSize} fish in inventory.");
             return;
         }
 
@@ -57,11 +59,15 @@ public class Cooking : MonoBehaviour
         if (!removed)
         {
             Debug.Log("Failed to remove " + fishSize + " fish from inventory.");
+            if (NotificationManager.Instance != null)
+                NotificationManager.Instance.ShowMessage($"Failed to remove {fishSize} fish from inventory.");
             return;
         }
 
         hand.PickUp(ingredientType);
         Debug.Log("Picked up: " + ingredientType);
+        if (NotificationManager.Instance != null)
+            NotificationManager.Instance.ShowMessage($"{ingredientType} added to hand");
     }
 
     void AddIngredientToHand(IngredientType ingredient)
@@ -71,6 +77,8 @@ public class Cooking : MonoBehaviour
 
         hand.PickUp(ingredient);
         Debug.Log("Picked up: " + ingredient);
+        if (NotificationManager.Instance != null)
+            NotificationManager.Instance.ShowMessage($"{ingredient} added to hand");
     }
 
     public void AddIngredientFromInstance(IngredientInstance instance)
@@ -78,6 +86,8 @@ public class Cooking : MonoBehaviour
         if (instance == null) return;
         currentIngredients.Add(new IngredientInstance(instance.type, instance.method));
         Debug.Log("Added instance to plate: " + instance.type + " (" + instance.method + ")");
+        if (NotificationManager.Instance != null)
+            NotificationManager.Instance.ShowMessage($"{instance.type} ({instance.method}) added to plate");
     }
 
     public void ClearPlate()
