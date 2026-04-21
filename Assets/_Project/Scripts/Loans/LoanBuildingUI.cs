@@ -21,7 +21,7 @@ public class LoanBuildingUI : MonoBehaviour
 
     [Header("Scene Flow")]
     [SerializeField] private string mapSceneName = "Map";
-    [SerializeField] private string loseSceneName = "Main Menu";
+    [SerializeField] private string loseSceneName = "Lose Screen";
 
     void Start()
     {
