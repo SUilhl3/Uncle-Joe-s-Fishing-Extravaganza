@@ -7846,6 +7846,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
+--- !u!1 &1528127033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6952851581667400793, guid: f6d4e7e9c7bcd66478707a35a6277e47, type: 3}
+  m_PrefabInstance: {fileID: 1528127032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1528696405
 GameObject:
   m_ObjectHideFlags: 0
@@ -8714,7 +8719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63dfd4acefe844d4ca7fbe9296108bed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneSwitcher
-  OptionsPanel: {fileID: 0}
+  OptionsPanel: {fileID: 1528127033}
   PausePanel: {fileID: 399735085}
   NewGamePanel: {fileID: 0}
 --- !u!4 &1749065693
