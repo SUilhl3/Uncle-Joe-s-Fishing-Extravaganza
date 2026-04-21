@@ -6,12 +6,14 @@ public class SceneSwitcher : MonoBehaviour
     public GameObject OptionsPanel;
     public GameObject PausePanel;
     public GameObject NewGamePanel;
+    public GameObject CreditsPanel;
 
     void Start()
     {
         if (OptionsPanel != null) OptionsPanel.SetActive(false);
         if (PausePanel != null) PausePanel.SetActive(false);
         if (NewGamePanel != null) NewGamePanel.SetActive(false);
+        if (CreditsPanel != null) CreditsPanel.SetActive(false);
 
         Time.timeScale = 1f;
     }
@@ -53,6 +55,16 @@ public class SceneSwitcher : MonoBehaviour
     public void NewGameClose()
     {
         if (NewGamePanel != null) NewGamePanel.SetActive(false);
+    }
+
+    public void CreditsOpen()
+    {
+        if (CreditsPanel != null) CreditsPanel.SetActive(true);
+    }
+
+    public void CreditsClose()
+    {
+        if (CreditsPanel != null) CreditsPanel.SetActive(false);
     }
 
     public void Game()
