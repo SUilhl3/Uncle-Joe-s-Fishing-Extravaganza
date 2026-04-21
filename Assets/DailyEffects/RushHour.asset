@@ -15,7 +15,7 @@ MonoBehaviour:
   effectId: RushHour
   effectName: Rush Hour
   description: 3 extra restaurant customers Today.
-  icon: {fileID: 0}
+  icon: {fileID: -240327516165942470, guid: 5015bcf8a81a9594698305281a6c28f0, type: 3}
   effectType: 3
   isNegative: 0
   intValue: 3

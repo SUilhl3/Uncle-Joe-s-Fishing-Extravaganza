@@ -15,7 +15,7 @@ MonoBehaviour:
   effectId: EagerCollector
   effectName: Eager Collector
   description: Treasure buyer pays 20% more Today.
-  icon: {fileID: 0}
+  icon: {fileID: -6529690518788335337, guid: dfd33824119889947ab8e3abb70ad7be, type: 3}
   effectType: 3
   isNegative: 0
   intValue: 0

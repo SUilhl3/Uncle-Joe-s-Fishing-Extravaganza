@@ -15,7 +15,7 @@ MonoBehaviour:
   effectId: StrongLine
   effectName: Strong Line
   description: Your fishing line is stronger Today
-  icon: {fileID: 0}
+  icon: {fileID: -5323996041356767447, guid: df26b09c60e9e9a4893be493255c8424, type: 3}
   effectType: 5
   isNegative: 0
   intValue: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   effectId: RareSurge
   effectName: Rare Surge
   description: Rare catches are more likely Today
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7de457d8a4947cc429663a692615badc, type: 3}
   effectType: 7
   isNegative: 0
   intValue: 0

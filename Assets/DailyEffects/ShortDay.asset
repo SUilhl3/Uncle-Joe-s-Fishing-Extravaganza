@@ -15,7 +15,7 @@ MonoBehaviour:
   effectId: ShortDay
   effectName: Short Day
   description: 3 fewer restaurant customers Today.
-  icon: {fileID: 0}
+  icon: {fileID: 7679413267766464455, guid: a55c7445a9cbf8c4cbc044e2dfe44faa, type: 3}
   effectType: 15
   isNegative: 1
   intValue: 3

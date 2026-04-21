@@ -15,7 +15,7 @@ MonoBehaviour:
   effectId: BonusCatch
   effectName: Bonus Catch
   description: Your first catch Today gives 1 extra item.
-  icon: {fileID: 0}
+  icon: {fileID: -4494469508641899769, guid: 6bd808415bea9a94bb3124c507127795, type: 3}
   effectType: 10
   isNegative: 0
   intValue: 0

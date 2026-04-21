@@ -15,7 +15,7 @@ MonoBehaviour:
   effectId: EasyWeek
   effectName: Easy Week
   description: This week's loan payment is reduced by 25%
-  icon: {fileID: 0}
+  icon: {fileID: 5670732621190257608, guid: 79835e070edd1cd4181a67e4a064ea37, type: 3}
   effectType: 9
   isNegative: 0
   intValue: 0

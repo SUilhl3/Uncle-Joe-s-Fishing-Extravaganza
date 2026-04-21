@@ -15,7 +15,7 @@ MonoBehaviour:
   effectId: BigHaul
   effectName: Big Haul
   description: Catch 5 extra fish Today.
-  icon: {fileID: 0}
+  icon: {fileID: -4326388693886365151, guid: e2c4a7176c1152c46b6c663140196584, type: 3}
   effectType: 1
   isNegative: 0
   intValue: 5

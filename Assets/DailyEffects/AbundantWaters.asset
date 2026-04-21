@@ -15,7 +15,7 @@ MonoBehaviour:
   effectId: AbundantWaters
   effectName: Abundant Waters
   description: Catch 5 extra fish Today.
-  icon: {fileID: 0}
+  icon: {fileID: 7234135257840793977, guid: 8537736ce4c14b847ac3c5e94b829235, type: 3}
   effectType: 2
   isNegative: 0
   intValue: 5

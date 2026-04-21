@@ -15,7 +15,7 @@ MonoBehaviour:
   effectId: BadWeather
   effectName: Bad Weather
   description: Catch 5 fewer fish Today.
-  icon: {fileID: 0}
+  icon: {fileID: -2979216349277178634, guid: 4e48e2d0d0f25f5438c71d197cfb0b4d, type: 3}
   effectType: 6
   isNegative: 1
   intValue: 5

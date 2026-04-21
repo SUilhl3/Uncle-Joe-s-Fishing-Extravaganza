@@ -15,7 +15,7 @@ MonoBehaviour:
   effectId: SpoiledCatch
   effectName: Spoiled Catch
   description: Lose 1 random item from your inventory.
-  icon: {fileID: 0}
+  icon: {fileID: 1992010027047378039, guid: d9cc1674b1257654380ae9154178a4b8, type: 3}
   effectType: 20
   isNegative: 1
   intValue: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   effectId: CheapCrowd
   effectName: Cheap Crowd
   description: Restaurant payouts are 20% lower Today.
-  icon: {fileID: 0}
+  icon: {fileID: -3422488923044030448, guid: 988a2e4bcfb2b5f4bb7009d963d558ea, type: 3}
   effectType: 7
   isNegative: 1
   intValue: 0

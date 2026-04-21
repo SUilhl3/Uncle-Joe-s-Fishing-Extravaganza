@@ -15,7 +15,7 @@ MonoBehaviour:
   effectId: BadLuck
   effectName: Bad Luck
   description: Rare catches are less likely Today.
-  icon: {fileID: 0}
+  icon: {fileID: -6105550753007996391, guid: 0b49f25617b9b3f41b4377c2ef74e3f9, type: 3}
   effectType: 16
   isNegative: 1
   intValue: 0
