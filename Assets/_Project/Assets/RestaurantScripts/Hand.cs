@@ -37,8 +37,7 @@ public class Hand : MonoBehaviour
         if (heldItem == null || cooking == null) return;
         cooking.AddIngredientFromInstance(heldItem);
         Debug.Log($"Placed {heldItem.type} ({heldItem.method}) on plate");
-        if (NotificationManager.Instance != null)
-            NotificationManager.Instance.ShowMessage($"{heldItem.type} ({heldItem.method}) placed on plate");
+      
         heldItem = null;
     }
 
@@ -58,6 +57,8 @@ public class Hand : MonoBehaviour
         if (heldItem == null) return;
         heldItem.method = CookingMethod.Cut;
         Debug.Log($"Cut {heldItem.type}");
+        if (NotificationManager.Instance != null)
+            NotificationManager.Instance.ShowMessage($"{heldItem.type} was cut");
     }
 
     public void BakeHeld()
@@ -65,6 +66,8 @@ public class Hand : MonoBehaviour
         if (heldItem == null) return;
         heldItem.method = CookingMethod.Baked;
         Debug.Log($"Started baking {heldItem.type}");
+        if (NotificationManager.Instance != null)
+            NotificationManager.Instance.ShowMessage($"{heldItem.type} was baked");
     }
 
     public void FryHeld()
@@ -72,5 +75,7 @@ public class Hand : MonoBehaviour
         if (heldItem == null) return;
         heldItem.method = CookingMethod.Fried;
         Debug.Log($"Started frying {heldItem.type}");
+        if (NotificationManager.Instance != null)
+            NotificationManager.Instance.ShowMessage($"{heldItem.type} was fried");
     }
 }

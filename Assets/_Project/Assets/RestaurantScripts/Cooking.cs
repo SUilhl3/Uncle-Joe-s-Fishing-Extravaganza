@@ -86,6 +86,8 @@ public class Cooking : MonoBehaviour
         if (instance == null) return;
         currentIngredients.Add(new IngredientInstance(instance.type, instance.method));
         Debug.Log("Added instance to plate: " + instance.type + " (" + instance.method + ")");
+        if (NotificationManager.Instance != null)
+            NotificationManager.Instance.ShowMessage($"{instance.type} ({instance.method}) added to plate");
     }
 
     public void ClearPlate()
